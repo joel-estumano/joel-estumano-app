@@ -1,0 +1,12 @@
+button.microphone.microphone-on {
+	border-radius: 50%;
+	transition: 0s transform;
+	animation: microphone-on-animation 1s infinite;
+	box-shadow: 0 0 0 1em transparent;
+}
+
+@keyframes microphone-on-animation {
+	0% {
+		box-shadow: 0 0 0 0 var(--primary);
+	}
+}

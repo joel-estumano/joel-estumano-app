@@ -1,0 +1,7 @@
+.custom-underline:where(:not(:has(svg)))::after {
+	@apply absolute bottom-[0px] left-[0px] h-[.05rem] w-[0px] bg-[var(--muted-foreground)] transition-all duration-300 content-[''];
+}
+
+.custom-underline:where(:not(:has(svg))):hover::after {
+	@apply w-full;
+}

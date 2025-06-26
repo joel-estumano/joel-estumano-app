@@ -1,0 +1,29 @@
+<div class="animate-fade-in flex">
+	<button
+		type="button"
+		title="Togle"
+		class="focus-visible:border-ring focus-visible:ring-ring/50 inset-0 inline-flex h-7 w-12 shrink-0 cursor-pointer items-center rounded-full border border-transparent shadow-xs transition-all outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50"
+		[ngClass]="{
+			'bg-muted': checked(),
+			'bg-input': !checked(),
+			'dark:bg-input/80': !checked()
+		}"
+		(click)="toggleSwitch()"
+	>
+		<div
+			class="bg-background text-primary-foreground pointer-events-none flex size-6 items-center justify-center rounded-full ring-0 transition-transform"
+			[ngClass]="{
+				'dark:bg-primary-foreground': checked(),
+				'dark:bg-foreground': !checked(),
+				'translate-x-[calc(100%-3px)]': checked(),
+				'translate-x-[1px]': !checked()
+			}"
+		>
+			@if (checked() && iconChecked()) {
+				<app-icon class="text-foreground text-xl" [icon]="iconChecked()" />
+			} @else if (!checked() && iconUnchecked()) {
+				<app-icon class="text-foreground text-xl" [icon]="iconUnchecked()" />
+			}
+		</div>
+	</button>
+</div>

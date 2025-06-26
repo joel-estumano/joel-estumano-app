@@ -1,0 +1,21 @@
+@for (dialog of dialogs(); track $index) {
+	@if (dialog.state?.isVisible()) {
+		<div
+			class="bg-background/50 fixed inset-0 z-[1001] flex items-center justify-center backdrop-blur"
+			[ngClass]="dialog.state?.open() ? 'animate-in fade-in-0' : 'animate-out fade-out-0'"
+		>
+			<div
+				role="dialog"
+				class="bg-background relative max-h-[calc(100%-1rem)] w-full max-w-[calc(100%-1rem)] overflow-auto rounded-md border p-4 shadow-lg duration-200 sm:w-auto sm:max-w-2xl sm:p-6"
+				[ngClass]="dialog.state?.open() ? 'animate-in zoom-in-95' : 'animate-out zoom-out-95'"
+			>
+				<ng-container *ngComponentOutlet="dialog.component; inputs: dialog.inputs"></ng-container>
+				@if (!dialog.hideCloseButton) {
+					<footer class="mt-4 inline-flex w-full justify-center">
+						<app-button title="Fechar diálogo" (click)="close($index)">Fechar</app-button>
+					</footer>
+				}
+			</div>
+		</div>
+	}
+}

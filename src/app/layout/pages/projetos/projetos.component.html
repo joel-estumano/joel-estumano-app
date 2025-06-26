@@ -1,0 +1,18 @@
+<app-section>
+	<div class="mx-auto grid max-w-2xl grid-cols-1 justify-items-center gap-4">
+		<app-button title="Voltar" (click)="goBack()" variant="ghost">
+			<app-icon icon="heroArrowLeft" class="scale-110" />
+			Voltar
+		</app-button>
+		<h1 class="f2 text-center !leading-normal">{{ data()?.name }}</h1>
+	</div>
+	<div class="mx-auto flex max-w-4xl flex-col text-center">
+		@if (data()?.demoUrl) {
+			<div class="mx-auto inline-flex">
+				<app-link [href]="data()?.demoUrl ?? ''" [title]="data()?.name ?? ''" target="_blank" variant="link">{{ data()?.demoUrl }} </app-link>
+				<app-icon icon="heroArrowTopRightOnSquare" />
+			</div>
+		}
+		<p class="text-muted mt-4 animate-pulse">Conteúdo em desenvolvimento!</p>
+	</div>
+</app-section>

@@ -1,0 +1,85 @@
+<app-section>
+	<div class="mt-1.5 grid grid-cols-1">
+		<h1 class="f2 text-center">Contato</h1>
+	</div>
+	<div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+		<div class="flex flex-col gap-6 rounded-lg border p-6 sm:p-8">
+			<h2 class="f3 text-muted-foreground">Fique à vontade para falar comigo</h2>
+			<p class="f4">
+				Agora que você chegou até aqui, quero saber o que você tem a dizer! Seja uma dúvida, uma ideia ou apenas um bate-papo, estou disponível para
+				trocar experiências. Vamos conversar!
+			</p>
+			<app-contact-form />
+		</div>
+		<div class="grid grid-cols-1 gap-5">
+			<div class="overflow-hidden rounded-lg border">
+				<div class="relative flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden p-6 sm:gap-5 sm:p-8">
+					<app-icon
+						icon="bootstrapEnvelopeAt"
+						class="text-muted absolute -right-4 -z-10 rotate-6 bg-transparent text-[160px] opacity-70 lg:text-[240px] xl:text-[320px]"
+					/>
+					<p class="f6 text-center text-nowrap">Mande um email</p>
+					<app-link
+						variant="link"
+						title="Mande um email"
+						href="mailto:{{ profile.email }}?subject=Olá {{ profile.name }}, venho através do site."
+						target="_self"
+					>
+						{{ profile.email }}
+					</app-link>
+					<div class="inline-flex gap-2">
+						<app-button
+							[title]="'Copiar ' + profile.email"
+							ngxClipboard
+							[cbContent]="profile.email"
+							(cbOnSuccess)="emailCopied($event)"
+							variant="outline"
+							size="icon"
+						>
+							<app-icon icon="bootstrapCopy" />
+						</app-button>
+						@if (this.suportaWebShare()) {
+							<app-button [title]="'Compartilhar ' + profile.email" (click)="share(profile.email)" variant="outline" size="icon">
+								<app-icon icon="bootstrapShare" />
+							</app-button>
+						}
+					</div>
+				</div>
+			</div>
+			<div class="overflow-hidden rounded-lg border">
+				<div class="relative flex h-full w-full flex-col items-center justify-center gap-2 overflow-hidden p-6 sm:gap-5 sm:p-8">
+					<app-icon
+						icon="bootstrapWhatsapp"
+						class="text-muted absolute -left-4 -z-10 rotate-6 bg-transparent text-[160px] opacity-70 lg:text-[240px] xl:text-[320px]"
+					/>
+					<p class="f6 text-center text-nowrap">Ligue ou chame pelo whatsapp</p>
+					<app-link
+						variant="link"
+						title="Ligue ou chame pelo whatsapp"
+						href="https://wa.me/{{ profile.whatsapp }}?text=Olá {{ profile.name }}, venho através do site."
+						target="_blank"
+					>
+						{{ profile.phone }}
+					</app-link>
+					<div class="inline-flex gap-2">
+						<app-button
+							[title]="'Copiar ' + profile.phone"
+							ngxClipboard
+							[cbContent]="profile.phone"
+							(cbOnSuccess)="phoneCopied($event)"
+							variant="outline"
+							size="icon"
+						>
+							<app-icon icon="bootstrapCopy" />
+						</app-button>
+						@if (this.suportaWebShare()) {
+							<app-button [title]="'Compartilhar ' + profile.phone" (click)="share(profile.phone)" variant="outline" size="icon">
+								<app-icon icon="bootstrapShare" />
+							</app-button>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</app-section>

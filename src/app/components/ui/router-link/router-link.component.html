@@ -1,0 +1,11 @@
+<a
+	[title]="title()"
+	[routerLink]="routerLink()"
+	[target]="target()"
+	[ngClass]="getLinkClasses()"
+	[routerLinkActiveOptions]="{ exact: exact() }"
+	routerLinkActive="!text-accent-foreground"
+	rel="noopener noreferrer"
+>
+	<ng-content></ng-content>
+</a>

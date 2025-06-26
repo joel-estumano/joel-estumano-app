@@ -1,0 +1,289 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--font-montserrat: "Montserrat";
+	--font-poppins: "Poppins";
+	--font-geist: "Geist";
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-sidebar-ring: var(--sidebar-ring);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar: var(--sidebar);
+	--color-chart-5: var(--chart-5);
+	--color-chart-4: var(--chart-4);
+	--color-chart-3: var(--chart-3);
+	--color-chart-2: var(--chart-2);
+	--color-chart-1: var(--chart-1);
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--color-destructive: var(--destructive);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-accent: var(--accent);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-muted: var(--muted);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-secondary: var(--secondary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-primary: var(--primary);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-popover: var(--popover);
+	--color-card-foreground: var(--card-foreground);
+	--color-card: var(--card);
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+	--radius: 0.625rem;
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.145 0 0);
+	--card: oklch(1 0 0);
+	--card-foreground: oklch(0.145 0 0);
+	--popover: oklch(1 0 0);
+	--popover-foreground: oklch(0.145 0 0);
+	--primary: oklch(0.205 0 0);
+	--primary-foreground: oklch(0.985 0 0);
+	--secondary: oklch(0.97 0 0);
+	--secondary-foreground: oklch(0.205 0 0);
+	--muted: oklch(0.97 0 0);
+	--muted-foreground: oklch(0.556 0 0);
+	--accent: oklch(0.97 0 0);
+	--accent-foreground: oklch(0.205 0 0);
+	--destructive: oklch(0.577 0.245 27.325);
+	--border: oklch(0.922 0 0);
+	--input: oklch(0.922 0 0);
+	--ring: oklch(0.708 0 0);
+	--chart-1: oklch(0.646 0.222 41.116);
+	--chart-2: oklch(0.6 0.118 184.704);
+	--chart-3: oklch(0.398 0.07 227.392);
+	--chart-4: oklch(0.828 0.189 84.429);
+	--chart-5: oklch(0.769 0.188 70.08);
+	--sidebar: oklch(0.985 0 0);
+	--sidebar-foreground: oklch(0.145 0 0);
+	--sidebar-primary: oklch(0.205 0 0);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.97 0 0);
+	--sidebar-accent-foreground: oklch(0.205 0 0);
+	--sidebar-border: oklch(0.922 0 0);
+	--sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+	--background: oklch(0.145 0 0);
+	--foreground: oklch(0.985 0 0);
+	--card: oklch(0.205 0 0);
+	--card-foreground: oklch(0.985 0 0);
+	--popover: oklch(0.205 0 0);
+	--popover-foreground: oklch(0.985 0 0);
+	--primary: oklch(0.922 0 0);
+	--primary-foreground: oklch(0.205 0 0);
+	--secondary: oklch(0.269 0 0);
+	--secondary-foreground: oklch(0.985 0 0);
+	--muted: oklch(0.269 0 0);
+	--muted-foreground: oklch(0.708 0 0);
+	--accent: oklch(0.269 0 0);
+	--accent-foreground: oklch(0.985 0 0);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.556 0 0);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
+	--sidebar: oklch(0.205 0 0);
+	--sidebar-foreground: oklch(0.985 0 0);
+	--sidebar-primary: oklch(0.488 0.243 264.376);
+	--sidebar-primary-foreground: oklch(0.985 0 0);
+	--sidebar-accent: oklch(0.269 0 0);
+	--sidebar-accent-foreground: oklch(0.985 0 0);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground font-geist;
+	}
+	img,
+	a,
+	button {
+		@apply select-none;
+	}
+}
+
+@layer utilities {
+	@keyframes fadein {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+	.animate-fade-in {
+		animation: fadein 0.5s ease-in-out;
+	}
+}
+
+.f1/* ,
+.f2,
+.f3,
+.f4,
+.f5,
+.f6 */ {
+	@apply font-poppins;
+}
+
+.f1 {
+	@apply text-[clamp(28px,6vw,42px)] leading-6 font-bold tracking-tight sm:text-[clamp(48px,5vw,76px)] sm:leading-4 sm:tracking-tighter;
+}
+
+.f2 {
+	@apply text-[24px] leading-6 font-bold sm:text-[32px] sm:leading-5;
+}
+
+.f3 {
+	@apply text-[18px] leading-6 font-normal tracking-normal sm:text-[20px] sm:tracking-tight;
+}
+
+.f4 {
+	@apply text-[15px] leading-5 font-normal tracking-normal sm:text-[16px] sm:leading-6 sm:tracking-tight;
+}
+
+label {
+	@apply mb-1 flex justify-start text-sm;
+}
+
+/* inputs */
+
+input,
+textarea {
+	@apply text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+}
+
+input.is-invalid,
+textarea.is-invalid {
+	@apply ring-destructive/20 dark:ring-destructive/40 border-destructive;
+}
+
+/* editor */
+
+.editor {
+	@apply font-geist relative mb-2 flex h-auto w-full flex-col gap-1 overflow-y-visible;
+}
+
+.editor .NgxEditor__MenuBar {
+	@apply text-foreground bg-transparent text-sm font-normal;
+}
+
+.editor .NgxEditor__MenuBar .NgxEditor__Seperator {
+	@apply border-border;
+}
+
+.editor .NgxEditor__MenuBar .NgxEditor__MenuItem.NgxEditor__MenuItem--IconContainer .NgxEditor__MenuItem--Icon {
+	@apply hover:bg-foreground hover:text-accent overflow-hidden rounded;
+}
+
+.editor .NgxEditor__MenuBar .NgxEditor__MenuItem.NgxEditor__MenuItem--IconContainer .NgxEditor__MenuItem--Icon.NgxEditor__MenuItem--Active {
+	@apply bg-muted text-foreground;
+}
+
+.editor .NgxEditor__MenuBar .NgxEditor__MenuItem.NgxEditor__MenuItem--IconContainer .NgxEditor__Popup {
+	@apply bg-background rounded-md border;
+}
+
+.editor .NgxEditor__MenuBar .NgxEditor__MenuItem.NgxEditor__MenuItem--IconContainer .NgxEditor__Popup button {
+	@apply cursor-pointer;
+}
+
+.editor .NgxEditor {
+	@apply border-none bg-transparent;
+}
+
+.editor .NgxEditor .NgxEditor__Content {
+	@apply text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-[138px] w-full min-w-0 overflow-y-auto rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+}
+
+.ngx-editor.is-invalid > .NgxEditor .NgxEditor__Content {
+	@apply ring-destructive/20 dark:ring-destructive/40 border-destructive;
+}
+
+.editor .NgxEditor .NgxEditor__Content .NgxEditor__Placeholder::before {
+	@apply placeholder:text-muted-foreground;
+}
+
+/* recaptcha */
+
+.grecaptcha-badge {
+	z-index: 999;
+}
+
+body.on-dialog {
+	padding-right: var(--scrollbar);
+}
+
+body.on-dialog::after {
+	content: "";
+	display: block;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: var(--scrollbar);
+	height: 100vh;
+	background: var(--background);
+	z-index: 999;
+	pointer-events: none;
+}
+
+body.on-dialog nav {
+	padding-right: var(--scrollbar);
+}
+
+body.on-dialog .grecaptcha-badge {
+	margin-right: var(--scrollbar) !important;
+}
+
+/* https://tweakcn.com/ */
+
+.pointer-dot {
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 0;
+	border: 0.24rem solid var(--foreground);
+	position: fixed;
+	border-radius: 50%;
+	z-index: 1002;
+	pointer-events: none;
+	transition: border-color 0.5s;
+}
+
+.pointer-ring {
+	left: 0;
+	top: 0;
+	width: 0;
+	height: 0;
+	padding: 16px;
+	border: 1px solid var(--foreground);
+	background: transparent;
+	position: fixed;
+	border-radius: 100px;
+	z-index: 1003;
+	pointer-events: none;
+}

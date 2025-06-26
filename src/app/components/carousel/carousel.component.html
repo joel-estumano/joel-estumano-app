@@ -1,0 +1,65 @@
+<div class="animate-fade-in relative flex flex-col gap-4">
+	<ul
+		tabindex="0"
+		class="inline-flex w-full overflow-hidden outline-none"
+		(mouseover)="updateAutoScroll(false)"
+		(mouseleave)="updateAutoScroll(true)"
+		(focus)="updateAutoScroll(false)"
+		(blur)="updateAutoScroll(true)"
+	>
+		@for (slide of slides(); track $index) {
+			<li
+				class="flex min-w-full transition-all duration-700 ease-in-out xl:min-w-[60%]"
+				(mousedown)="onStart($event)"
+				(mousemove)="onMouseMove($event)"
+				(mouseup)="onEnd($event)"
+				(touchstart)="onStart($event)"
+				(touchend)="onEnd($event)"
+				[style.transform]="this.translateX()"
+				[ngClass]="isDragging() ? 'cursor-grabbing' : 'cursor-grab'"
+			>
+				<div class="relative mx-auto w-full px-0 max-xl:mx-4 xl:px-8">
+					<ng-container *ngComponentOutlet="slide.component; inputs: slide.inputs"></ng-container>
+				</div>
+			</li>
+		}
+	</ul>
+
+	<div class="relative mt-4 flex flex-nowrap items-center justify-center gap-3 sm:gap-4">
+		@for (slide of slides(); track $index) {
+			<div
+				class="bg-input dark:bg-input/80 h-1 w-1 rounded-3xl transition-all duration-300 ease-in-out lg:h-1.5 lg:w-1.5"
+				[ngClass]="{ '!bg-foreground !w-8': $index === this.slideIndexActive() }"
+			></div>
+		}
+	</div>
+
+	<div
+		class="from-background text-foreground absolute inset-y-0 left-0 flex w-8 items-center justify-center to-transparent text-xl transition-all duration-150 ease-in-out outline-none sm:w-10 sm:text-lg md:w-12 md:text-xl lg:w-16 lg:text-2xl xl:w-40 xl:bg-gradient-to-r xl:text-3xl"
+	>
+		<button
+			type="button"
+			title="Anterior"
+			class="flex h-full w-full cursor-pointer items-center justify-center transition-all duration-300 ease-in-out outline-none"
+			(click)="prev()"
+			[disabled]="this.slideIndexActive() === 0"
+			[ngClass]="{ 'opacity-0': this.slideIndexActive() === 0 }"
+		>
+			<app-icon icon="heroChevronLeft" class="text-3xl" />
+		</button>
+	</div>
+	<div
+		class="from-background text-foreground absolute inset-y-0 right-0 flex w-8 items-center justify-center to-transparent text-xl transition-all duration-150 ease-in-out outline-none sm:w-10 sm:text-lg md:w-12 md:text-xl lg:w-16 lg:text-2xl xl:w-40 xl:bg-gradient-to-l xl:text-3xl"
+	>
+		<button
+			type="button"
+			title="Próximo"
+			class="flex h-full w-full cursor-pointer items-center justify-center transition-all duration-300 ease-in-out outline-none"
+			(click)="next()"
+			[disabled]="this.slideIndexActive() === slides().length - 1"
+			[ngClass]="{ 'opacity-0': this.slideIndexActive() === slides().length - 1 }"
+		>
+			<app-icon icon="heroChevronRight" class="text-3xl" />
+		</button>
+	</div>
+</div>

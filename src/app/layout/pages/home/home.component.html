@@ -1,0 +1,179 @@
+<div class="mx-auto grid h-svh w-full max-w-screen-xl grid-rows-[33%_1fr_33%] items-center justify-items-center sm:h-dvh sm:max-h-[60rem]">
+	<!-- <div
+		class="relative h-8 w-full border-y border-(--pattern-fg) bg-[image:repeating-linear-gradient(315deg,_var(--pattern-fg)_0,_var(--pattern-fg)_1px,_transparent_0,_transparent_50%)] bg-[size:10px_10px] bg-fixed [--pattern-fg:var(--color-black)]/5 max-lg:h-8 max-lg:border-t dark:[--pattern-fg:var(--border)]"
+	></div> -->
+	<div class="row-start-2 flex h-full w-full flex-col items-center justify-center gap-16 px-16 max-sm:px-4 xl:px-8">
+		<h1 class="f1">
+			{{ profile.name }}
+		</h1>
+		<div class="mx-auto flex max-w-2xl flex-col items-center">
+			<p class="f3 text-muted-foreground text-center">
+				<span class="text-foreground font-semibold">{{ profile.profession }}</span> com mais de
+				<span class="text-foreground font-semibold">{{ professionTime() }} anos</span> de experiência, nível
+				{{ profile.professionLevel.toLowerCase() }}, especializado na criação de interfaces responsivas para websites.
+			</p>
+		</div>
+		<app-link
+			variant="default"
+			title="Seguir no LinkedIn"
+			href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=joel-estumano"
+			target="_blank"
+			size="lg"
+		>
+			<app-icon icon="bootstrapLinkedin" />
+			Seguir no LinkedIn
+		</app-link>
+	</div>
+	<div class="relative row-start-3 mt-auto flex w-full flex-wrap items-center justify-center gap-4 px-16 py-8 max-sm:mb-16 max-sm:px-4 xl:px-8">
+		@for (link of this.links; track $index) {
+			<app-link variant="link" [href]="link.href" [title]="link.title" target="_blank" size="icon">
+				<app-icon [icon]="link.icon" class="text-2xl" />
+			</app-link>
+		}
+	</div>
+	@defer (on timer(300ms)) {
+		<div
+			class="contactar animate-fade-in fixed top-[10%] right-[4%] z-40 block w-[40%] shrink-0 overflow-visible rounded-full backdrop-blur md:w-[30%] xl:w-[20%]"
+		>
+			<div class="relative block">
+				<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+					<title>Open to work</title>
+					<defs>
+						<path
+							id="textcircle"
+							d="M250,400
+                     a150,150 0 0,1 0,-300a150,150 0 0,1 0,300Z"
+							transform="rotate(12,250,250)"
+						/>
+					</defs>
+					<g class="textcircle">
+						<text textLength="940">
+							<textPath xlink:href="#textcircle" aria-label="Open to work" textLength="940">Open to work | Open to work |&#160;</textPath>
+						</text>
+					</g>
+				</svg>
+				<div class="absolute inset-0 flex items-center justify-center">
+					<a
+						class="flex h-[40%] w-[40%] rotate-[15deg] items-center justify-center rounded-full bg-linear-to-r from-emerald-500 to-sky-400 text-xs font-semibold ring-1 ring-gray-950/10 ring-inset sm:text-base dark:from-emerald-400 dark:ring-white/10"
+						[routerLink]="['/contato']"
+						target="_self"
+						title="Contactar"
+					>
+						<span class="text-white">Contactar</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+
+<app-section #sectionServices>
+	@defer (on viewport(sectionServices)) {
+		<div class="flex flex-col gap-8 sm:gap-16">
+			<div class="mx-auto flex w-full max-w-2xl flex-col items-center gap-8">
+				<h2 class="f2 text-center">Sobre</h2>
+				<p class="f3 text-muted-foreground text-center">
+					Tô sempre buscando fazer melhor, aprender com os outros e entregar com qualidade. Gosto de colaborar, encarar desafios e deixar tudo bem
+					resolvido e com cuidado nos detalhes.
+				</p>
+			</div>
+			<div class="mx-auto grid w-full gap-5 max-lg:max-w-2xl lg:grid-cols-3">
+				@for (about of abouts; track $index) {
+					<div class="bg-card/20 hover:bg-card/50 flex w-full flex-col items-center gap-5 rounded-md border p-6 transition-all sm:p-8">
+						<div class="flex flex-col items-center">
+							<div class="bg-background flex size-14 items-center justify-center rounded-full border">
+								<app-icon [icon]="about.icon" class="text-3xl" />
+							</div>
+						</div>
+						<p class="f3 text-foreground! text-center">{{ about.title }}</p>
+						<p class="text-muted-foreground text-center">
+							{{ about.description }}
+						</p>
+					</div>
+				}
+			</div>
+		</div>
+	}
+</app-section>
+
+<app-section #sectionExperiences>
+	@defer (on viewport(sectionExperiences)) {
+		<div class="flex flex-col gap-8 sm:gap-16">
+			<div class="mx-auto flex w-full max-w-md flex-col items-center gap-8">
+				<h2 class="f2 text-center">Experiências</h2>
+				<div class="grid w-full grid-rows-2 gap-5">
+					@for (experience of profile.experiences; track $index) {
+						<div class="bg-card/20 hover:bg-card/50 w-full rounded-md border p-6 transition-all sm:p-8">
+							<div class="flex flex-col max-sm:items-center">
+								<p class="f3 !text-foreground mb-2">{{ experience.company }}</p>
+								<p class="text-muted-foreground">{{ experience.office }}</p>
+								<p class="text-muted-foreground text-sm">{{ experience.period }}</p>
+								<div class="inline-flex gap-2">
+									<app-icon icon="bootstrapPinFill" />
+									<p>{{ experience.local }}</p>
+								</div>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+		</div>
+	}
+</app-section>
+
+<app-section #sectionProjetos class="relative border-t dark:bg-[radial-gradient(27.27%_35.9%_at_50%_0%,#131315_0%,var(--background)_100%)]" [full]="true">
+	@defer (on viewport(sectionProjetos)) {
+		<div class="flex flex-col gap-8 sm:gap-16">
+			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8 px-16 max-sm:px-4 xl:px-8">
+				<h2 class="f2 text-center">Projetos de destaque</h2>
+				<p class="f3 text-muted-foreground text-center">
+					Conheça alguns projetos em que trabalhei e descubra como foi minha participação e os resultados.
+				</p>
+			</div>
+			<app-carousel [slides]="projects()" />
+		</div>
+	}
+</app-section>
+
+<app-section #sectionTecnologias>
+	@defer (on viewport(sectionTecnologias)) {
+		<div class="flex flex-col gap-8 sm:gap-16">
+			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8">
+				<h2 class="f2 text-center">Tecnologias</h2>
+				<p class="f3 text-muted-foreground text-center">Veja algumas tecnologias e ferramentas que fazem parte do meu stack de trabalho!</p>
+			</div>
+			<div class="grid">
+				<ul class="inline-flex flex-wrap justify-center gap-5">
+					@for (stack of stacks(); track $index) {
+						<li class="flex w-fit shrink-0 items-center opacity-75 md:min-w-40">
+							<app-icon [icon]="stack.iconName" class="text-[16px] sm:text-[24px]" />
+							<app-link size="sm" variant="link" [title]="stack.docs" [href]="stack.docs" target="_blank">
+								{{ stack.name }}
+							</app-link>
+						</li>
+					}
+				</ul>
+			</div>
+		</div>
+	}
+</app-section>
+
+<app-section #sectionGetInTouch>
+	@defer (on viewport(sectionGetInTouch)) {
+		<div class="flex flex-col gap-8 sm:gap-16">
+			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8">
+				<h2 class="f2 text-center">Contato</h2>
+				<p class="f3 text-muted-foreground text-center">
+					Que bom que você chegou até aqui! Se quiser saber mais sobre mim e meu trabalho, estou sempre disponível para uma boa conversa. Me manda uma
+					mensagem e vamos trocar uma ideia!
+				</p>
+			</div>
+		</div>
+		<div class="flex justify-center">
+			<app-router-link variant="default" title="Fale comigo!" routerLink="/contato" target="_self" size="lg">
+				<app-icon icon="heroChatBubbleLeftRight" />
+				Fale comigo!
+			</app-router-link>
+		</div>
+	}
+</app-section>

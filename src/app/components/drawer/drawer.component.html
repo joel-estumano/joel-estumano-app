@@ -1,0 +1,11 @@
+<div
+	#drawer
+	[ngClass]="[class(), this.onTouchMoveActive ? 'duration-0' : 'duration-300']"
+	class="fixed top-0 left-0 flex h-screen max-h-screen min-h-screen w-10/12 overflow-y-auto bg-white/50 p-6 backdrop-blur transition-transform ease-in-out dark:bg-black/50"
+	[style.transform]="'translateX(' + this.menuTranslateX + 'px)'"
+>
+	<ng-content></ng-content>
+	<button type="button" title="Close menu" class="text-muted-foreground absolute top-6 right-6 -mt-1 outline-none" (click)="toggleDrawer()">
+		<app-icon icon="heroXMark" class="text-2xl transition duration-700 ease-in-out" [class]="open ? 'rotate-0' : 'rotate-180'" />
+	</button>
+</div>

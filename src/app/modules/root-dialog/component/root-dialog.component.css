@@ -1,0 +1,71 @@
+@layer utilities {
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fade-out {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes zoom-in-95 {
+		from {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+
+	@keyframes zoom-out-95 {
+		from {
+			opacity: 1;
+			transform: scale(1);
+		}
+		to {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+	}
+
+	.animate-in {
+		animation-name: fade-in;
+		animation-duration: 200ms;
+		animation-timing-function: ease-out;
+		animation-fill-mode: both;
+	}
+
+	.animate-out {
+		animation-name: fade-out;
+		animation-duration: 200ms;
+		animation-timing-function: ease-in;
+		animation-fill-mode: both;
+	}
+
+	.fade-in-0 {
+		animation-name: fade-in;
+	}
+
+	.fade-out-0 {
+		animation-name: fade-out;
+	}
+
+	.zoom-in-95 {
+		animation-name: zoom-in-95;
+	}
+
+	.zoom-out-95 {
+		animation-name: zoom-out-95;
+	}
+}

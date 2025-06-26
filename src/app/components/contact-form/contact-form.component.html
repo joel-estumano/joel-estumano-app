@@ -1,0 +1,76 @@
+<form class="relative flex w-full flex-col gap-4" [formGroup]="contactForm" (ngSubmit)="captchaRef.execute()">
+	<re-captcha class="absolute top-0" size="invisible" #captchaRef="reCaptcha" [siteKey]="siteKey" (resolved)="$event && onSubmit($event)"></re-captcha>
+	<div>
+		<label for="name">Seu nome</label>
+		<input
+			type="text"
+			[readOnly]="this.disabled()"
+			formControlName="name"
+			placeholder="Nome"
+			[ngClass]="FormUtils.invalidClass(FormUtils.getControl(contactForm, 'name'), this.isSubmited)"
+		/>
+	</div>
+	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+		<div>
+			<label for="email">E-mail</label>
+			<input
+				type="email"
+				[readOnly]="this.disabled()"
+				formControlName="email"
+				placeholder="mail@mail.com"
+				[ngClass]="FormUtils.invalidClass(FormUtils.getControl(contactForm, 'email'), this.isSubmited)"
+			/>
+		</div>
+		<div>
+			<label for="whatsapp">Fone/Whatsapp</label>
+			<input
+				type="text"
+				[readOnly]="this.disabled()"
+				formControlName="whatsapp"
+				placeholder="+55"
+				[ngClass]="FormUtils.invalidClass(FormUtils.getControl(contactForm, 'whatsapp'), this.isSubmited)"
+			/>
+		</div>
+	</div>
+	<div>
+		<label for="message">Sua mensagem</label>
+		<div class="editor relative">
+			<ngx-editor-menu [editor]="editor" [toolbar]="toolbar" [colorPresets]="colorPresets" [disabled]="this.disabled()"> </ngx-editor-menu>
+			<ngx-editor
+				class="ngx-editor"
+				[editor]="editor"
+				formControlName="message"
+				placeholder="Mensagem"
+				[ngClass]="FormUtils.invalidClass(FormUtils.getControl(contactForm, 'message'), this.isSubmited)"
+			>
+			</ngx-editor>
+			@if (this.isSupported && !this.speechRecognitionErro) {
+				<button
+					type="button"
+					[disabled]="this.disabled()"
+					class="microphone roun group/item-microphone absolute right-1.5 bottom-2 h-8 w-8 shrink-0 rounded-full p-0 align-middle outline-none disabled:opacity-30"
+					title="{{ this.listening() ? 'Click para interromper captura de voz' : 'Click para iniciar a captura de voz' }}"
+					(click)="start()"
+					[ngClass]="{ 'microphone-on text-primary': this.listening() }"
+				>
+					<app-icon
+						[icon]="this.listening() && !this.disabled() ? 'bootstrapMic' : 'bootstrapMicMute'"
+						class="flex items-center justify-center text-[1rem]"
+					/>
+					@if (!this.listening() && !this.disabled()) {
+						<span
+							class="invisible absolute right-1 mt-3 w-[320px] py-1 text-end text-xs transition-all duration-300 ease-in-out group-hover/item-microphone:visible max-sm:visible max-sm:text-[.6rem]"
+							>Crie sua mensagem usando reconhecimento de voz.</span
+						>
+					}
+				</button>
+			}
+		</div>
+	</div>
+	<div class="flex justify-center">
+		<app-button type="submit" title="Enviar mensagem" classes="w-[171px]">
+			<app-icon [icon]="this.disabled() ? 'boxLoaderCircle' : 'bootstrapSend'" [ngClass]="{ 'animate-spin': this.disabled() }" />
+			{{ this.disabled() ? "Enviando..." : "Enviar mensagem" }}
+		</app-button>
+	</div>
+</form>

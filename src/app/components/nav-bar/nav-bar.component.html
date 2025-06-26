@@ -1,0 +1,51 @@
+<nav class="bg-background fixed top-0 right-0 left-0 z-[1000] block w-full border-b sm:bg-white/50 sm:backdrop-blur dark:sm:bg-black/50">
+	<div class="mx-auto grid h-full w-full max-w-screen-xl grid-cols-3 px-16 max-sm:px-4 xl:px-8">
+		<div class="flex h-12 items-center justify-start gap-4 sm:h-16">
+			<a class="outline-none" [routerLink]="['/']">
+				<img class="d-block" src="logo.webp" alt="Logo Joel Estumano" width="32" height="32" />
+			</a>
+		</div>
+		<div class="col-span-2 flex h-full justify-end">
+			@if (!screenIsSmall()) {
+				<div class="inline-flex h-full items-center justify-end text-sm">
+					@for (link of links; track $index) {
+						<app-router-link [routerLink]="link.path" [exact]="link.exact" [title]="link.label" variant="ghost" size="sm">
+							{{ link.label }}
+						</app-router-link>
+					}
+				</div>
+				<div class="flex h-full flex-col justify-center pl-6">
+					<app-switch iconUnchecked="heroSunSolid" iconChecked="heroMoonSolid" />
+				</div>
+			} @else {
+				<button type="button" title="Open menu" [ngClass]="{ invisible: this.drawerIsOpen() }" (click)="this.drawer.toggleDrawer()">
+					<app-icon icon="heroBars3" class="text-muted-foreground text-2xl" />
+				</button>
+			}
+		</div>
+		@if (screenIsSmall()) {
+			@defer (hydrate never) {
+				<app-drawer #drawer (changed)="this.drawerIsOpen.set($event)">
+					<div class="flex h-full flex-col">
+						<app-switch iconUnchecked="heroSunSolid" iconChecked="heroMoonSolid" />
+						<hr class="my-4" />
+						<div class="flex flex-col space-y-3">
+							@for (link of links; track $index) {
+								<app-router-link
+									[routerLink]="link.path"
+									[exact]="link.exact"
+									[title]="link.label"
+									variant="ghost"
+									size="sm"
+									(click)="this.drawer.toggleDrawer()"
+								>
+									{{ link.label }}
+								</app-router-link>
+							}
+						</div>
+					</div>
+				</app-drawer>
+			}
+		}
+	</div>
+</nav>
