@@ -1,16 +1,16 @@
-import { Location } from '@angular/common';
-import { Component, inject, Input, signal } from '@angular/core';
-import { SectionComponent } from '@components/section/section.component';
-import { IProjectData } from '@types';
-import { PROFILE } from 'src/app/tokens';
-import { IconComponent } from '@components/icon/icon.component';
-import { ButtonComponent } from '@components/ui/button/button.component';
-import { LinkComponent } from '@components/ui/link/link.component';
+import { Location } from "@angular/common";
+import { Component, inject, Input, signal } from "@angular/core";
+import { SectionComponent } from "@components/section/section.component";
+import { IProjectData } from "@types";
+import { PROFILE } from "src/app/tokens";
+import { IconComponent } from "@components/icon/icon.component";
+import { ButtonComponent } from "@components/ui/button/button.component";
+import { LinkComponent } from "@components/ui/link/link.component";
 
 @Component({
-	selector: 'app-projetos',
+	selector: "app-projetos",
 	imports: [SectionComponent, IconComponent, ButtonComponent, LinkComponent],
-	templateUrl: './projetos.component.html'
+	templateUrl: "./projetos.component.html"
 })
 export class ProjetosComponent {
 	protected profile = inject(PROFILE);

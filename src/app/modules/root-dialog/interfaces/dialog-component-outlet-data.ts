@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import { Type } from "@angular/core";
 
 /**
  * Interface que define os dados necessários para a criação dinâmica de um componente.
@@ -7,7 +7,7 @@ import { Type } from '@angular/core';
  * @template D Tipo dos dados que serão passados como entrada para o componente.
  * @template K Tipo da chave usada para armazenar os dados de entrada (por padrão, 'data').
  */
-export interface IDialogComponentOutletData<T, D, K extends string = 'data'> {
+export interface IDialogComponentOutletData<T, D, K extends string = "data"> {
 	/**
 	 * Tipo do componente que será instanciado dinamicamente.
 	 */

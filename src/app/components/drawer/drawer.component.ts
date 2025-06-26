@@ -1,16 +1,16 @@
-import { Component, ElementRef, inject, input, OnInit, Renderer2, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
-import { IconComponent } from '@components/icon/icon.component';
-import { output } from '@angular/core';
-import { NgClass } from '@angular/common';
-import { WINDOW } from 'src/app/tokens';
+import { Component, ElementRef, inject, input, OnInit, Renderer2, ViewChild, AfterViewInit, OnDestroy } from "@angular/core";
+import { IconComponent } from "@components/icon/icon.component";
+import { output } from "@angular/core";
+import { NgClass } from "@angular/common";
+import { WINDOW } from "src/app/tokens";
 
 @Component({
-	selector: 'app-drawer',
-	templateUrl: './drawer.component.html',
+	selector: "app-drawer",
+	templateUrl: "./drawer.component.html",
 	imports: [NgClass, IconComponent]
 })
 export class DrawerComponent implements OnInit, AfterViewInit, OnDestroy {
-	@ViewChild('drawer') drawer!: ElementRef<HTMLDivElement>;
+	@ViewChild("drawer") drawer!: ElementRef<HTMLDivElement>;
 
 	private window = inject(WINDOW);
 	private renderer = inject(Renderer2);
@@ -19,7 +19,7 @@ export class DrawerComponent implements OnInit, AfterViewInit, OnDestroy {
 	touchMoveHandler!: (e: TouchEvent) => void;
 	touchEndHandler!: (e: TouchEvent) => void;
 
-	class = input<string>('');
+	class = input<string>("");
 	changed = output<boolean>();
 
 	open = false;
@@ -33,34 +33,34 @@ export class DrawerComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	ngAfterViewInit(): void {
-		this.renderer.setStyle(this.drawer.nativeElement, 'display', 'none');
+		this.renderer.setStyle(this.drawer.nativeElement, "display", "none");
 
 		const drawerEl = this.drawer.nativeElement;
 
-		drawerEl.addEventListener('touchstart', this.onTouchStart.bind(this), { passive: true });
-		drawerEl.addEventListener('touchmove', this.onTouchMove.bind(this), { passive: true });
-		drawerEl.addEventListener('touchend', this.onTouchEnd.bind(this), { passive: true });
+		drawerEl.addEventListener("touchstart", this.onTouchStart.bind(this), { passive: true });
+		drawerEl.addEventListener("touchmove", this.onTouchMove.bind(this), { passive: true });
+		drawerEl.addEventListener("touchend", this.onTouchEnd.bind(this), { passive: true });
 
-		drawerEl.addEventListener('touchstart', this.touchStartHandler, { passive: true });
-		drawerEl.addEventListener('touchmove', this.touchMoveHandler, { passive: true });
-		drawerEl.addEventListener('touchend', this.touchEndHandler, { passive: true });
+		drawerEl.addEventListener("touchstart", this.touchStartHandler, { passive: true });
+		drawerEl.addEventListener("touchmove", this.touchMoveHandler, { passive: true });
+		drawerEl.addEventListener("touchend", this.touchEndHandler, { passive: true });
 	}
 
 	ngOnDestroy(): void {
 		const drawerEl = this.drawer.nativeElement;
-		drawerEl.removeEventListener('touchstart', this.touchStartHandler);
-		drawerEl.removeEventListener('touchmove', this.touchMoveHandler);
-		drawerEl.removeEventListener('touchend', this.touchEndHandler);
+		drawerEl.removeEventListener("touchstart", this.touchStartHandler);
+		drawerEl.removeEventListener("touchmove", this.touchMoveHandler);
+		drawerEl.removeEventListener("touchend", this.touchEndHandler);
 	}
 
 	toggleDrawer(): void {
 		if (this.open) {
 			this.menuTranslateX = -this.window.innerWidth;
 			setTimeout(() => {
-				this.renderer.setStyle(this.drawer.nativeElement, 'display', 'none');
+				this.renderer.setStyle(this.drawer.nativeElement, "display", "none");
 			}, 300);
 		} else {
-			this.renderer.setStyle(this.drawer.nativeElement, 'display', 'block');
+			this.renderer.setStyle(this.drawer.nativeElement, "display", "block");
 			setTimeout(() => {
 				this.menuTranslateX = 0;
 			}, 10);
@@ -92,13 +92,13 @@ export class DrawerComponent implements OnInit, AfterViewInit, OnDestroy {
 			this.open = false;
 			this.menuTranslateX = -this.window.innerWidth;
 			setTimeout(() => {
-				this.renderer.setStyle(this.drawer.nativeElement, 'display', 'none');
+				this.renderer.setStyle(this.drawer.nativeElement, "display", "none");
 			}, 300);
 		} else {
 			this.open = true;
 			this.menuTranslateX = 0;
 			setTimeout(() => {
-				this.renderer.setStyle(this.drawer.nativeElement, 'display', 'block');
+				this.renderer.setStyle(this.drawer.nativeElement, "display", "block");
 			}, 10);
 		}
 		this.onTouchMoveActive = false;

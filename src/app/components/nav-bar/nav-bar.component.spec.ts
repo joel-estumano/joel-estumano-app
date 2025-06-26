@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NavBarComponent } from './nav-bar.component';
-import { provideRouter } from '@angular/router';
-import { LocalStorageService } from 'ngx-webstorage';
-import { ThemeService } from 'src/app/services/theme/theme.service';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { NavBarComponent } from "./nav-bar.component";
+import { provideRouter } from "@angular/router";
+import { LocalStorageService } from "ngx-webstorage";
+import { ThemeService } from "src/app/services/theme/theme.service";
 
-describe('NavBarComponent', () => {
+describe("NavBarComponent", () => {
 	let component: NavBarComponent;
 	let fixture: ComponentFixture<NavBarComponent>;
 	// serviço
@@ -12,7 +12,7 @@ describe('NavBarComponent', () => {
 
 	beforeEach(async () => {
 		// mock do serviço
-		localStorageSpy = jasmine.createSpyObj(LocalStorageService.name, ['retrieve', 'store']);
+		localStorageSpy = jasmine.createSpyObj(LocalStorageService.name, ["retrieve", "store"]);
 
 		await TestBed.configureTestingModule({
 			imports: [NavBarComponent],
@@ -24,7 +24,7 @@ describe('NavBarComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('deve criar o componente', () => {
+	it("deve criar o componente", () => {
 		expect(component).toBeTruthy();
 	});
 });

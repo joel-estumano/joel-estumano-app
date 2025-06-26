@@ -1,6 +1,6 @@
-import { NgClass } from '@angular/common';
-import { Component, computed, input } from '@angular/core';
-import { cn } from 'src/utils';
+import { NgClass } from "@angular/common";
+import { Component, computed, input } from "@angular/core";
+import { cn } from "src/utils";
 
 /**
  * Componente SectionComponent
@@ -9,9 +9,9 @@ import { cn } from 'src/utils';
  * e um estado de "full" para controle de largura.
  */
 @Component({
-	selector: 'app-section',
+	selector: "app-section",
 	imports: [NgClass],
-	templateUrl: './section.component.html'
+	templateUrl: "./section.component.html"
 })
 export class SectionComponent {
 	/**
@@ -42,6 +42,6 @@ export class SectionComponent {
 	 * @see cn
 	 */
 	protected mergeClass = computed((): string => {
-		return cn('w-full h-full py-16 sm:py-24 xxl:py-32', this.class() as string);
+		return cn("w-full h-full py-16 sm:py-24 xxl:py-32", this.class() as string);
 	});
 }

@@ -1,18 +1,18 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { ContactFormComponent } from '@components/contact-form/contact-form.component';
-import { ClipboardModule, IClipboardResponse } from 'ngx-clipboard';
-import { HttpService } from 'src/app/services/http/http.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { IconComponent } from '@components/icon/icon.component';
-import { SectionComponent } from '@components/section/section.component';
-import { PROFILE } from 'src/app/tokens';
-import { LinkComponent } from '@components/ui/link/link.component';
-import { ButtonComponent } from '@components/ui/button/button.component';
+import { Component, inject, OnInit, signal } from "@angular/core";
+import { ContactFormComponent } from "@components/contact-form/contact-form.component";
+import { ClipboardModule, IClipboardResponse } from "ngx-clipboard";
+import { HttpService } from "src/app/services/http/http.service";
+import { HttpErrorResponse } from "@angular/common/http";
+import { IconComponent } from "@components/icon/icon.component";
+import { SectionComponent } from "@components/section/section.component";
+import { PROFILE } from "src/app/tokens";
+import { LinkComponent } from "@components/ui/link/link.component";
+import { ButtonComponent } from "@components/ui/button/button.component";
 
 @Component({
-	selector: 'app-contact',
+	selector: "app-contact",
 	imports: [SectionComponent, IconComponent, ContactFormComponent, ClipboardModule, LinkComponent, ButtonComponent],
-	templateUrl: './contact.component.html'
+	templateUrl: "./contact.component.html"
 })
 export class ContactComponent implements OnInit {
 	profile = inject(PROFILE);
@@ -26,7 +26,7 @@ export class ContactComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.suportaWebShare.set(!!navigator.share);
-		this.httpService.get<string>('ping').subscribe({
+		this.httpService.get<string>("ping").subscribe({
 			next: (pong: string) => {
 				console.log(pong);
 			},
@@ -54,10 +54,10 @@ export class ContactComponent implements OnInit {
 					text: value
 				})
 				.then(() => {
-					console.log('share successfully!');
+					console.log("share successfully!");
 				})
 				.catch((error) => {
-					console.error('sharing error:', error);
+					console.error("sharing error:", error);
 				});
 		}
 	}

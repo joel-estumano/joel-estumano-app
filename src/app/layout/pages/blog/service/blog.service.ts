@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { IPost } from '@types';
-import { Observable, Subscriber } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { IPost } from "@types";
+import { Observable, Subscriber } from "rxjs";
 
 const contents: IPost[] = [
 	{
-		id: 'NmLKPzjxMs',
+		id: "NmLKPzjxMs",
 		content: `	<div>
 				<div class="flex w-full flex-col space-y-6 p-4 sm:p-8 xl:p-12">
 					<p>
@@ -112,7 +112,7 @@ const contents: IPost[] = [
 			</div>`
 	},
 	{
-		id: 'uwihA03Elb',
+		id: "uwihA03Elb",
 		content: `<div>
 			<div class="grid grid-rows-1">
 				<div class="relative max-h-[400px] overflow-hidden">
@@ -173,7 +173,7 @@ const contents: IPost[] = [
 ];
 
 @Injectable({
-	providedIn: 'platform'
+	providedIn: "platform"
 })
 export class BlogService {
 	contentPost(id: string): Observable<IPost | undefined> {

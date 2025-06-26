@@ -1,8 +1,8 @@
-import { ButtonComponent } from '@components/ui/button/button.component';
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { NgClass, NgComponentOutlet } from '@angular/common';
-import { RootDialogComponent } from './component/root-dialog.component';
-import { RootDialogService } from './service/root-dialog.service';
+import { ButtonComponent } from "@components/ui/button/button.component";
+import { ModuleWithProviders, NgModule } from "@angular/core";
+import { NgClass, NgComponentOutlet } from "@angular/common";
+import { RootDialogComponent } from "./component/root-dialog.component";
+import { RootDialogService } from "./service/root-dialog.service";
 
 @NgModule({
 	declarations: [RootDialogComponent],

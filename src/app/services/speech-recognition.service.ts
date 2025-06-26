@@ -1,9 +1,9 @@
-import { Inject, Injectable, LOCALE_ID } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Inject, Injectable, LOCALE_ID } from "@angular/core";
+import { BehaviorSubject, Observable } from "rxjs";
 
 enum SpchStrings {
-	SpchRec = 'SpeechRecognition',
-	webSpchRec = 'webkitSpeechRecognition'
+	SpchRec = "SpeechRecognition",
+	webSpchRec = "webkitSpeechRecognition"
 }
 
 interface TResult {
@@ -17,7 +17,7 @@ interface TRecognition {
 }
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: "root"
 })
 export class SpeechRecognitionService {
 	private behavior!: BehaviorSubject<TRecognition>;
@@ -31,12 +31,12 @@ export class SpeechRecognitionService {
 
 	constructor(@Inject(LOCALE_ID) private localeId: string) {
 		this.behavior = new BehaviorSubject<TRecognition>({
-			message: '',
+			message: "",
 			end: false,
 			error: false
 		});
 
-		if (typeof window !== 'undefined') {
+		if (typeof window !== "undefined") {
 			if (SpchStrings.SpchRec in window || SpchStrings.webSpchRec in window) {
 				this.supported = true;
 				const w = window;
@@ -66,12 +66,12 @@ export class SpeechRecognitionService {
 
 			this.recognition.onend = (e: Event) => {
 				console.info(`SpeechRecognition ${e.type}`);
-				this.send('recognition end', true);
+				this.send("recognition end", true);
 			};
 
 			this.recognition.onerror = (e: Event) => {
 				console.info(`SpeechRecognition ${e.type}`);
-				this.send('recognition error', true);
+				this.send("recognition error", true);
 			};
 
 			this.recognition.onresult = (e: TResult) => {
@@ -79,9 +79,9 @@ export class SpeechRecognitionService {
 				this.send(result);
 			};
 
-			this.send('');
+			this.send("");
 		} else {
-			this.send('Browser not supported', true, true);
+			this.send("Browser not supported", true, true);
 		}
 	}
 

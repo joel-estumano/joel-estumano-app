@@ -1,5 +1,5 @@
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
-import { RootDialogService, IDialogComponentOutletData } from './root-dialog.service';
+import { TestBed, fakeAsync, tick } from "@angular/core/testing";
+import { RootDialogService, IDialogComponentOutletData } from "./root-dialog.service";
 
 class MockComponent {}
 
@@ -7,7 +7,7 @@ interface MockData {
 	message: string;
 }
 
-describe('RootDialogService', () => {
+describe("RootDialogService", () => {
 	let service: RootDialogService<MockComponent, MockData>;
 
 	beforeEach(() => {
@@ -15,14 +15,14 @@ describe('RootDialogService', () => {
 		service = TestBed.inject(RootDialogService<MockComponent, MockData>);
 	});
 
-	it('deve ser criado corretamente', () => {
+	it("deve ser criado corretamente", () => {
 		expect(service).toBeTruthy();
 	});
 
-	it('deve lançar um novo diálogo', (done) => {
+	it("deve lançar um novo diálogo", (done) => {
 		const dialogMock: IDialogComponentOutletData<MockComponent, MockData> = {
 			component: MockComponent,
-			inputs: { data: { message: 'Olá!' } }
+			inputs: { data: { message: "Olá!" } }
 		};
 
 		service.launch(dialogMock);
@@ -33,28 +33,28 @@ describe('RootDialogService', () => {
 		});
 	});
 
-	it('deve retornar o número correto de diálogos', () => {
+	it("deve retornar o número correto de diálogos", () => {
 		expect(service.dialogsLength).toBe(0);
 
 		const dialogMock: IDialogComponentOutletData<MockComponent, MockData> = {
 			component: MockComponent,
-			inputs: { data: { message: 'Contador' } }
+			inputs: { data: { message: "Contador" } }
 		};
 
 		service.launch(dialogMock);
 		expect(service.dialogsLength).toBe(1);
 	});
 
-	it('deve remover diálogo com estado corretamente', fakeAsync(() => {
+	it("deve remover diálogo com estado corretamente", fakeAsync(() => {
 		const stateMock = {
-			open: { set: jasmine.createSpy('open.set') },
-			isActive: { set: jasmine.createSpy('isActive.set') },
-			isVisible: { set: jasmine.createSpy('isVisible.set') }
+			open: { set: jasmine.createSpy("open.set") },
+			isActive: { set: jasmine.createSpy("isActive.set") },
+			isVisible: { set: jasmine.createSpy("isVisible.set") }
 		};
 
 		const dialogMock: IDialogComponentOutletData<MockComponent, MockData> = {
 			component: MockComponent,
-			inputs: { data: { message: 'Remover' } },
+			inputs: { data: { message: "Remover" } },
 			state: stateMock
 		};
 
@@ -64,17 +64,17 @@ describe('RootDialogService', () => {
 		service.remove(0);
 		tick(150);
 
-		const dialogs = service['dialogsSubject'].value;
+		const dialogs = service["dialogsSubject"].value;
 		expect(dialogs.length).toBe(0);
 		expect(stateMock.open.set).toHaveBeenCalledWith(false);
 		expect(stateMock.isActive.set).toHaveBeenCalledWith(false);
 		expect(stateMock.isVisible.set).toHaveBeenCalledWith(false);
 	}));
 
-	it('deve ignorar remoção com índice inválido', fakeAsync(() => {
+	it("deve ignorar remoção com índice inválido", fakeAsync(() => {
 		const dialogMock: IDialogComponentOutletData<MockComponent, MockData> = {
 			component: MockComponent,
-			inputs: { data: { message: 'Teste' } }
+			inputs: { data: { message: "Teste" } }
 		};
 
 		service.launch(dialogMock);
@@ -84,7 +84,7 @@ describe('RootDialogService', () => {
 		expect(() => service.remove(100)).not.toThrow();
 		tick(150);
 
-		const dialogs = service['dialogsSubject'].value;
+		const dialogs = service["dialogsSubject"].value;
 		expect(dialogs.length).toBe(1);
 	}));
 });

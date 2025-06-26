@@ -1,13 +1,13 @@
-import { Component, effect, inject, InjectionToken, Renderer2, RendererStyleFlags2, signal, WritableSignal } from '@angular/core';
-import { IDialogComponentOutletData as IDialogComponentOutletDataBase } from '../interfaces/dialog-component-outlet-data';
-import { RootDialogService } from '../service/root-dialog.service';
-import { DOCUMENT } from '@angular/common';
+import { Component, effect, inject, InjectionToken, Renderer2, RendererStyleFlags2, signal, WritableSignal } from "@angular/core";
+import { IDialogComponentOutletData as IDialogComponentOutletDataBase } from "../interfaces/dialog-component-outlet-data";
+import { RootDialogService } from "../service/root-dialog.service";
+import { DOCUMENT } from "@angular/common";
 
 // Criação de um token de injeção para a janela global (window)
-export const WINDOW = new InjectionToken<Window>('window.token', {
+export const WINDOW = new InjectionToken<Window>("window.token", {
 	factory: () => {
 		// Verifica se o objeto window está disponível no ambiente
-		if (typeof window !== 'undefined') {
+		if (typeof window !== "undefined") {
 			return window;
 		}
 		// Retorna uma instância de Window caso não esteja disponível
@@ -29,9 +29,9 @@ interface IDialogComponentOutletData<T, D> extends IDialogComponentOutletDataBas
 
 @Component({
 	standalone: false,
-	selector: 'app-root-dialog',
-	templateUrl: './root-dialog.component.html',
-	styleUrl: './root-dialog.component.css'
+	selector: "app-root-dialog",
+	templateUrl: "./root-dialog.component.html",
+	styleUrl: "./root-dialog.component.css"
 })
 export class RootDialogComponent<T, D> {
 	// Lista de diálogos gerenciada por sinais reativos
@@ -80,16 +80,16 @@ export class RootDialogComponent<T, D> {
 		// Calcula a largura da barra de rolagem
 		const scrollbarWidth = this.window.innerWidth - this.document.documentElement.clientWidth;
 		// Define a largura da barra de rolagem como uma variável CSS
-		this.renderer.setStyle(this.document.body, '--scrollbar', `${scrollbarWidth}px`, RendererStyleFlags2.DashCase);
+		this.renderer.setStyle(this.document.body, "--scrollbar", `${scrollbarWidth}px`, RendererStyleFlags2.DashCase);
 
 		// Se houver diálogos abertos, desativa a rolagem e adiciona uma classe ao body
 		if (hasDialogs) {
-			this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
-			this.renderer.addClass(this.document.body, 'on-dialog');
+			this.renderer.setStyle(this.document.body, "overflow", "hidden");
+			this.renderer.addClass(this.document.body, "on-dialog");
 		} else {
 			// Caso contrário, restaura a rolagem e remove a classe
-			this.renderer.setStyle(this.document.body, 'overflow', '');
-			this.renderer.removeClass(this.document.body, 'on-dialog');
+			this.renderer.setStyle(this.document.body, "overflow", "");
+			this.renderer.removeClass(this.document.body, "on-dialog");
 		}
 	}
 }

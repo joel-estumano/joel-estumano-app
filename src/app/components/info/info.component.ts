@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input } from "@angular/core";
 
 export interface InfoData {
 	title: string;
@@ -7,8 +7,8 @@ export interface InfoData {
 }
 
 @Component({
-	selector: 'app-info',
-	templateUrl: './info.component.html'
+	selector: "app-info",
+	templateUrl: "./info.component.html"
 })
 export class InfoComponent {
 	data = input<InfoData>();

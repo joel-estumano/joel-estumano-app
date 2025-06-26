@@ -1,7 +1,7 @@
-import { RenderMode, ServerRoute } from '@angular/ssr';
-import { PROFILE } from './tokens';
-import { inject } from '@angular/core';
-import { posts } from './layout/pages/blog/constants';
+import { RenderMode, ServerRoute } from "@angular/ssr";
+import { PROFILE } from "./tokens";
+import { inject } from "@angular/core";
+import { posts } from "./layout/pages/blog/constants";
 
 // Server-Side Rendering (SSR):
 // O conteúdo é renderizado no servidor para cada solicitação.
@@ -18,7 +18,7 @@ import { posts } from './layout/pages/blog/constants';
 
 export const serverRoutes: ServerRoute[] = [
 	{
-		path: '',
+		path: "",
 		renderMode: RenderMode.Server
 	},
 	// {
@@ -26,11 +26,11 @@ export const serverRoutes: ServerRoute[] = [
 	// 	renderMode: RenderMode.Server
 	// },
 	{
-		path: 'contato',
+		path: "contato",
 		renderMode: RenderMode.Client
 	},
 	{
-		path: 'projetos/:id',
+		path: "projetos/:id",
 		renderMode: RenderMode.Prerender,
 		async getPrerenderParams() {
 			const profile = inject(PROFILE);
@@ -39,11 +39,11 @@ export const serverRoutes: ServerRoute[] = [
 		} // doc reference: https://angular.dev/guide/hybrid-rendering
 	},
 	{
-		path: 'blog',
+		path: "blog",
 		renderMode: RenderMode.Server
 	},
 	{
-		path: 'blog/:id',
+		path: "blog/:id",
 		renderMode: RenderMode.Prerender,
 		async getPrerenderParams() {
 			const ids = posts.map((p) => p.id);
@@ -51,7 +51,7 @@ export const serverRoutes: ServerRoute[] = [
 		}
 	},
 	{
-		path: '**',
+		path: "**",
 		renderMode: RenderMode.Prerender
 	}
 ];

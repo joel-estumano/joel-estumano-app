@@ -1,6 +1,6 @@
-import { EnvironmentProviders, importProvidersFrom } from '@angular/core';
-import { Routes } from '@angular/router';
-import { NgxEditorModule } from 'ngx-editor';
+import { EnvironmentProviders, importProvidersFrom } from "@angular/core";
+import { Routes } from "@angular/router";
+import { NgxEditorModule } from "ngx-editor";
 
 // Provê funcionalidades de editor (provavelmente texto ou rich text)
 const provideEditor = (): EnvironmentProviders => {
@@ -8,15 +8,15 @@ const provideEditor = (): EnvironmentProviders => {
 		// https://sibiraj-s.github.io/ngx-editor/
 		NgxEditorModule.forChild({
 			locals: {
-				undo: 'Desfazer',
-				redo: 'Refazer',
-				align_left: 'Alinhar à Esquerda',
-				align_center: 'Centralizar',
-				align_right: 'Alinhar à Direita',
-				align_justify: 'Justificar',
-				text_color: 'Cor do texto',
-				background_color: 'Cor de fundo',
-				remove: 'Remover'
+				undo: "Desfazer",
+				redo: "Refazer",
+				align_left: "Alinhar à Esquerda",
+				align_center: "Centralizar",
+				align_right: "Alinhar à Direita",
+				align_justify: "Justificar",
+				text_color: "Cor do texto",
+				background_color: "Cor de fundo",
+				remove: "Remover"
 			}
 		})
 	);
@@ -24,12 +24,12 @@ const provideEditor = (): EnvironmentProviders => {
 
 export const routes: Routes = [
 	{
-		path: '',
-		loadComponent: () => import('./layout/layout.component').then((c) => c.LayoutComponent),
+		path: "",
+		loadComponent: () => import("./layout/layout.component").then((c) => c.LayoutComponent),
 		children: [
 			{
-				path: '',
-				loadComponent: () => import('./layout/pages/home/home.component').then((c) => c.HomeComponent)
+				path: "",
+				loadComponent: () => import("./layout/pages/home/home.component").then((c) => c.HomeComponent)
 			},
 			// {
 			// 	path: 'sobre',
@@ -37,22 +37,22 @@ export const routes: Routes = [
 			// 	title: 'Sobre'
 			// },
 			{
-				path: 'contato',
-				loadComponent: () => import('./layout/pages/contact/contact.component').then((c) => c.ContactComponent),
-				title: 'Contato',
+				path: "contato",
+				loadComponent: () => import("./layout/pages/contact/contact.component").then((c) => c.ContactComponent),
+				title: "Contato",
 				providers: [provideEditor()]
 			},
 			{
-				path: 'projetos/:id',
-				loadComponent: () => import('./layout/pages/projetos/projetos.component').then((c) => c.ProjetosComponent),
-				title: 'Projeto'
+				path: "projetos/:id",
+				loadComponent: () => import("./layout/pages/projetos/projetos.component").then((c) => c.ProjetosComponent),
+				title: "Projeto"
 			},
 			{
-				path: 'blog',
-				loadChildren: () => import('./layout/pages/blog/blog.module').then((m) => m.BlogModule),
-				title: 'Blog'
+				path: "blog",
+				loadChildren: () => import("./layout/pages/blog/blog.module").then((m) => m.BlogModule),
+				title: "Blog"
 			}
 		]
 	},
-	{ path: '**', redirectTo: '' }
+	{ path: "**", redirectTo: "" }
 ];

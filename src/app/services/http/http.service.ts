@@ -1,9 +1,9 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { catchError, Observable, throwError } from "rxjs";
 
 @Injectable({
-	providedIn: 'root'
+	providedIn: "root"
 })
 export class HttpService {
 	private readonly apiURL: string;
@@ -13,8 +13,8 @@ export class HttpService {
 	 * @param httpClient - Cliente HTTP Angular para fazer requisições.
 	 */
 	constructor(private httpClient: HttpClient) {
-		this.apiURL = 'https://dev-joel-estumano-api.onrender.com';
-		this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		this.apiURL = "https://dev-joel-estumano-api.onrender.com";
+		this.headers = new HttpHeaders({ "Content-Type": "application/json" });
 	}
 
 	/**
@@ -91,7 +91,7 @@ export class HttpService {
 	 * @returns Observable<never> - Observable que lança um erro.
 	 */
 	private errorHandler(error: HttpErrorResponse): Observable<never> {
-		const mensagem = error?.error?.message || error.message || 'Erro desconhecido';
+		const mensagem = error?.error?.message || error.message || "Erro desconhecido";
 		return throwError(() => new Error(mensagem));
 	}
 }

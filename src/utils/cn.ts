@@ -1,6 +1,6 @@
 // utils/cn.ts
-import { clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Função utilitária para mesclar classes CSS com eficiência
