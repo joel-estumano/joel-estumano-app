@@ -1,7 +1,7 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { MagicPointerDirective } from './magic-pointer.directive';
-import { Component, DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { ComponentFixture, fakeAsync, TestBed, tick } from "@angular/core/testing";
+import { MagicPointerDirective } from "./magic-pointer.directive";
+import { Component, DebugElement } from "@angular/core";
+import { By } from "@angular/platform-browser";
 
 @Component({
 	template: `<div appMagicPointer><p>Test</p></div>`,
@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 })
 class TestHostComponent {}
 
-describe('MagicPointerDirective', () => {
+describe("MagicPointerDirective", () => {
 	let fixture: ComponentFixture<TestHostComponent>;
 	let debugEl: DebugElement;
 
@@ -22,27 +22,27 @@ describe('MagicPointerDirective', () => {
 		debugEl = fixture.debugElement.query(By.directive(MagicPointerDirective));
 	});
 
-	it('deve criar o componente an instance', () => {
+	it("deve criar o componente an instance", () => {
 		expect(debugEl).toBeTruthy();
 	});
 
-	it('deve adicionar os elementos pointer-dot e pointer-ring após o ciclo view init', () => {
+	it("deve adicionar os elementos pointer-dot e pointer-ring após o ciclo view init", () => {
 		fixture.detectChanges();
 
-		const pointer = debugEl.nativeElement.querySelector('.pointer-dot');
-		const ring = debugEl.nativeElement.querySelector('.pointer-ring');
+		const pointer = debugEl.nativeElement.querySelector(".pointer-dot");
+		const ring = debugEl.nativeElement.querySelector(".pointer-ring");
 
 		expect(pointer).toBeTruthy();
 		expect(ring).toBeTruthy();
 	});
 
-	it('deve executar a função render e aplicar transformações', fakeAsync(() => {
+	it("deve executar a função render e aplicar transformações", fakeAsync(() => {
 		const clientX = 100;
 		const clientY = 150;
 
 		fixture.detectChanges();
 
-		const mouseEvent = new MouseEvent('mousemove', {
+		const mouseEvent = new MouseEvent("mousemove", {
 			clientX: clientX,
 			clientY: clientY,
 			bubbles: true
@@ -52,11 +52,11 @@ describe('MagicPointerDirective', () => {
 		// Simula a chamada de múltiplos frames
 		tick(50);
 
-		const pointer = debugEl.nativeElement.querySelector('.pointer-dot') as HTMLElement;
-		const ring = debugEl.nativeElement.querySelector('.pointer-ring') as HTMLElement;
+		const pointer = debugEl.nativeElement.querySelector(".pointer-dot") as HTMLElement;
+		const ring = debugEl.nativeElement.querySelector(".pointer-ring") as HTMLElement;
 
 		expect(pointer.style.transform).toContain(`${clientX}px`);
 		expect(pointer.style.transform).toContain(`${clientY}px`);
-		expect(ring.style.transform).toContain('px');
+		expect(ring.style.transform).toContain("px");
 	}));
 });

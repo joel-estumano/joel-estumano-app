@@ -1,22 +1,22 @@
-import { AfterViewInit, Directive, ElementRef, inject, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, inject, Renderer2 } from "@angular/core";
 
 @Directive({
 	standalone: true,
-	selector: '[appMagicPointer]'
+	selector: "[appMagicPointer]"
 })
 export class MagicPointerDirective implements AfterViewInit {
 	protected el = inject(ElementRef);
 	protected renderer = inject(Renderer2);
 
 	ngAfterViewInit(): void {
-		const pointer: HTMLElement = this.renderer.createElement('div');
-		const ring: HTMLElement = this.renderer.createElement('div');
+		const pointer: HTMLElement = this.renderer.createElement("div");
+		const ring: HTMLElement = this.renderer.createElement("div");
 
-		this.renderer.addClass(pointer, 'pointer-dot');
-		this.renderer.addClass(ring, 'pointer-ring');
+		this.renderer.addClass(pointer, "pointer-dot");
+		this.renderer.addClass(ring, "pointer-ring");
 
 		const init = () => {
-			if (typeof window !== 'undefined') {
+			if (typeof window !== "undefined") {
 				let mouseX = 0,
 					mouseY = 0,
 					ringX = 0,

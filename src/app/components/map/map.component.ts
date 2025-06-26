@@ -1,12 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject, Input, ViewChild } from '@angular/core';
-import { GoogleMapsModule, MapInfoWindow } from '@angular/google-maps';
-import { PROFILE, MAP_ID } from 'src/app/tokens';
+import { CommonModule } from "@angular/common";
+import { Component, inject, Input, ViewChild } from "@angular/core";
+import { GoogleMapsModule, MapInfoWindow } from "@angular/google-maps";
+import { PROFILE, MAP_ID } from "src/app/tokens";
 
 @Component({
-	selector: 'app-map',
+	selector: "app-map",
 	imports: [CommonModule, GoogleMapsModule],
-	templateUrl: './map.component.html'
+	templateUrl: "./map.component.html"
 })
 export class MapComponent {
 	@ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;

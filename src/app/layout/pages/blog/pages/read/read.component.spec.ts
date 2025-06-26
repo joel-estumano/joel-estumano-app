@@ -1,9 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Location } from '@angular/common';
-import { ReadComponent } from './read.component';
-import { BlogModule } from '../../blog.module';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { Location } from "@angular/common";
+import { ReadComponent } from "./read.component";
+import { BlogModule } from "../../blog.module";
 
-describe('ReadComponent', () => {
+describe("ReadComponent", () => {
 	let component: ReadComponent;
 	let fixture: ComponentFixture<ReadComponent>;
 	// serviço
@@ -11,7 +11,7 @@ describe('ReadComponent', () => {
 
 	beforeEach(async () => {
 		// mock do serviço
-		locationSpy = jasmine.createSpyObj(Location.name, ['back']);
+		locationSpy = jasmine.createSpyObj(Location.name, ["back"]);
 
 		await TestBed.configureTestingModule({
 			imports: [BlogModule],
@@ -23,11 +23,11 @@ describe('ReadComponent', () => {
 		fixture.detectChanges();
 	});
 
-	it('deve criar o componente', () => {
+	it("deve criar o componente", () => {
 		expect(component).toBeTruthy();
 	});
 
-	it('deve chamar location.back() quando goBack() for chamado', () => {
+	it("deve chamar location.back() quando goBack() for chamado", () => {
 		component.goBack();
 		expect(locationSpy.back).toHaveBeenCalled();
 	});
