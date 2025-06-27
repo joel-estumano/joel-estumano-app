@@ -44,7 +44,7 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ng test
 ```
 
-Report test
+Test report
 
 ```bash
 npm run test:report
