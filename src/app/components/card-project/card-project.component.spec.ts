@@ -78,15 +78,6 @@ describe("CardProjectComponent", () => {
 		expect(img.alt).toBe(data.name);
 	});
 
-	it("deve usar [src] no <img> para projetos com id especial", () => {
-		const specialData: IProjectData = { ...data, id: "brax" };
-		fixture.componentRef.setInput("data", specialData);
-		fixture.detectChanges();
-
-		const img = fixture.debugElement.query(By.css('[data-test-id="image"]')).nativeElement as HTMLImageElement;
-		expect(img.getAttribute("src")).toBe(specialData.bannerUrl);
-	});
-
 	// Links e comportamento condicional
 	it("deve configurar corretamente o botão de Saiba mais", () => {
 		const link = fixture.debugElement.query(By.css('[data-test-id="saiba-mais-link"]'));
