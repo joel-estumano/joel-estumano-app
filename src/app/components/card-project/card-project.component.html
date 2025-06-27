@@ -1,28 +1,14 @@
 <div class="grid h-[560px] grid-cols-1 overflow-hidden rounded-lg border max-sm:grid-rows-2 sm:h-[480px] sm:grid-cols-3">
 	<div class="col-span-1 flex sm:col-span-2">
 		<div class="max-sm:bg-background relative h-full w-full">
-			@switch (true) {
-				@case (["super-site-movida", "brax", "jogueiros-app", "projeto-pisteiro"].includes(data().id)) {
-					<img
-						data-test-id="image"
-						[src]="data().bannerUrl"
-						class="__sm:object-left-top pointer-events-none h-full w-full object-cover object-center"
-						[alt]="data().name"
-						loading="eager"
-						fill
-					/>
-				}
-				@default {
-					<img
-						data-test-id="image"
-						[ngSrc]="data().bannerUrl"
-						class="pointer-events-none h-full w-full object-cover object-top sm:object-left-top"
-						[alt]="data().name"
-						loading="eager"
-						fill
-					/>
-				}
-			}
+			<img
+				data-test-id="image"
+				[ngSrc]="data().bannerUrl"
+				class="pointer-events-none h-full w-full object-cover object-top sm:object-left-top"
+				[alt]="data().name"
+				loading="eager"
+				fill
+			/>
 		</div>
 	</div>
 	<div class="bg-card relative flex h-full w-full flex-col justify-between gap-5 p-6 max-sm:border-t sm:border-s sm:p-8">

@@ -212,7 +212,7 @@ const profile: IProfileData = {
 			companyUrl: "https://www.movida.com.br",
 			name: "Super Site Movida",
 			resources: ["TypeScript", "Angular", "Tailwind CSS"],
-			bannerUrl: "projeto-movida.png",
+			bannerUrl: "movida.png",
 			demoUrl: "https://www.movida.com.br"
 		},
 		{
@@ -230,7 +230,7 @@ const profile: IProfileData = {
 			companyUrl: "http://grupobrax.com.br/",
 			name: "Brax Admin, Brax Consultor, Brax Cliente",
 			resources: ["TypeScript", "Ionic", "Angular", "Tailwind CSS", "Firebase"],
-			bannerUrl: "projeto-brax.png",
+			bannerUrl: "brax.png",
 			demoUrl: "https://grupo-brax-client.web.app"
 		},
 		{
@@ -266,7 +266,7 @@ const profile: IProfileData = {
 			companyUrl: "https://jogueiros.com/",
 			name: "Jogueiros",
 			resources: ["JavaScript", "Ionic", "AngularJS", "Bootstrap"],
-			bannerUrl: "projeto-jogueiros.webp",
+			bannerUrl: "jogueiros.png",
 			demoUrl: "https://play.google.com/store/apps/details?id=com.jogueirosfc.app"
 		},
 		{
@@ -275,7 +275,7 @@ const profile: IProfileData = {
 			companyUrl: "https://4cadia.com/",
 			name: "Pisteiro",
 			resources: ["TypeScript", "Angular", "Bootstrap"],
-			bannerUrl: "projeto-pisteiro.webp",
+			bannerUrl: "pisteiro.png",
 			demoUrl: "" // 'http://pisteiro.com/'
 		}
 		/* {
