@@ -1,8 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, input } from '@angular/core';
 
 @Component({
-	selector: "app-avatar",
-	imports: [],
-	templateUrl: "./avatar.component.html"
+	selector: 'app-avatar',
+	templateUrl: './avatar.component.html'
 })
-export class AvatarComponent {}
+export class AvatarComponent {
+	src = input('img/profile-avatar.webp');
+	alt = input('Joel Estumano');
+}

@@ -1,4 +1,4 @@
-import ptBr from "@angular/common/locales/pt";
+import ptBr from '@angular/common/locales/pt';
 import {
 	InMemoryScrollingFeature,
 	InMemoryScrollingOptions,
@@ -8,22 +8,22 @@ import {
 	withComponentInputBinding,
 	withInMemoryScrolling,
 	withPreloading
-} from "@angular/router";
-import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from "@angular/core";
-import { CustomTitleStrategy } from "./strategies/title.strategy";
-import { importProvidersFrom } from "@angular/core";
-import { provideClientHydration, withIncrementalHydration } from "@angular/platform-browser";
-import { provideHttpClient, withFetch } from "@angular/common/http";
-import { provideNgxWebstorage, withLocalStorage, withNgxWebstorageConfig, withSessionStorage } from "ngx-webstorage";
-import { registerLocaleData } from "@angular/common";
-import { RootDialogModule } from "@modules/root-dialog/root-dialog.module";
-import { routes } from "./app.routes";
+} from '@angular/router';
+import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
+import { CustomTitleStrategy } from './strategies/title.strategy';
+import { importProvidersFrom } from '@angular/core';
+import { provideClientHydration, withIncrementalHydration } from '@angular/platform-browser';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideNgxWebstorage, withLocalStorage, withNgxWebstorageConfig, withSessionStorage } from 'ngx-webstorage';
+import { registerLocaleData } from '@angular/common';
+import { RootDialogModule } from '@modules/root-dialog/root-dialog.module';
+import { routes } from './app.routes';
 
 registerLocaleData(ptBr);
 
 const scrollConfig: InMemoryScrollingOptions = {
-	scrollPositionRestoration: "enabled",
-	anchorScrolling: "enabled"
+	scrollPositionRestoration: 'enabled',
+	anchorScrolling: 'enabled'
 };
 
 const inMemoryScrollingFeature: InMemoryScrollingFeature = withInMemoryScrolling(scrollConfig);
@@ -46,7 +46,7 @@ export const appConfig: ApplicationConfig = {
 		provideHttpClient(withFetch()),
 
 		// Define a localização padrão para o app (idioma, formatação, etc.)
-		{ provide: LOCALE_ID, useValue: "pt-BR" },
+		{ provide: LOCALE_ID, useValue: 'pt-BR' },
 
 		// Define uma estratégia de título customizada para as páginas
 		{ provide: TitleStrategy, useClass: CustomTitleStrategy },
@@ -54,8 +54,8 @@ export const appConfig: ApplicationConfig = {
 		// Configura o uso de armazenamento local e de sessão com prefixo customizado
 		provideNgxWebstorage(
 			withNgxWebstorageConfig({
-				prefix: "joelestumano.com",
-				separator: ":",
+				prefix: 'joelestumano.com',
+				separator: ':',
 				caseSensitive: true
 			}),
 			withLocalStorage(), // Habilita LocalStorage

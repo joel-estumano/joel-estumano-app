@@ -1,14 +1,14 @@
-import { BreakpointObserver } from "@angular/cdk/layout";
-import { NgClass, NgComponentOutlet } from "@angular/common";
-import { afterNextRender, Component, computed, inject, input, NgZone, OnInit, signal } from "@angular/core";
-import { IconComponent } from "@components/icon/icon.component";
-import { IComponentOutletData } from "@types";
-import { WINDOW } from "src/app/tokens";
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { NgClass, NgComponentOutlet } from '@angular/common';
+import { afterNextRender, Component, computed, inject, input, NgZone, OnInit, signal } from '@angular/core';
+import { IconComponent } from '@components/icon/icon.component';
+import { IComponentOutletData } from '@types';
+import { WINDOW } from 'src/app/tokens';
 
 @Component({
-	selector: "app-carousel",
+	selector: 'app-carousel',
 	imports: [NgComponentOutlet, NgClass, IconComponent],
-	templateUrl: "./carousel.component.html"
+	templateUrl: './carousel.component.html'
 })
 export class CarouselComponent<T, D> implements OnInit {
 	slides = input<IComponentOutletData<T, D>[]>([]);
@@ -21,7 +21,7 @@ export class CarouselComponent<T, D> implements OnInit {
 
 	private isXlscreen = signal<boolean>(false);
 
-	protected translateX = computed<string>(() => `translateX(calc(-${this.slideIndexActive() * 100}%${this.isXlscreen() ? " + 33%" : " + 0%"}))`);
+	protected translateX = computed<string>(() => `translateX(calc(-${this.slideIndexActive() * 100}%${this.isXlscreen() ? ' + 33%' : ' + 0%'}))`);
 
 	private window = inject(WINDOW);
 
@@ -37,7 +37,7 @@ export class CarouselComponent<T, D> implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.breakpointObserver.observe(["(min-width: 1280px)"]).subscribe((result) => {
+		this.breakpointObserver.observe(['(min-width: 1280px)']).subscribe((result) => {
 			this.isXlscreen.set(result.matches);
 		});
 	}
@@ -103,9 +103,9 @@ export class CarouselComponent<T, D> implements OnInit {
 	onStart(event: MouseEvent | TouchEvent): void {
 		this.isDragging.set(true);
 
-		if ("touches" in event && event.touches.length) {
+		if ('touches' in event && event.touches.length) {
 			this.startX = event.touches[0].clientX;
-		} else if ("clientX" in event) {
+		} else if ('clientX' in event) {
 			this.startX = event.clientX;
 		}
 	}
@@ -115,9 +115,9 @@ export class CarouselComponent<T, D> implements OnInit {
 
 		let endX = 0;
 
-		if ("changedTouches" in event && event.changedTouches.length) {
+		if ('changedTouches' in event && event.changedTouches.length) {
 			endX = event.changedTouches[0].clientX;
-		} else if ("clientX" in event) {
+		} else if ('clientX' in event) {
 			endX = event.clientX;
 		}
 

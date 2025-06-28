@@ -1,20 +1,21 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { catchError, Observable, throwError } from "rxjs";
+import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 @Injectable({
-	providedIn: "root"
+	providedIn: 'root'
 })
 export class HttpService {
-	private readonly apiURL: string;
+	private readonly apiUrl: string;
 	private readonly headers: HttpHeaders;
 
 	/**
 	 * @param httpClient - Cliente HTTP Angular para fazer requisições.
 	 */
 	constructor(private httpClient: HttpClient) {
-		this.apiURL = "https://dev-joel-estumano-api.onrender.com";
-		this.headers = new HttpHeaders({ "Content-Type": "application/json" });
+		this.apiUrl = environment.apiUrl;
+		this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 	}
 
 	/**
@@ -24,7 +25,7 @@ export class HttpService {
 	 */
 	public get<T>(url: string): Observable<T> {
 		return this.httpClient
-			.get<T>(`${this.apiURL}/${url}`, {
+			.get<T>(`${this.apiUrl}/${url}`, {
 				headers: this.headers
 			})
 			.pipe(catchError(this.errorHandler.bind(this)));
@@ -38,7 +39,7 @@ export class HttpService {
 	 */
 	public put<TInput, TOutput>(url: string, body: TInput): Observable<TOutput> {
 		return this.httpClient
-			.put<TOutput>(`${this.apiURL}/${url}`, body, {
+			.put<TOutput>(`${this.apiUrl}/${url}`, body, {
 				headers: this.headers
 			})
 			.pipe(catchError(this.errorHandler.bind(this)));
@@ -52,7 +53,7 @@ export class HttpService {
 	 */
 	public patch<TInput, TOutput>(url: string, body: TInput): Observable<TOutput> {
 		return this.httpClient
-			.patch<TOutput>(`${this.apiURL}/${url}`, body, {
+			.patch<TOutput>(`${this.apiUrl}/${url}`, body, {
 				headers: this.headers
 			})
 			.pipe(catchError(this.errorHandler.bind(this)));
@@ -66,7 +67,7 @@ export class HttpService {
 	 */
 	public post<TInput, TOutput>(url: string, body: TInput): Observable<TOutput> {
 		return this.httpClient
-			.post<TOutput>(`${this.apiURL}/${url}`, body, {
+			.post<TOutput>(`${this.apiUrl}/${url}`, body, {
 				headers: this.headers
 			})
 			.pipe(catchError(this.errorHandler.bind(this)));
@@ -79,7 +80,7 @@ export class HttpService {
 	 */
 	public delete<T>(url: string): Observable<T> {
 		return this.httpClient
-			.delete<T>(`${this.apiURL}/${url}`, {
+			.delete<T>(`${this.apiUrl}/${url}`, {
 				headers: this.headers
 			})
 			.pipe(catchError(this.errorHandler.bind(this)));
@@ -91,7 +92,7 @@ export class HttpService {
 	 * @returns Observable<never> - Observable que lança um erro.
 	 */
 	private errorHandler(error: HttpErrorResponse): Observable<never> {
-		const mensagem = error?.error?.message || error.message || "Erro desconhecido";
+		const mensagem = error?.error?.message || error.message || 'Erro desconhecido';
 		return throwError(() => new Error(mensagem));
 	}
 }

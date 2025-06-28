@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from "@angular/core/testing";
-import { inject, input, Renderer2, signal } from "@angular/core";
-import { RootDialogComponent, WINDOW } from "./root-dialog.component";
-import { RootDialogService } from "../service/root-dialog.service";
-import { of } from "rxjs";
-import { RootDialogModule } from "../root-dialog.module";
-import { Component } from "@angular/core";
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { inject, input, Renderer2, signal } from '@angular/core';
+import { RootDialogComponent, WINDOW } from './root-dialog.component';
+import { RootDialogService } from '../service/root-dialog.service';
+import { of } from 'rxjs';
+import { RootDialogModule } from '../root-dialog.module';
+import { Component } from '@angular/core';
 
 @Component({
-	selector: "app-mock-dialog",
-	template: "<p>Mock Dialog</p>",
+	selector: 'app-mock-dialog',
+	template: '<p>Mock Dialog</p>',
 	// eslint-disable-next-line @angular-eslint/prefer-standalone
 	standalone: false
 })
@@ -16,7 +16,7 @@ class MockDialogComponent {
 	data = input<unknown>();
 }
 
-describe("RootDialogComponent", () => {
+describe('RootDialogComponent', () => {
 	let component: RootDialogComponent<unknown, unknown>;
 	let fixture: ComponentFixture<RootDialogComponent<unknown, unknown>>;
 
@@ -27,10 +27,10 @@ describe("RootDialogComponent", () => {
 
 	beforeEach(() => {
 		// mock do serviço
-		mockService = jasmine.createSpyObj(RootDialogService.name, ["observable", "remove"]);
-		mockRenderer = jasmine.createSpyObj(Renderer2.name, ["setStyle", "addClass", "removeClass"]);
+		mockService = jasmine.createSpyObj(RootDialogService.name, ['observable', 'remove']);
+		mockRenderer = jasmine.createSpyObj(Renderer2.name, ['setStyle', 'addClass', 'removeClass']);
 
-		spyOnProperty(document.documentElement, "clientWidth", "get").and.returnValue(500);
+		spyOnProperty(document.documentElement, 'clientWidth', 'get').and.returnValue(500);
 		mockWindow = { innerWidth: 515 };
 
 		TestBed.configureTestingModule({
@@ -49,18 +49,18 @@ describe("RootDialogComponent", () => {
 		fixture.detectChanges();
 	});
 
-	it("deve criar o componente", () => {
+	it('deve criar o componente', () => {
 		expect(component).toBeTruthy();
 	});
 
-	describe("WINDOW InjectionToken", () => {
-		it("deve usar o factory do InjectionToken", () => {
+	describe('WINDOW InjectionToken', () => {
+		it('deve usar o factory do InjectionToken', () => {
 			const result = TestBed.runInInjectionContext(() => inject(WINDOW));
 			expect(result).toBeDefined();
 		});
 	});
 
-	it("deve popular dialogs quando o serviço emitir", () => {
+	it('deve popular dialogs quando o serviço emitir', () => {
 		const incomingDialogs = [
 			{
 				component: MockDialogComponent,
@@ -78,7 +78,7 @@ describe("RootDialogComponent", () => {
 		expect(component.dialogs()).toEqual(incomingDialogs);
 	});
 
-	it("deve chamar service.remove quando close() for chamado", () => {
+	it('deve chamar service.remove quando close() for chamado', () => {
 		component.dialogs.set([
 			{
 				component: MockDialogComponent,
@@ -94,7 +94,7 @@ describe("RootDialogComponent", () => {
 		expect(mockService.remove).toHaveBeenCalledWith(0);
 	});
 
-	it("não deve chamar service.remove se o diálogo não tiver state", () => {
+	it('não deve chamar service.remove se o diálogo não tiver state', () => {
 		component.dialogs.set([
 			{
 				component: MockDialogComponent,
@@ -106,7 +106,7 @@ describe("RootDialogComponent", () => {
 		expect(mockService.remove).not.toHaveBeenCalled();
 	});
 
-	it("deve inicializar state se não estiver definido", fakeAsync(() => {
+	it('deve inicializar state se não estiver definido', fakeAsync(() => {
 		const dialogWithoutState = {
 			component: MockDialogComponent,
 			inputs: { data: {} },
@@ -130,29 +130,29 @@ describe("RootDialogComponent", () => {
 		});
 	}));
 
-	it("deve definir o estilo e classe corretamente quando há diálogos", () => {
-		const expectedScrollbar = `${component["window"].innerWidth - document.documentElement.clientWidth}px`;
+	it('deve definir o estilo e classe corretamente quando há diálogos', () => {
+		const expectedScrollbar = `${component['window'].innerWidth - document.documentElement.clientWidth}px`;
 
-		spyOn(component["renderer"], "setStyle");
-		spyOn(component["renderer"], "addClass");
+		spyOn(component['renderer'], 'setStyle');
+		spyOn(component['renderer'], 'addClass');
 
 		component.handlerScroll(true);
 
-		expect(component["renderer"].setStyle).toHaveBeenCalledWith(document.body, "--scrollbar", expectedScrollbar, jasmine.any(Number));
-		expect(component["renderer"].setStyle).toHaveBeenCalledWith(document.body, "overflow", "hidden");
-		expect(component["renderer"].addClass).toHaveBeenCalledWith(document.body, "on-dialog");
+		expect(component['renderer'].setStyle).toHaveBeenCalledWith(document.body, '--scrollbar', expectedScrollbar, jasmine.any(Number));
+		expect(component['renderer'].setStyle).toHaveBeenCalledWith(document.body, 'overflow', 'hidden');
+		expect(component['renderer'].addClass).toHaveBeenCalledWith(document.body, 'on-dialog');
 	});
 
-	it("deve remover o estilo e classe corretamente quando não há diálogos", () => {
-		const expectedScrollbar = `${component["window"].innerWidth - document.documentElement.clientWidth}px`;
+	it('deve remover o estilo e classe corretamente quando não há diálogos', () => {
+		const expectedScrollbar = `${component['window'].innerWidth - document.documentElement.clientWidth}px`;
 
-		spyOn(component["renderer"], "setStyle");
-		spyOn(component["renderer"], "removeClass");
+		spyOn(component['renderer'], 'setStyle');
+		spyOn(component['renderer'], 'removeClass');
 
 		component.handlerScroll(false);
 
-		expect(component["renderer"].setStyle).toHaveBeenCalledWith(document.body, "--scrollbar", expectedScrollbar, jasmine.any(Number));
-		expect(component["renderer"].setStyle).toHaveBeenCalledWith(document.body, "overflow", "");
-		expect(component["renderer"].removeClass).toHaveBeenCalledWith(document.body, "on-dialog");
+		expect(component['renderer'].setStyle).toHaveBeenCalledWith(document.body, '--scrollbar', expectedScrollbar, jasmine.any(Number));
+		expect(component['renderer'].setStyle).toHaveBeenCalledWith(document.body, 'overflow', '');
+		expect(component['renderer'].removeClass).toHaveBeenCalledWith(document.body, 'on-dialog');
 	});
 });

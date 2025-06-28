@@ -1,18 +1,21 @@
 # Editor configuration, see https://editorconfig.org
-root = true
+root = true  # Indica que este é o arquivo .editorconfig raiz e que nenhuma configuração acima dele será considerada
 
+# Regras aplicáveis a todos os arquivos
 [*]
-charset = utf-8
-indent_style = space
-indent_size = 4
-insert_final_newline = true
-trim_trailing_whitespace = true
-end_of_line = lf  # Garante que todos os arquivos usem LF
+charset = utf-8                 # Define a codificação de caracteres como UTF-8
+indent_style = tab              # Usa tabulação (↹) para indentação
+indent_size = 4                 # Define o tamanho visual de um tab como 4 espaços
+insert_final_newline = true     # Garante que todos os arquivos terminem com uma nova linha
+trim_trailing_whitespace = true # Remove espaços em branco no final das linhas
+end_of_line = lf                # Usa LF (Line Feed) como caractere de quebra de linha (Unix-style)
 
+# Regras específicas para arquivos TypeScript
 [*.ts]
-# Removido quote_type (não suportado pelo EditorConfig)
-# Aspas simples devem ser configuradas no Prettier
+quote_type = single                     # Define aspas simples como padrão (não é padrão do EditorConfig, mas pode ser usado por alguns plugins)
+ij_typescript_use_double_quotes = false # Configuração específica de IDEs JetBrains para evitar aspas duplas
 
+# Regras específicas para arquivos Markdown
 [*.md]
-max_line_length = off
-trim_trailing_whitespace = false
+max_line_length = off           # Desativa o limite de comprimento de linha (útil para manter parágrafos longos em Markdown)
+trim_trailing_whitespace = false # Mantém espaços em branco no final das linhas (necessário em Markdown para quebra de linha explícita)

@@ -1,6 +1,6 @@
-import { BehaviorSubject, Observable } from "rxjs";
-import { IDialogComponentOutletData as IDialogComponentOutletDataBase } from "../interfaces/dialog-component-outlet-data";
-import { Injectable } from "@angular/core";
+import { BehaviorSubject, Observable } from 'rxjs';
+import { IDialogComponentOutletData as IDialogComponentOutletDataBase } from '../interfaces/dialog-component-outlet-data';
+import { Injectable } from '@angular/core';
 
 // Extende IComponentOutletData para incluir a propriedade opcional 'state'
 export interface IDialogComponentOutletData<T, D> extends IDialogComponentOutletDataBase<T, D> {
@@ -18,7 +18,7 @@ export interface IDialogComponentOutletData<T, D> extends IDialogComponentOutlet
  * @template D Tipo dos dados que serão passados como entrada para o componente.
  */
 @Injectable({
-	providedIn: "root"
+	providedIn: 'root'
 })
 export class RootDialogService<T, D> {
 	/**

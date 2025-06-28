@@ -1,4 +1,4 @@
-import { AbstractControl, FormArray, FormGroup, ValidationErrors } from "@angular/forms";
+import { AbstractControl, FormArray, FormGroup, ValidationErrors } from '@angular/forms';
 
 export class FormUtils {
 	/**
@@ -11,7 +11,7 @@ export class FormUtils {
 	 */
 	public static invalidClass(control: AbstractControl, submitted = true): Record<string, boolean> {
 		return {
-			"is-invalid": (control.dirty || control.touched) && control.invalid && submitted
+			'is-invalid': (control.dirty || control.touched) && control.invalid && submitted
 		};
 	}
 
@@ -72,7 +72,7 @@ export class FormUtils {
 		const value = control.value;
 
 		// Verifica se o valor é uma string e se não está vazio
-		if (typeof value !== "string" || !value.trim()) {
+		if (typeof value !== 'string' || !value.trim()) {
 			return { empty: true };
 		}
 
@@ -81,7 +81,7 @@ export class FormUtils {
 		const match = value.match(regex);
 
 		// Se encontrar uma tag válida, verifica se o conteúdo interno está vazio
-		if (match && match[2].trim() === "") {
+		if (match && match[2].trim() === '') {
 			return { emptyTagContent: true }; // Conteúdo vazio
 		}
 

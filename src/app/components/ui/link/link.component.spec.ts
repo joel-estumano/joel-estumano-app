@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LinkComponent } from "./link.component";
+import { LinkComponent } from './link.component';
 
-describe("LinkComponent", () => {
+describe('LinkComponent', () => {
 	let component: LinkComponent;
 	let fixture: ComponentFixture<LinkComponent>;
 
@@ -16,7 +16,7 @@ describe("LinkComponent", () => {
 		fixture.detectChanges();
 	});
 
-	it("deve criar o componente", () => {
+	it('deve criar o componente', () => {
 		expect(component).toBeTruthy();
 	});
 });

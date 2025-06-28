@@ -1,8 +1,8 @@
-import { Inject, Injectable, LOCALE_ID, Renderer2, RendererFactory2 } from "@angular/core";
-import { DOCUMENT } from "@angular/common";
+import { Inject, Injectable, LOCALE_ID, Renderer2, RendererFactory2 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
-	providedIn: "root"
+	providedIn: 'root'
 })
 export class LocaleService {
 	private renderer: Renderer2;
@@ -18,7 +18,7 @@ export class LocaleService {
 	setLocale(locale: string): void {
 		this.localeId = locale;
 		if (this.document) {
-			this.renderer.setAttribute(this.document.documentElement, "lang", locale);
+			this.renderer.setAttribute(this.document.documentElement, 'lang', locale);
 		}
 	}
 }

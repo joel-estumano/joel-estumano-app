@@ -1,10 +1,10 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListComponent } from "./list.component";
-import { BlogModule } from "../../blog.module";
-import { provideRouter } from "@angular/router";
+import { ListComponent } from './list.component';
+import { BlogModule } from '../../blog.module';
+import { provideRouter } from '@angular/router';
 
-describe("ListComponent", () => {
+describe('ListComponent', () => {
 	let component: ListComponent;
 	let fixture: ComponentFixture<ListComponent>;
 
@@ -19,7 +19,7 @@ describe("ListComponent", () => {
 		fixture.detectChanges();
 	});
 
-	it("deve criar o componente", () => {
+	it('deve criar o componente', () => {
 		expect(component).toBeTruthy();
 	});
 });

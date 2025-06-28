@@ -1,9 +1,9 @@
-import { Injectable, inject } from "@angular/core";
-import { Title } from "@angular/platform-browser";
-import { RouterStateSnapshot, TitleStrategy } from "@angular/router";
-import { PROFILE } from "src/app/tokens";
+import { Injectable, inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
+import { PROFILE } from 'src/app/tokens';
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class CustomTitleStrategy extends TitleStrategy {
 	private profile = inject(PROFILE);
 

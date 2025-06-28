@@ -1,12 +1,12 @@
-import { Pipe, PipeTransform } from "@angular/core";
-import { IProfileData } from "@types";
+import { Pipe, PipeTransform } from '@angular/core';
+import { IProfileData } from '@types';
 
 @Pipe({
-	name: "copyrightText"
+	name: 'copyrightText'
 })
 export class CopyrightTextPipe implements PipeTransform {
 	transform(profile: IProfileData): string {
-		if (!profile || !profile.name || !profile.professionalStart) return "";
+		if (!profile || !profile.name || !profile.professionalStart) return '';
 
 		const currentYear = new Date().getFullYear();
 		return profile.professionalStart === currentYear

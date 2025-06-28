@@ -1,3 +1,13 @@
 {
-	"editor.formatOnSave": true
+	// Ativa a formatação automática ao salvar o arquivo
+	"editor.formatOnSave": true,
+
+	// Usa tabs em vez de espaços para indentação
+	"editor.insertSpaces": false,
+
+	// Impede que o VS Code detecte automaticamente o estilo de indentação com base no conteúdo do arquivo
+	"editor.detectIndentation": false,
+
+	// Define o tamanho visual de um tab como equivalente a 4 espaços
+	"editor.tabSize": 4
 }
