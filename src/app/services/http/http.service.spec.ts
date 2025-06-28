@@ -60,7 +60,7 @@ describe('HttpService', () => {
 			expect(resposta).toEqual(respostaEsperada);
 		});
 
-		const req = httpMock.expectOne(`${service['apiURL']}/mensagem`);
+		const req = httpMock.expectOne(`${service['apiUrl']}/mensagem`);
 		expect(req.request.method).toBe('GET');
 		req.flush(respostaEsperada);
 	});
@@ -73,7 +73,7 @@ describe('HttpService', () => {
 			expect(retorno).toEqual(resposta);
 		});
 
-		const req = httpMock.expectOne(`${service['apiURL']}/pessoa`);
+		const req = httpMock.expectOne(`${service['apiUrl']}/pessoa`);
 		expect(req.request.method).toBe('POST');
 		expect(req.request.body).toEqual(corpo);
 		req.flush(resposta);
@@ -87,7 +87,7 @@ describe('HttpService', () => {
 			expect(r).toEqual(resposta);
 		});
 
-		const req = httpMock.expectOne(`${service['apiURL']}/atualizar`);
+		const req = httpMock.expectOne(`${service['apiUrl']}/atualizar`);
 		expect(req.request.method).toBe('PUT');
 		expect(req.request.body).toEqual(dados);
 		req.flush(resposta);
@@ -101,7 +101,7 @@ describe('HttpService', () => {
 			expect(r).toEqual(resultado);
 		});
 
-		const req = httpMock.expectOne(`${service['apiURL']}/patchar`);
+		const req = httpMock.expectOne(`${service['apiUrl']}/patchar`);
 		expect(req.request.method).toBe('PATCH');
 		expect(req.request.body).toEqual(payload);
 		req.flush(resultado);
@@ -114,7 +114,7 @@ describe('HttpService', () => {
 			expect(retorno).toEqual(resposta);
 		});
 
-		const req = httpMock.expectOne(`${service['apiURL']}/excluir`);
+		const req = httpMock.expectOne(`${service['apiUrl']}/excluir`);
 		expect(req.request.method).toBe('DELETE');
 		req.flush(resposta);
 	});
@@ -130,7 +130,7 @@ describe('HttpService', () => {
 			}
 		});
 
-		const req = httpMock.expectOne(`${service['apiURL']}/falha`);
+		const req = httpMock.expectOne(`${service['apiUrl']}/falha`);
 		req.flush({ message: erroMensagem }, { status: 500, statusText: 'Falha interna' });
 	});
 

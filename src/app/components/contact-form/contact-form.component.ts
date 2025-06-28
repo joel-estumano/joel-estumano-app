@@ -1,6 +1,7 @@
 import { ButtonComponent } from '../ui/button/button.component';
 import { Component, computed, inject, OnDestroy, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
+import { environment } from 'src/environments/environment';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormUtils } from 'src/app/utils';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -9,8 +10,7 @@ import { IconComponent } from '../icon/icon.component';
 import { InfoComponent, InfoData } from '@components/info/info.component';
 import { LocalStorageService } from 'ngx-webstorage';
 import { NgClass } from '@angular/common';
-import { RECAPTCHA } from 'src/app/tokens';
-import { RECAPTCHA_V3_SITE_KEY, RecaptchaFormsModule, RecaptchaModule, ReCaptchaV3Service } from 'ng-recaptcha-2';
+import { RecaptchaFormsModule, RecaptchaModule, ReCaptchaV3Service } from 'ng-recaptcha-2';
 import { SpeechRecognitionService } from 'src/app/services/speech-recognition.service';
 import { RootDialogService } from '@modules/root-dialog/service/root-dialog.service';
 
@@ -24,11 +24,11 @@ enum States {
 	imports: [NgClass, FormsModule, ReactiveFormsModule, RecaptchaModule, RecaptchaFormsModule, IconComponent, NgxEditorModule, ButtonComponent],
 	templateUrl: './contact-form.component.html',
 	styleUrl: './contact-form.component.css',
-	providers: [HttpService, ReCaptchaV3Service, { provide: RECAPTCHA_V3_SITE_KEY, useValue: RECAPTCHA }],
+	providers: [HttpService, ReCaptchaV3Service],
 	encapsulation: ViewEncapsulation.None
 })
 export class ContactFormComponent implements OnInit, OnDestroy {
-	protected siteKey = inject(RECAPTCHA);
+	protected siteKey = environment.recaptchaSiteKey;
 	protected FormUtils = FormUtils;
 	protected contactForm: FormGroup;
 
