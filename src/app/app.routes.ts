@@ -31,11 +31,6 @@ export const routes: Routes = [
 				path: '',
 				loadComponent: () => import('./layout/pages/home/home.component').then((c) => c.HomeComponent)
 			},
-			// {
-			// 	path: 'sobre',
-			// 	loadComponent: () => import('./layout/pages/about/about.component').then((c) => c.AboutComponent),
-			// 	title: 'Sobre'
-			// },
 			{
 				path: 'contato',
 				loadComponent: () => import('./layout/pages/contact/contact.component').then((c) => c.ContactComponent),
