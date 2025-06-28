@@ -1,6 +1,12 @@
 import { Type } from '@angular/core';
 import { IconName } from '@components/icon/icon.component';
 
+export interface IEnvironment {
+	production: boolean;
+	apiUrl: string;
+	recaptchaSiteKey: string;
+}
+
 export interface IProjectData {
 	id: string;
 	name: string;
@@ -26,35 +32,27 @@ export interface IExperience {
 
 export interface IProfileData {
 	name: string;
-
 	phone: string;
 	email: string;
 	whatsapp: string;
-
 	websiteUrl: string;
-
 	linkedinUrl: string;
 	githubUrl: string;
 	instagramUrl: string;
-
 	profession: string;
 	professionStack: string;
 	professionLevel: string;
 	professionEmphasis: string;
 	professionalStart: number;
-
 	address: string;
 	city: string;
-
 	stacks: {
 		basic: IProfileStack[];
 		frontEnd: IProfileStack[];
 		backEnd: IProfileStack[];
 		others: IProfileStack[];
 	};
-
 	experiences: IExperience[];
-
 	projects: IProjectData[];
 }
 
