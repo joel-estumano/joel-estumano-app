@@ -1,5 +1,5 @@
-import { Type } from "@angular/core";
-import { IconName } from "@components/icon/icon.component";
+import { Type } from '@angular/core';
+import { IconName } from '@components/icon/icon.component';
 
 export interface IProjectData {
 	id: string;
@@ -21,7 +21,7 @@ export interface IExperience {
 	company: string;
 	office: string;
 	period: string;
-	local: "Remota" | "Presencial";
+	local: 'Remota' | 'Presencial';
 }
 
 export interface IProfileData {
@@ -58,7 +58,7 @@ export interface IProfileData {
 	projects: IProjectData[];
 }
 
-export type Theme = "dark" | "light";
+export type Theme = 'dark' | 'light';
 
 export interface IPost {
 	id: string;
@@ -69,7 +69,7 @@ export interface IPost {
 	content?: string;
 }
 
-export interface IComponentOutletData<T, D, K extends string = "data"> {
+export interface IComponentOutletData<T, D, K extends string = 'data'> {
 	component: Type<T>;
 	inputs: Record<K, D>;
 }

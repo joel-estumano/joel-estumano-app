@@ -1,14 +1,14 @@
-import { BlogService } from "../../service/blog.service";
-import { Component, Input, signal } from "@angular/core";
-import { IPost } from "@types";
-import { Location } from "@angular/common";
-import { Observable } from "rxjs";
-import { posts } from "../../constants";
+import { BlogService } from '../../service/blog.service';
+import { Component, Input, signal } from '@angular/core';
+import { IPost } from '@types';
+import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
+import { posts } from '../../constants';
 
 @Component({
-	selector: "app-read",
+	selector: 'app-read',
 	standalone: false,
-	templateUrl: "./read.component.html"
+	templateUrl: './read.component.html'
 })
 export class ReadComponent {
 	protected data = signal<IPost | undefined>(undefined);

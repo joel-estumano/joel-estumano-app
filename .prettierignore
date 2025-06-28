@@ -1,4 +1,7 @@
 # Ignore artifacts:
-build
-coverage
-.angular
+build/              # Saída de build da aplicação
+coverage/           # Relatórios de cobertura de testes
+.angular/           # Cache interno do Angular CLI
+
+# Node.js
+node_modules/       # Dependências instaladas (não devem ser versionadas)

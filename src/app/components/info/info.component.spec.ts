@@ -1,8 +1,8 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { InfoComponent, InfoData } from "./info.component";
-import { By } from "@angular/platform-browser";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { InfoComponent, InfoData } from './info.component';
+import { By } from '@angular/platform-browser';
 
-describe("InfoComponent", () => {
+describe('InfoComponent', () => {
 	let fixture: ComponentFixture<InfoComponent>;
 
 	beforeEach(async () => {
@@ -13,15 +13,15 @@ describe("InfoComponent", () => {
 		fixture = TestBed.createComponent(InfoComponent);
 		fixture = TestBed.createComponent(InfoComponent);
 	});
-	it("deve renderizar o título, subtítulo e conteúdo corretamente", () => {
+	it('deve renderizar o título, subtítulo e conteúdo corretamente', () => {
 		const mockData: InfoData = {
-			title: "Título de Teste",
-			subTitle: "Subtítulo de Teste",
-			content: "Conteúdo de Teste"
+			title: 'Título de Teste',
+			subTitle: 'Subtítulo de Teste',
+			content: 'Conteúdo de Teste'
 		};
 
 		// Atribui o dado ao input
-		fixture.componentRef.setInput("data", mockData);
+		fixture.componentRef.setInput('data', mockData);
 		fixture.detectChanges();
 
 		const titleEl = fixture.debugElement.query(By.css('[data-test-id="title"]')).nativeElement;

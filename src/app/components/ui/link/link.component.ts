@@ -1,21 +1,19 @@
-import { NgClass } from "@angular/common";
-import { Component, input } from "@angular/core";
-import { cn } from "src/utils";
-
-const customLinkClass = "text-primary relative cursor-pointer text-sm custom-underline";
+import { NgClass } from '@angular/common';
+import { Component, input } from '@angular/core';
+import { cn } from 'src/app/utils';
 
 @Component({
-	selector: "app-link",
+	selector: 'app-link',
 	imports: [NgClass],
-	templateUrl: "./link.component.html",
-	styleUrl: "./link.component.css"
+	templateUrl: './link.component.html',
+	styleUrl: './link.component.css'
 })
 export class LinkComponent {
-	title = input("#");
-	href = input("#");
-	target = input<"_self" | "_blank">("_self");
-	variant = input<"default" | "destructive" | "outline" | "secondary" | "ghost" | "link">("default");
-	size = input<"default" | "sm" | "lg" | "icon">("default");
+	title = input('#');
+	href = input('#');
+	target = input<'_self' | '_blank'>('_self');
+	variant = input<'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'>('default');
+	size = input<'default' | 'sm' | 'lg' | 'icon'>('default');
 
 	getLinkClasses(): string {
 		return cn(
@@ -27,24 +25,24 @@ export class LinkComponent {
 
 	private variants(): string {
 		const variants: Record<string, string> = {
-			default: "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+			default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
 			destructive:
-				"bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-			outline: "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-			secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
-			ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-			link: customLinkClass
+				'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
+			outline: 'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
+			secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
+			ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+			link: 'text-primary relative cursor-pointer text-sm custom-underline'
 		};
-		return variants[this.variant()] || variants["default"];
+		return variants[this.variant()] || variants['default'];
 	}
 
 	private getSizeClasses(): string {
 		const sizes: Record<string, string> = {
-			default: "h-9 px-4 py-2 has-[>svg]:px-3",
-			sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-			lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-			icon: "size-9"
+			default: 'h-9 px-4 py-2 has-[>svg]:px-3',
+			sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
+			lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
+			icon: 'size-9'
 		};
-		return sizes[this.size()] || sizes["default"];
+		return sizes[this.size()] || sizes['default'];
 	}
 }

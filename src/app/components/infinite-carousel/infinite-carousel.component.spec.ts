@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { InfiniteCarouselComponent } from "./infinite-carousel.component";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { InfiniteCarouselComponent } from './infinite-carousel.component';
 
-describe("InfiniteCarouselComponent", () => {
+describe('InfiniteCarouselComponent', () => {
 	let component: InfiniteCarouselComponent<unknown, unknown>;
 	let fixture: ComponentFixture<InfiniteCarouselComponent<unknown, unknown>>;
 
@@ -15,7 +15,7 @@ describe("InfiniteCarouselComponent", () => {
 		fixture.detectChanges();
 	});
 
-	it("deve criar o componente", () => {
+	it('deve criar o componente', () => {
 		expect(component).toBeTruthy();
 	});
 });

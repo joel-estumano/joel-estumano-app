@@ -30,6 +30,14 @@ module.exports = tseslint.config(
 					prefix: "app",
 					style: "kebab-case"
 				}
+			],
+			"prettier/prettier": [
+				"error",
+				{
+					useTabs: true,
+					tabWidth: 4,
+					endOfLine: "lf"
+				}
 			]
 		}
 	},
@@ -38,7 +46,12 @@ module.exports = tseslint.config(
 		extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
 		rules: {}
 	},
-	{ files: ["src/**/*.component.ts", "src/**/*.directive.ts"], rules: { "@angular-eslint/prefer-standalone": "off" } },
+	{
+		files: ["src/**/*.component.ts", "src/**/*.directive.ts"],
+		rules: {
+			"@angular-eslint/prefer-standalone": "off"
+		}
+	},
 	{
 		ignores: [".angular/"]
 	}
