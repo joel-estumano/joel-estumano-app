@@ -58,5 +58,5 @@ export const routes: Routes = [
 			}
 		]
 	},
-	{ path: '**', redirectTo: '' }
+	{ path: '**', redirectTo: 'not-found' }
 ];
