@@ -10,13 +10,14 @@ import {
 	withPreloading
 } from '@angular/router';
 import { ApplicationConfig, LOCALE_ID, provideZoneChangeDetection } from '@angular/core';
-import { CustomTitleStrategy } from './strategies/title.strategy';
+import { CustomTitleStrategy } from './core/strategies/title.strategy';
+import { errorInterceptor } from '@core/interceptors/error/error.interceptor';
 import { importProvidersFrom } from '@angular/core';
 import { provideClientHydration, withIncrementalHydration } from '@angular/platform-browser';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideNgxWebstorage, withLocalStorage, withNgxWebstorageConfig, withSessionStorage } from 'ngx-webstorage';
 import { registerLocaleData } from '@angular/common';
-import { RootDialogModule } from '@modules/root-dialog/root-dialog.module';
+import { RootDialogModule } from '@shared/modules/root-dialog/root-dialog.module';
 import { routes } from './app.routes';
 
 registerLocaleData(ptBr);
@@ -43,7 +44,7 @@ export const appConfig: ApplicationConfig = {
 		provideClientHydration(withIncrementalHydration()),
 
 		// Usa o Fetch API para requisições HTTP em vez do padrão XMLHttpRequest
-		provideHttpClient(withFetch()),
+		provideHttpClient(withFetch(), withInterceptors([errorInterceptor])),
 
 		// Define a localização padrão para o app (idioma, formatação, etc.)
 		{ provide: LOCALE_ID, useValue: 'pt-BR' },

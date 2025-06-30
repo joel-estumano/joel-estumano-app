@@ -1,9 +1,8 @@
 import { BlogService } from '../../service/blog.service';
-import { Component, Input, signal } from '@angular/core';
-import { IPost } from '@types';
+import { Component, Input } from '@angular/core';
+import { IBlogPost } from '@types';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
-import { posts } from '../../constants';
 
 @Component({
 	selector: 'app-read',
@@ -11,16 +10,11 @@ import { posts } from '../../constants';
 	templateUrl: './read.component.html'
 })
 export class ReadComponent {
-	protected data = signal<IPost | undefined>(undefined);
-	protected $data!: Observable<IPost | undefined>;
+	blogPost$!: Observable<IBlogPost>;
 
 	@Input()
 	set id(id: string) {
-		const data = posts.find((p) => p.id === id);
-		if (data) {
-			this.data.set(data);
-			this.$data = this.blogService.contentPost(data.id);
-		}
+		this.blogPost$ = this.blogService.read(id);
 	}
 
 	constructor(

@@ -1,18 +1,22 @@
-<app-section>
-	<div class="mx-auto grid max-w-2xl grid-cols-1 justify-items-center gap-4">
-		<app-button title="Voltar" (click)="goBack()" variant="ghost">
-			<app-icon icon="heroArrowLeft" class="scale-110" />
-			Voltar
-		</app-button>
-		<h1 class="f2 text-center !leading-normal">{{ data()?.title }}</h1>
-		<div class="flex w-full items-center justify-center gap-2">
-			<p class="text-muted-foreground text-sm">{{ data()?.timestamp | date: "d 'de' MMMM 'de' y" }}</p>
-			<app-avatar />
+@if (blogPost$ | async; as blogPost) {
+	<app-section>
+		<div class="mx-auto grid max-w-2xl grid-cols-1 justify-items-center gap-4">
+			<app-button title="Voltar" (click)="goBack()" variant="ghost">
+				<app-icon icon="heroArrowLeft" class="scale-110" />
+				Voltar
+			</app-button>
+			<h1 class="f2 text-center !leading-normal">{{ blogPost.title }}</h1>
+			<div class="flex w-full items-center justify-center gap-2">
+				<p class="text-muted-foreground text-sm">{{ blogPost.createdAt | date: "d 'de' MMMM 'de' y" }}</p>
+				<app-avatar />
+			</div>
 		</div>
-	</div>
-	<div class="mx-auto flex max-w-4xl flex-col items-center justify-center border">
-		@if ($data | async; as data) {
-			<div [innerHTML]="data.content | safeHtml"></div>
-		}
-	</div>
-</app-section>
+		<div class="mx-auto flex max-w-4xl flex-col items-center justify-center border">
+			<div [innerHTML]="blogPost.content | safeHtml"></div>
+		</div>
+	</app-section>
+} @else {
+	<app-section>
+		<app-loader></app-loader>
+	</app-section>
+}

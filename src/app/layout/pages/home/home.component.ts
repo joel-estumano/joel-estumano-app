@@ -1,13 +1,13 @@
-import { CardProjectComponent } from '@components/card-project/card-project.component';
-import { CarouselComponent } from '@components/carousel/carousel.component';
+import { CardProjectComponent } from '../../components/card-project/card-project.component';
+import { CarouselComponent } from '../../components/carousel/carousel.component';
 import { Component, computed, Inject, signal } from '@angular/core';
-import { IconComponent, IconName } from '@components/icon/icon.component';
 import { IComponentOutletData, IProfileData, IProfileStack, IProjectData } from '@types';
-import { PROFILE } from 'src/app/tokens';
+import { IconComponent, IconName } from '@shared/components/icon/icon.component';
+import { LinkComponent } from '@shared/ui/link/link.component';
+import { PROFILE } from 'src/app/core/tokens';
 import { RouterLink } from '@angular/router';
-import { SectionComponent } from '@components/section/section.component';
-import { LinkComponent } from '@components/ui/link/link.component';
-import { RouterLinkComponent } from '@components/ui/router-link/router-link.component';
+import { RouterLinkComponent } from '@shared/ui/router-link/router-link.component';
+import { SectionComponent } from '../../components/section/section.component';
 
 @Component({
 	selector: 'app-home',
@@ -44,7 +44,7 @@ export class HomeComponent {
 
 	protected professionTime = computed(() => new Date().getFullYear() - this.profile.professionalStart);
 
-	constructor(@Inject(PROFILE) protected profile: IProfileData) {
+	constructor(@Inject(PROFILE) protected readonly profile: IProfileData) {
 		this.stacks.set([...this.profile.stacks.basic, ...this.profile.stacks.frontEnd, ...this.profile.stacks.backEnd, ...this.profile.stacks.others]);
 
 		this.links = [

@@ -1,0 +1,50 @@
+<div class="grid h-[560px] grid-cols-1 overflow-hidden rounded-lg border max-sm:grid-rows-2 sm:h-[480px] sm:grid-cols-3">
+	<div class="col-span-1 flex sm:col-span-2">
+		<div class="max-sm:bg-background relative h-full w-full">
+			<img
+				data-test-id="image"
+				[ngSrc]="data().bannerUrl"
+				class="pointer-events-none h-full w-full object-cover object-top sm:object-left-top"
+				[alt]="data().name"
+				loading="eager"
+				fill
+			/>
+		</div>
+	</div>
+	<div class="bg-card relative flex h-full w-full flex-col justify-between gap-5 p-6 max-sm:border-t sm:border-s sm:p-8">
+		<div class="flex flex-col gap-5 select-none">
+			<div class="flex flex-col">
+				<p data-test-id="company" class="text-muted-foreground text-sm font-semibold">{{ data().company }}</p>
+				<p data-test-id="name" class="f6">{{ data().name }}</p>
+			</div>
+			<ul class="inline-flex flex-wrap gap-2" data-test-id="resources">
+				@for (resource of data().resources; track $index) {
+					<li
+						appTechnologyColor
+						[technology]="resource"
+						class="flex h-6 shrink-0 items-center justify-center rounded-3xl px-2 text-xs leading-none text-nowrap"
+					>
+						{{ resource }}
+					</li>
+				}
+			</ul>
+		</div>
+		<div class="inline-flex items-center gap-3">
+			<app-router-link
+				data-test-id="saiba-mais-link"
+				variant="outline"
+				size="sm"
+				[title]="'Saiba mais sobre ' + data().name"
+				[routerLink]="['/projetos', data().id]"
+			>
+				Saiba mais
+			</app-router-link>
+			@if (data().demoUrl) {
+				<app-link data-test-id="demo-link" variant="default" size="sm" [title]="data().name" [href]="data().demoUrl" target="_blank">
+					Demo
+					<app-icon icon="heroArrowUpRight" />
+				</app-link>
+			}
+		</div>
+	</div>
+</div>

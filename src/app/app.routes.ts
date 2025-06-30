@@ -1,11 +1,10 @@
 import { EnvironmentProviders, importProvidersFrom } from '@angular/core';
-import { Routes } from '@angular/router';
 import { NgxEditorModule } from 'ngx-editor';
+import { Routes } from '@angular/router';
 
-// Provê funcionalidades de editor (provavelmente texto ou rich text)
 const provideEditor = (): EnvironmentProviders => {
+	// https://sibiraj-s.github.io/ngx-editor/
 	return importProvidersFrom(
-		// https://sibiraj-s.github.io/ngx-editor/
 		NgxEditorModule.forChild({
 			locals: {
 				undo: 'Desfazer',
@@ -46,8 +45,18 @@ export const routes: Routes = [
 				path: 'blog',
 				loadChildren: () => import('./layout/pages/blog/blog.module').then((m) => m.BlogModule),
 				title: 'Blog'
+			},
+			{
+				path: 'not-found',
+				loadComponent: () => import('./layout/pages/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
+				title: 'Não encontrado'
+			},
+			{
+				path: 'error',
+				loadComponent: () => import('./layout/pages/error-page/error-page.component').then((m) => m.ErrorPageComponent),
+				title: 'Erro'
 			}
 		]
 	},
-	{ path: '**', redirectTo: '' }
+	{ path: '**', redirectTo: 'not-found' }
 ];

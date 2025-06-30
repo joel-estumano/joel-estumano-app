@@ -1,29 +1,35 @@
-<app-section>
-	<div class="grid grid-cols-1 justify-items-center gap-16">
-		<h1 class="f2 text-center">Blog Posts</h1>
-	</div>
-	<div>
-		<ul class="grid gap-4" [ngClass]="articles.length > 1 && articles.length < 3 ? 'sm:grid-cols-2' : 'sm:grid-cols-2 lg:grid-cols-3'">
-			@for (article of articles; track $index) {
-				<li class="bg-background flex h-80 w-full flex-col justify-between gap-4 overflow-hidden rounded-md border p-6 transition-all">
-					<div class="relative flex h-full flex-col gap-3 overflow-hidden">
-						<div class="inline-flex w-full justify-between">
-							<p class="text-muted-foreground text-sm">{{ article.timestamp | date: "d 'de' MMMM 'de' y" }}</p>
-							<app-avatar />
+@if (blogPosts$ | async; as blogPosts) {
+	<app-section>
+		<div class="grid grid-cols-1 justify-items-center gap-16">
+			<h1 class="f2 text-center">Blog Posts</h1>
+		</div>
+		<div>
+			<ul class="grid gap-4" [ngClass]="blogPosts.length > 1 && blogPosts.length < 3 ? 'sm:grid-cols-2' : 'sm:grid-cols-2 lg:grid-cols-3'">
+				@for (article of blogPosts; track $index) {
+					<li class="bg-background flex h-80 w-full flex-col justify-between gap-4 overflow-hidden rounded-md border p-6 transition-all">
+						<div class="relative flex h-full flex-col gap-3 overflow-hidden">
+							<div class="inline-flex w-full justify-between">
+								<p class="text-muted-foreground text-sm">{{ article.createdAt | date: "d 'de' MMMM 'de' y" }}</p>
+								<app-avatar />
+							</div>
+							<p class="f3 !text-foreground line-clamp-3">{{ article.title }}</p>
+							<p class="text-muted-foreground line-clamp-4">{{ article.description }}</p>
+							<div
+								class="from-background pointer-events-none absolute right-0 bottom-0 left-0 h-80 bg-gradient-to-t via-transparent to-transparent transition-none"
+							></div>
 						</div>
-						<p class="f3 !text-foreground line-clamp-3">{{ article.title }}</p>
-						<p class="text-muted-foreground line-clamp-4">{{ article.description }}</p>
-						<div
-							class="from-background pointer-events-none absolute right-0 bottom-0 left-0 h-80 bg-gradient-to-t via-transparent to-transparent transition-none"
-						></div>
-					</div>
-					<div class="inline-flex">
-						<app-router-link size="sm" [routerLink]="['/blog', article.id]" [title]="'Saiba mais sobre ' + article.title">
-							Saiba mais
-						</app-router-link>
-					</div>
-				</li>
-			}
-		</ul>
-	</div>
-</app-section>
+						<div class="inline-flex">
+							<app-router-link size="sm" [routerLink]="['/blog', article._id]" [title]="'Saiba mais sobre ' + article.title">
+								Saiba mais
+							</app-router-link>
+						</div>
+					</li>
+				}
+			</ul>
+		</div>
+	</app-section>
+} @else {
+	<app-section>
+		<app-loader></app-loader>
+	</app-section>
+}

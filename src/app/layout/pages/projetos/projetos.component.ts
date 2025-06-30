@@ -1,11 +1,11 @@
-import { Location } from '@angular/common';
+import { ButtonComponent } from '@shared/ui/button/button.component';
 import { Component, inject, Input, signal } from '@angular/core';
-import { SectionComponent } from '@components/section/section.component';
+import { IconComponent } from '@shared/components/icon/icon.component';
 import { IProjectData } from '@types';
-import { PROFILE } from 'src/app/tokens';
-import { IconComponent } from '@components/icon/icon.component';
-import { ButtonComponent } from '@components/ui/button/button.component';
-import { LinkComponent } from '@components/ui/link/link.component';
+import { LinkComponent } from '@shared/ui/link/link.component';
+import { Location } from '@angular/common';
+import { PROFILE } from 'src/app/core/tokens';
+import { SectionComponent } from '../../components/section/section.component';
 
 @Component({
 	selector: 'app-projetos',
