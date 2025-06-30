@@ -1,13 +1,11 @@
-import { ButtonComponent } from '@components/ui/button/button.component';
+import { ButtonComponent } from '@shared/ui/button/button.component';
 import { ClipboardModule, IClipboardResponse } from 'ngx-clipboard';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ContactFormComponent } from '@components/contact-form/contact-form.component';
-import { HttpErrorResponse } from '@angular/common/http';
-import { HttpService } from 'src/app/services/http/http.service';
-import { IconComponent } from '@components/icon/icon.component';
-import { LinkComponent } from '@components/ui/link/link.component';
-import { PROFILE } from 'src/app/tokens';
-import { SectionComponent } from '@components/section/section.component';
+import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
+import { IconComponent } from '@shared/components/icon/icon.component';
+import { LinkComponent } from '@shared/ui/link/link.component';
+import { PROFILE } from '@core/tokens';
+import { SectionComponent } from '../../components/section/section.component';
 
 @Component({
 	selector: 'app-contact',
@@ -22,18 +20,8 @@ export class ContactComponent implements OnInit {
 	emailIsCopied = signal<boolean>(false);
 	phoneIsCopied = signal<boolean>(false);
 
-	constructor(private httpService: HttpService) {}
-
 	ngOnInit(): void {
 		this.suportaWebShare.set(!!navigator.share);
-		this.httpService.get<string>('ping').subscribe({
-			// next: (pong: string) => {
-			// 	console.log(pong);
-			// },
-			error: (error: HttpErrorResponse) => {
-				console.error(error);
-			}
-		});
 	}
 
 	emailCopied(event: IClipboardResponse) {

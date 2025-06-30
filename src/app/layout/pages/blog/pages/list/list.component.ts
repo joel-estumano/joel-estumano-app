@@ -1,5 +1,7 @@
+import { BlogService } from '../../service/blog.service';
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
-import { posts } from '../../constants';
+import { IBlogPost } from '@types';
 
 @Component({
 	selector: 'app-list',
@@ -7,5 +9,9 @@ import { posts } from '../../constants';
 	templateUrl: './list.component.html'
 })
 export class ListComponent {
-	articles = posts;
+	blogPosts$!: Observable<IBlogPost[]>;
+
+	constructor(private readonly blogService: BlogService) {
+		this.blogPosts$ = this.blogService.list();
+	}
 }

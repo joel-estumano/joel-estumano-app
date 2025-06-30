@@ -1,12 +1,12 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, inject, Renderer2 } from '@angular/core';
-import { LocaleService } from './services/locale/locale.service';
+import { LocaleService } from '@core/services/locale/locale.service';
 import { Meta } from '@angular/platform-browser';
-import { PROFILE } from './tokens';
-import { RootDialogModule } from '@modules/root-dialog/root-dialog.module';
+import { PROFILE } from './core/tokens';
+import { RootDialogModule } from '@shared/modules/root-dialog/root-dialog.module';
 import { RouterOutlet } from '@angular/router';
 import { Theme } from '@types';
-import { ThemeService } from './services/theme/theme.service';
+import { ThemeService } from '@core/services/theme/theme.service';
 
 @Component({
 	selector: 'app-root',

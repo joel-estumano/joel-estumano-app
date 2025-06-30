@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { CopyrightTextPipe } from '../pipes/copyright-text/copyright-text.pipe';
-import { IconComponent, IconName } from '@components/icon/icon.component';
-import { LinkComponent } from '@components/ui/link/link.component';
-import { NavBarComponent } from '@components/nav-bar/nav-bar.component';
-import { PROFILE } from '../tokens';
+import { CopyrightTextPipe } from '@shared/pipes/copyright-text/copyright-text.pipe';
+import { IconComponent, IconName } from '@shared/components/icon/icon.component';
+import { LinkComponent } from '@shared/ui/link/link.component';
+import { MagicPointerDirective } from '@shared/directives/magic-pointer/magic-pointer.directive';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { PROFILE } from '../core/tokens';
 import { RouterOutlet } from '@angular/router';
-import { MagicPointerDirective } from '../directives/magic-pointer/magic-pointer.directive';
 
 @Component({
 	selector: 'app-layout',

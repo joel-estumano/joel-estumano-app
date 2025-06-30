@@ -1,5 +1,5 @@
 import { Type } from '@angular/core';
-import { IconName } from '@components/icon/icon.component';
+import { IconName } from '@shared/components/icon/icon.component';
 
 export interface IEnvironment {
 	production: boolean;
@@ -14,7 +14,7 @@ export interface IProjectData {
 	demoUrl: string;
 	company: string;
 	companyUrl: string;
-	resources: string[];
+	resources: TechnologyName[];
 }
 
 export interface IProfileStack {
@@ -58,16 +58,52 @@ export interface IProfileData {
 
 export type Theme = 'dark' | 'light';
 
-export interface IPost {
-	id: string;
-	title?: string;
-	description?: string;
-	timestamp?: string;
-	tags?: string[];
-	content?: string;
+export interface IBlogPost {
+	_id: string;
+	title: string;
+	description: string;
+	content: string;
+	createdAt: string;
+	updatedAt: string;
 }
 
 export interface IComponentOutletData<T, D, K extends string = 'data'> {
 	component: Type<T>;
 	inputs: Record<K, D>;
 }
+
+export type TechnologyName =
+	| 'AdonisJS'
+	| 'Angular'
+	| 'Bootstrap'
+	| 'Bulma CSS'
+	| 'CSS'
+	| 'CSS3'
+	| 'Docker'
+	| 'Expo'
+	| 'Firebase'
+	| 'Flutter'
+	| 'Github'
+	| 'HTML5'
+	| 'IntelliJ IDEA'
+	| 'Ionic'
+	| 'Java'
+	| 'JavaScript'
+	| 'Jest'
+	| 'Laravel'
+	| 'MongoDB'
+	| 'MySQL'
+	| 'NestJS'
+	| 'Next'
+	| 'Node.js'
+	| 'Postgres'
+	| 'Postman'
+	| 'React'
+	| 'Redis'
+	| 'SCSS'
+	| 'Spring Boot'
+	| 'Swagger'
+	| 'Tailwind CSS'
+	| 'TypeScript'
+	| 'VS Code'
+	| 'Vue.js';

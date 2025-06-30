@@ -1,12 +1,12 @@
+import { ButtonComponent } from '@shared/ui/button/button.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ProjetosComponent } from './projetos.component';
-import { Location } from '@angular/common';
-import { SectionComponent } from '@components/section/section.component';
-import { IconComponent } from '@components/icon/icon.component';
-import { ButtonComponent } from '@components/ui/button/button.component';
-import { LinkComponent } from '@components/ui/link/link.component';
-import { PROFILE } from 'src/app/tokens';
+import { IconComponent } from '@shared/components/icon/icon.component';
 import { IProjectData } from '@types';
+import { LinkComponent } from '@shared/ui/link/link.component';
+import { Location } from '@angular/common';
+import { PROFILE } from 'src/app/core/tokens';
+import { ProjetosComponent } from './projetos.component';
+import { SectionComponent } from '../../components/section/section.component';
 
 describe('ProjetosComponent', () => {
 	let componente: ProjetosComponent;
