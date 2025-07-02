@@ -6,7 +6,7 @@ describe('ErrorPageComponent', () => {
 	let component: ErrorPageComponent;
 	let fixture: ComponentFixture<ErrorPageComponent>;
 
-	const statusTestValue = 500;
+	const statusTestValue = '500';
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({

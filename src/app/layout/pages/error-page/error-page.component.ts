@@ -9,7 +9,7 @@ import { SectionComponent } from '../../components/section/section.component';
 	templateUrl: './error-page.component.html'
 })
 export class ErrorPageComponent {
-	status = signal<number>(0);
+	status = signal<string>('');
 
 	constructor(private router: Router) {
 		const nav = this.router.getCurrentNavigation();
