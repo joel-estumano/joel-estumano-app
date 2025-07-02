@@ -6,7 +6,7 @@ describe('NotFoundPageComponent', () => {
 	let component: NotFoundPageComponent;
 	let fixture: ComponentFixture<NotFoundPageComponent>;
 
-	const statusTestValue = 404;
+	const statusTestValue = '404';
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({

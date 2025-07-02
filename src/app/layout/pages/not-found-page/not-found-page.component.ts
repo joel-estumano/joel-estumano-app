@@ -8,7 +8,7 @@ import { SectionComponent } from '../../components/section/section.component';
 	templateUrl: './not-found-page.component.html'
 })
 export class NotFoundPageComponent {
-	status = signal<number>(0);
+	status = signal<string>('');
 
 	constructor(private router: Router) {
 		const nav = this.router.getCurrentNavigation();

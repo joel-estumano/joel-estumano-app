@@ -1,0 +1,102 @@
+@keyframes pulse-thrust {
+	0%,
+	100% {
+		opacity: 0;
+		transform: translateY(0);
+	}
+	50% {
+		opacity: 1;
+		transform: translateY(10px);
+	}
+}
+
+.thrust-1 {
+	animation: pulse-thrust 1s infinite ease-in-out;
+	animation-delay: 0s;
+}
+
+.thrust-2 {
+	animation: pulse-thrust 1s infinite ease-in-out;
+	animation-delay: 0.2s;
+}
+
+.thrust-3 {
+	animation: pulse-thrust 1s infinite ease-in-out;
+	animation-delay: 0.4s;
+}
+
+@keyframes smooth-bounce {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
+.animate-smooth-bounce {
+	animation: smooth-bounce 4s infinite ease-in-out;
+}
+
+@keyframes fall {
+	0% {
+		transform: translateY(-100px);
+		opacity: 0;
+	}
+	10% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(100vh);
+		opacity: 0;
+	}
+}
+
+.star {
+	position: absolute;
+	top: -100px; /* começa fora da tela */
+	width: 2px;
+	height: 2px;
+	background-color: var(--foreground);
+	border-radius: 9999px;
+	animation: fall linear infinite;
+	opacity: 0; /* invisível até a animação começar */
+}
+
+/* Estrelas à esquerda */
+.star-left-1 {
+	left: 10%;
+	animation-duration: 6s;
+	animation-delay: 0s;
+}
+.star-left-2 {
+	left: 15%;
+	animation-duration: 7s;
+	animation-delay: 1s;
+}
+.star-left-3 {
+	left: 20%;
+	animation-duration: 5s;
+	animation-delay: 2s;
+}
+
+/* Estrelas à direita */
+.star-right-1 {
+	right: 10%;
+	animation-duration: 6.5s;
+	animation-delay: 0.5s;
+}
+.star-right-2 {
+	right: 15%;
+	animation-duration: 7.5s;
+	animation-delay: 1.5s;
+}
+.star-right-3 {
+	right: 20%;
+	animation-duration: 5.5s;
+	animation-delay: 2.5s;
+}
