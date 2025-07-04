@@ -11,37 +11,86 @@ import { WINDOW } from 'src/app/core/tokens';
 	templateUrl: './carousel.component.html'
 })
 export class CarouselComponent<T, D> implements OnInit {
+	// 📥 Entrada de slides dinâmicos
 	slides = input<IComponentOutletData<T, D>[]>([]);
 
-	slideIndexActive = signal<number>(0);
-
-	private autoScroll = signal<boolean>(true);
-
-	private intervalId!: number | ReturnType<typeof setTimeout>;
-
-	private isXlscreen = signal<boolean>(false);
-
-	protected translateX = computed<string>(() => `translateX(calc(-${this.slideIndexActive() * 100}%${this.isXlscreen() ? ' + 33%' : ' + 0%'}))`);
-
+	// 📦 Injeções
 	private window = inject(WINDOW);
-
-	isDragging = signal<boolean>(false);
 
 	constructor(
 		private breakpointObserver: BreakpointObserver,
 		private ngZone: NgZone
 	) {
+		// Inicia o auto-scroll após o primeiro render
 		afterNextRender(() => {
 			this.startAutoScroll();
 		});
 	}
 
+	// 📊 Estado do carrossel
+	slideIndexActive = signal<number>(0);
+	autoScroll = signal<boolean>(true);
+	isDragging = signal<boolean>(false);
+	hasDragged = signal<boolean>(false);
+	movido = signal<number>(0);
+	isXlscreen = signal<boolean>(false);
+
+	// 📐 Cálculo do deslocamento durante o arraste
+	dragOffset = computed(() => this.movido() - this.startX);
+
+	// 📐 Cálculo da posição de translação do carrossel
+	protected translateX = computed<string>(() => {
+		const base = -this.slideIndexActive() * 100;
+		const offset = this.isDragging() && this.hasDragged() ? (this.dragOffset() / this.window.innerWidth) * 100 : 0;
+		const extra = this.isXlscreen() ? 33 : 0;
+		return `translateX(calc(${base + offset}% + ${extra}%))`;
+	});
+
+	// 📐 Cálculo auxiliar (não usado diretamente, mas disponível)
+	movedX = computed(() => Math.abs(this.movido() - this.startX));
+
+	// 📏 Limiar mínimo para considerar um swipe (2% da largura da tela)
+	threshold = (this.window.innerWidth * 2) / 100;
+
+	// 🔁 Lifecycle hook
 	ngOnInit(): void {
 		this.breakpointObserver.observe(['(min-width: 1280px)']).subscribe((result) => {
 			this.isXlscreen.set(result.matches);
 		});
 	}
 
+	// 🔁 Navega para um slide específico
+	select(index: number): void {
+		this.slideIndexActive.set(index);
+		this.startAutoScroll();
+	}
+
+	// ⬅️ Navega para o slide anterior
+	prev(): void {
+		if (this.slideIndexActive() > 0) {
+			this.slideIndexActive.set(this.slideIndexActive() - 1);
+		}
+		this.startAutoScroll();
+	}
+
+	// ➡️ Navega para o próximo slide
+	next(): void {
+		if (this.slideIndexActive() < this.slides().length - 1) {
+			this.slideIndexActive.set(this.slideIndexActive() + 1);
+		} else {
+			this.slideIndexActive.set(0); // loop opcional
+		}
+		this.startAutoScroll();
+	}
+
+	// 🔄 Atualiza o estado de auto-scroll
+	updateAutoScroll(auto: boolean): void {
+		this.autoScroll.set(auto);
+		this.startAutoScroll();
+	}
+
+	// ⚙️ Inicia o auto-scroll com intervalo
+	private intervalId!: number | ReturnType<typeof setTimeout>;
 	private startAutoScroll(): void {
 		if (this.intervalId) {
 			clearInterval(this.intervalId);
@@ -55,66 +104,58 @@ export class CarouselComponent<T, D> implements OnInit {
 		}
 	}
 
-	select(index: number): void {
-		this.slideIndexActive.set(index);
-		this.startAutoScroll();
-	}
+	// 🧷 Referências para remover listeners globais
+	private onMouseMoveBound = this.onMouseMove.bind(this);
+	private onEndBound = this.onEnd.bind(this);
 
-	prev(): void {
-		if (this.slideIndexActive() === 0) {
-			// this.slideIndexActive.set(this.slides().length - 1);
-		} else {
-			this.slideIndexActive.set(this.slideIndexActive() - 1);
-		}
-		this.startAutoScroll();
-	}
-
-	next(): void {
-		if (this.slideIndexActive() === this.slides().length - 1) {
-			this.slideIndexActive.set(0);
-		} else {
-			this.slideIndexActive.set(this.slideIndexActive() + 1);
-		}
-		this.startAutoScroll();
-	}
-
-	updateAutoScroll(auto: boolean): void {
-		this.autoScroll.set(auto);
-		this.startAutoScroll();
-	}
-
+	// 🖱️ Evento de início de arraste
 	private startX = 0;
-	movido = signal<number>(0);
-
-	threshold = (this.window.innerWidth * 2) / 100; // 2% da largura da tela
-
-	movedX = computed((): number => {
-		if (this.movido() > this.startX) {
-			return this.movido() - this.startX;
-		} else {
-			return this.startX - this.movido();
-		}
-	});
-
-	onMouseMove(event: MouseEvent) {
-		this.movido.set(event.clientX);
-	}
-
 	onStart(event: MouseEvent | TouchEvent): void {
 		this.isDragging.set(true);
+		this.hasDragged.set(false);
 
 		if ('touches' in event && event.touches.length) {
 			this.startX = event.touches[0].clientX;
+			this.movido.set(this.startX);
+			document.addEventListener('touchmove', this.onMouseMoveBound);
+			document.addEventListener('touchend', this.onEndBound);
 		} else if ('clientX' in event) {
 			this.startX = event.clientX;
+			this.movido.set(this.startX);
+			document.addEventListener('mousemove', this.onMouseMoveBound);
+			document.addEventListener('mouseup', this.onEndBound);
 		}
 	}
 
+	// 🖱️ Evento de movimento durante arraste
+	onMouseMove(event: MouseEvent | TouchEvent): void {
+		if (!this.isDragging()) return;
+
+		let currentX = 0;
+		if ('touches' in event && event.touches.length) {
+			currentX = event.touches[0].clientX;
+		} else if ('clientX' in event) {
+			currentX = event.clientX;
+		}
+
+		this.movido.set(currentX);
+
+		if (Math.abs(currentX - this.startX) > 5) {
+			this.hasDragged.set(true);
+		}
+	}
+
+	// 🖱️ Evento de fim de arraste
 	onEnd(event: MouseEvent | TouchEvent): void {
 		this.isDragging.set(false);
 
-		let endX = 0;
+		// Remove listeners globais
+		document.removeEventListener('mousemove', this.onMouseMoveBound);
+		document.removeEventListener('mouseup', this.onEndBound);
+		document.removeEventListener('touchmove', this.onMouseMoveBound);
+		document.removeEventListener('touchend', this.onEndBound);
 
+		let endX = 0;
 		if ('changedTouches' in event && event.changedTouches.length) {
 			endX = event.changedTouches[0].clientX;
 		} else if ('clientX' in event) {
@@ -123,12 +164,15 @@ export class CarouselComponent<T, D> implements OnInit {
 
 		const distanceMovedX = endX - this.startX;
 
-		if (distanceMovedX > this.threshold) {
+		if (!this.hasDragged()) return;
+
+		if (distanceMovedX > this.threshold && this.slideIndexActive() > 0) {
 			this.prev();
-		} else if (distanceMovedX < -this.threshold) {
-			if (this.slideIndexActive() < this.slides().length - 1) {
-				this.next();
-			}
+		} else if (distanceMovedX < -this.threshold && this.slideIndexActive() < this.slides().length - 1) {
+			this.next();
 		}
+
+		this.hasDragged.set(false);
+		this.startAutoScroll();
 	}
 }
