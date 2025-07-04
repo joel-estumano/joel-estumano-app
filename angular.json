@@ -111,12 +111,57 @@
 					"options": {
 						"lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
 					}
+				},
+				"cypress-run": {
+					"builder": "@cypress/schematic:cypress",
+					"options": {
+						"devServerTarget": "joel-estumano-app:serve"
+					},
+					"configurations": {
+						"production": {
+							"devServerTarget": "joel-estumano-app:serve:production"
+						}
+					}
+				},
+				"cypress-open": {
+					"builder": "@cypress/schematic:cypress",
+					"options": {
+						"watch": true,
+						"headless": false
+					}
+				},
+				"ct": {
+					"builder": "@cypress/schematic:cypress",
+					"options": {
+						"devServerTarget": "joel-estumano-app:serve",
+						"watch": true,
+						"headless": false,
+						"testingType": "component"
+					},
+					"configurations": {
+						"development": {
+							"devServerTarget": "joel-estumano-app:serve:development"
+						}
+					}
+				},
+				"e2e": {
+					"builder": "@cypress/schematic:cypress",
+					"options": {
+						"devServerTarget": "joel-estumano-app:serve",
+						"watch": true,
+						"headless": false
+					},
+					"configurations": {
+						"production": {
+							"devServerTarget": "joel-estumano-app:serve:production"
+						}
+					}
 				}
 			}
 		}
 	},
 	"cli": {
 		"analytics": "118da0e2-5ecd-4618-affc-884175b13f35",
-		"schematicCollections": ["angular-eslint"]
+		"schematicCollections": ["@cypress/schematic", "angular-eslint", "@schematics/angular"]
 	}
 }
