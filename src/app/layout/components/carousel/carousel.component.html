@@ -9,14 +9,15 @@
 	>
 		@for (slide of slides(); track $index) {
 			<li
-				class="flex min-w-full transition-all duration-700 ease-in-out xl:min-w-[60%]"
+				class="flex min-w-full xl:min-w-[60%]"
 				(mousedown)="onStart($event)"
 				(mousemove)="onMouseMove($event)"
 				(mouseup)="onEnd($event)"
 				(touchstart)="onStart($event)"
+				(touchmove)="onMouseMove($event)"
 				(touchend)="onEnd($event)"
-				[style.transform]="this.translateX()"
-				[ngClass]="isDragging() ? 'cursor-grabbing' : 'cursor-grab'"
+				[style.transform]="translateX()"
+				[ngClass]="isDragging() ? 'cursor-grabbing' : 'cursor-grab transition-transform duration-700 ease-in-out'"
 			>
 				<div class="relative mx-auto w-full px-0 max-xl:mx-4 xl:px-8">
 					<ng-container *ngComponentOutlet="slide.component; inputs: slide.inputs"></ng-container>
