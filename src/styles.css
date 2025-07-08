@@ -169,7 +169,7 @@ label {
 
 input,
 textarea {
-	@apply text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+	@apply text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-sm border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
 }
 
 input.is-invalid,
@@ -200,7 +200,7 @@ textarea.is-invalid {
 }
 
 .editor .NgxEditor__MenuBar .NgxEditor__MenuItem.NgxEditor__MenuItem--IconContainer .NgxEditor__Popup {
-	@apply bg-background rounded-md border;
+	@apply bg-background rounded-sm border;
 }
 
 .editor .NgxEditor__MenuBar .NgxEditor__MenuItem.NgxEditor__MenuItem--IconContainer .NgxEditor__Popup button {
@@ -212,7 +212,7 @@ textarea.is-invalid {
 }
 
 .editor .NgxEditor .NgxEditor__Content {
-	@apply text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-[138px] w-full min-w-0 overflow-y-auto rounded-md border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
+	@apply text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive h-[138px] w-full min-w-0 overflow-y-auto rounded-sm border bg-transparent px-3 py-2 text-base shadow-xs transition-[color,box-shadow] outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm;
 }
 
 .ngx-editor.is-invalid > .NgxEditor .NgxEditor__Content {
