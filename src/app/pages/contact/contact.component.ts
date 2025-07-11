@@ -1,11 +1,11 @@
 import { ButtonComponent } from '@shared/ui/button/button.component';
 import { ClipboardModule, IClipboardResponse } from 'ngx-clipboard';
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
+import { ContactFormComponent } from '@shared/components/contact-form/contact-form.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
 import { LinkComponent } from '@shared/ui/link/link.component';
 import { PROFILE } from '@core/tokens';
-import { SectionComponent } from '../../components/section/section.component';
+import { SectionComponent } from '@shared/components/section/section.component';
 
 @Component({
 	selector: 'app-contact',

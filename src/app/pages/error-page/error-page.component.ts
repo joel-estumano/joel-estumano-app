@@ -4,7 +4,7 @@ import { IconComponent } from '@shared/components/icon/icon.component';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { RouterLinkComponent } from '@shared/ui/router-link/router-link.component';
-import { SectionComponent } from '../../components/section/section.component';
+import { SectionComponent } from '@shared/components/section/section.component';
 
 @Component({
 	selector: 'app-error-page',
