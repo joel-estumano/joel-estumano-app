@@ -6,7 +6,7 @@ import { LinkComponent } from '@shared/ui/link/link.component';
 import { Location } from '@angular/common';
 import { PROFILE } from 'src/app/core/tokens';
 import { ProjetosComponent } from './projetos.component';
-import { SectionComponent } from '../../components/section/section.component';
+import { SectionComponent } from '@shared/components/section/section.component';
 
 describe('ProjetosComponent', () => {
 	let componente: ProjetosComponent;

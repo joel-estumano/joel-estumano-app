@@ -1,7 +1,11 @@
-import { DOCUMENT } from '@angular/common';
 import { Component, inject, Renderer2 } from '@angular/core';
+import { CopyrightTextPipe } from '@shared/pipes/copyright-text/copyright-text.pipe';
+import { DOCUMENT } from '@angular/common';
+import { IconComponent, IconName } from '@shared/components/icon/icon.component';
+import { LinkComponent } from '@shared/ui/link/link.component';
 import { LocaleService } from '@core/services/locale/locale.service';
 import { Meta } from '@angular/platform-browser';
+import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
 import { PROFILE } from './core/tokens';
 import { RootDialogModule } from '@shared/modules/root-dialog/root-dialog.module';
 import { RouterOutlet } from '@angular/router';
@@ -10,12 +14,30 @@ import { ThemeService } from '@core/services/theme/theme.service';
 
 @Component({
 	selector: 'app-root',
-	imports: [RouterOutlet, RootDialogModule],
+	imports: [RouterOutlet, RootDialogModule, CopyrightTextPipe, IconComponent, NavBarComponent, LinkComponent],
 	templateUrl: './app.component.html'
 })
 export class AppComponent {
 	protected profile = inject(PROFILE);
 	private document = inject(DOCUMENT);
+
+	protected links = [
+		{
+			href: this.profile.githubUrl,
+			title: 'Github',
+			icon: 'bootstrapGithub' as IconName
+		},
+		{
+			href: this.profile.linkedinUrl,
+			title: 'LinkedIn',
+			icon: 'bootstrapLinkedin' as IconName
+		},
+		{
+			href: this.profile.instagramUrl,
+			title: 'Instagram',
+			icon: 'bootstrapInstagram' as IconName
+		}
+	];
 
 	constructor(
 		private localeService: LocaleService,
