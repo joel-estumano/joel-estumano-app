@@ -13,8 +13,7 @@ import { SectionComponent } from '@shared/components/section/section.component';
 @Component({
 	selector: 'app-home',
 	imports: [SectionComponent, IconComponent, CarouselComponent, RouterLink, LinkComponent, RouterLinkComponent, FloatingButtonComponent],
-	templateUrl: './home.component.html',
-	styleUrl: './home.component.css'
+	templateUrl: './home.component.html'
 })
 export class HomeComponent {
 	protected links: { href: string; title: string; icon: IconName }[] = [];
