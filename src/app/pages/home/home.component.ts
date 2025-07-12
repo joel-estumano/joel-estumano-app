@@ -1,6 +1,7 @@
 import { CardProjectComponent } from '@shared/components/card-project/card-project.component';
 import { CarouselComponent } from '@shared/components/carousel/carousel.component';
 import { Component, computed, Inject, signal } from '@angular/core';
+import { FloatingButtonComponent } from '@shared/components/floating-button/floating-button.component';
 import { IComponentOutletData, IProfileData, IProfileStack, IProjectData } from '@types';
 import { IconComponent, IconName } from '@shared/components/icon/icon.component';
 import { LinkComponent } from '@shared/ui/link/link.component';
@@ -11,9 +12,8 @@ import { SectionComponent } from '@shared/components/section/section.component';
 
 @Component({
 	selector: 'app-home',
-	imports: [SectionComponent, IconComponent, CarouselComponent, RouterLink, LinkComponent, RouterLinkComponent],
-	templateUrl: './home.component.html',
-	styleUrl: './home.component.css'
+	imports: [SectionComponent, IconComponent, CarouselComponent, RouterLink, LinkComponent, RouterLinkComponent, FloatingButtonComponent],
+	templateUrl: './home.component.html'
 })
 export class HomeComponent {
 	protected links: { href: string; title: string; icon: IconName }[] = [];

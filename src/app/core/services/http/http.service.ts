@@ -15,7 +15,10 @@ export class HttpService {
 	 */
 	constructor(private httpClient: HttpClient) {
 		this.apiUrl = environment.apiUrl;
-		this.headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+		this.headers = new HttpHeaders({
+			'Content-Type': 'application/json',
+			'X-App-Client': 'joel-estumano-app'
+		});
 	}
 
 	/**

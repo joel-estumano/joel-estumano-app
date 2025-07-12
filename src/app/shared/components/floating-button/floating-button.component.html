@@ -1,0 +1,30 @@
+<div class="contactar animate-fade-in fixed top-[10%] right-[4%] z-40 block w-[40%] overflow-hidden rounded-full backdrop-blur md:w-[30%] xl:w-[20%]">
+	<div class="rounded-ful relative block">
+		<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+			<title>Open to work</title>
+			<defs>
+				<path
+					id="textcircle"
+					d="M250,400
+                     a150,150 0 0,1 0,-300a150,150 0 0,1 0,300Z"
+					transform="rotate(12,250,250)"
+				/>
+			</defs>
+			<g class="textcircle">
+				<text textLength="940">
+					<textPath xlink:href="#textcircle" aria-label="Open to work" textLength="940">Open to work | Open to work |&#160;</textPath>
+				</text>
+			</g>
+		</svg>
+		<div class="rounded-ful absolute inset-0 flex items-center justify-center">
+			<a
+				class="flex h-[40%] w-[40%] rotate-[15deg] items-center justify-center rounded-full bg-linear-to-r from-indigo-500 to-purple-600 text-xs font-semibold ring-1 ring-gray-950/10 ring-inset sm:text-base"
+				[routerLink]="['/contato']"
+				target="_self"
+				title="Contactar"
+			>
+				<span class="text-white">Contactar</span>
+			</a>
+		</div>
+	</div>
+</div>

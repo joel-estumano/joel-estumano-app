@@ -4,5 +4,5 @@ import { environment as baseEnvironment } from './environment';
 export const environment: IEnvironment = {
 	...baseEnvironment,
 	production: false,
-	apiUrl: 'api'
+	apiUrl: 'https://dev-joel-estumano-api.onrender.com'
 };

@@ -31,39 +31,8 @@
 			</app-link>
 		}
 	</div>
-	@defer (on timer(300ms)) {
-		<div
-			class="contactar animate-fade-in fixed top-[10%] right-[4%] z-40 block w-[40%] shrink-0 overflow-visible rounded-full backdrop-blur md:w-[30%] xl:w-[20%]"
-		>
-			<div class="relative block">
-				<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
-					<title>Open to work</title>
-					<defs>
-						<path
-							id="textcircle"
-							d="M250,400
-                     a150,150 0 0,1 0,-300a150,150 0 0,1 0,300Z"
-							transform="rotate(12,250,250)"
-						/>
-					</defs>
-					<g class="textcircle">
-						<text textLength="940">
-							<textPath xlink:href="#textcircle" aria-label="Open to work" textLength="940">Open to work | Open to work |&#160;</textPath>
-						</text>
-					</g>
-				</svg>
-				<div class="absolute inset-0 flex items-center justify-center">
-					<a
-						class="flex h-[40%] w-[40%] rotate-[15deg] items-center justify-center rounded-full bg-linear-to-r from-emerald-500 to-sky-400 text-xs font-semibold ring-1 ring-gray-950/10 ring-inset sm:text-base dark:from-emerald-400 dark:ring-white/10"
-						[routerLink]="['/contato']"
-						target="_self"
-						title="Contactar"
-					>
-						<span class="text-white">Contactar</span>
-					</a>
-				</div>
-			</div>
-		</div>
+	@defer (on timer(600ms)) {
+		<app-floating-button />
 	}
 </div>
 
@@ -121,7 +90,7 @@
 	}
 </app-section>
 
-<app-section #sectionProjetos class="relative border-t dark:bg-[radial-gradient(27.27%_35.9%_at_50%_0%,#131315_0%,var(--background)_100%)]" [full]="true">
+<app-section #sectionProjetos class="relative dark:bg-[radial-gradient(27.27%_35.9%_at_50%_0%,#131315_0%,var(--background)_100%)]" [full]="true">
 	@defer (on viewport(sectionProjetos)) {
 		<div class="flex flex-col gap-8 sm:gap-16">
 			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8 px-16 max-sm:px-4 xl:px-8">
