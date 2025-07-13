@@ -1,8 +1,7 @@
 import { IEnvironment } from '@types';
-import { environment as baseEnvironment } from './environment';
 
 export const environment: IEnvironment = {
-	...baseEnvironment,
 	production: false,
-	apiUrl: 'https://dev-joel-estumano-api.onrender.com'
+	apiUrl: 'https://dev-joel-estumano-api.onrender.com',
+	recaptchaSiteKey: '6LclE_gpAAAAAB2Q6wrP-gXL6jiD9Du5boiiF6s9'
 };
