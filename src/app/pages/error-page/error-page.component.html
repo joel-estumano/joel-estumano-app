@@ -2,7 +2,9 @@
 	<div class="mx-auto grid max-w-2xl grid-cols-1 justify-items-center gap-4">
 		<h1 class="f1 text-center !leading-normal">Erro<span class="absolute rotate-12">!</span></h1>
 		<p class="text-destructive text-center">Ocorreu um erro ao obter dados do servidor.</p>
-		<p class="text-muted-foreground" data-test-id="status">{{ status() }}</p>
+		@if (status()) {
+			<p class="text-muted-foreground" data-test-id="status">{{ status() }}</p>
+		}
 		<div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
 			<app-router-link title="Ir para o início" routerLink="/" variant="outline">
 				<app-icon icon="heroHome" class="scale-110" />
