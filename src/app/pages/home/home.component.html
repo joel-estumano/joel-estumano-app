@@ -116,7 +116,7 @@
 					@for (stack of stacks(); track $index) {
 						<li class="flex w-fit shrink-0 items-center opacity-75 md:min-w-40">
 							<app-icon [icon]="stack.iconName" class="text-[16px] sm:text-[24px]" />
-							<app-link size="sm" variant="link" [title]="stack.docs" [href]="stack.docs" target="_blank">
+							<app-link size="sm" variant="link" [title]="stack.docs" [href]="stack.docs" target="_blank" classes="max-sm:ps-1.5">
 								{{ stack.name }}
 							</app-link>
 						</li>
