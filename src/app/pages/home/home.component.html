@@ -36,8 +36,8 @@
 	}
 </div>
 
-<app-section #sectionServices>
-	@defer (on viewport(sectionServices)) {
+<app-section #sectionSobre>
+	@defer (on viewport(sectionSobre)) {
 		<div class="flex flex-col gap-8 sm:gap-16">
 			<div class="mx-auto flex w-full max-w-2xl flex-col items-center gap-8">
 				<h2 class="f2 text-center">Sobre</h2>
@@ -78,7 +78,7 @@
 								<p class="text-muted-foreground">{{ experience.office }}</p>
 								<p class="text-muted-foreground text-sm">{{ experience.period }}</p>
 								<div class="inline-flex gap-2">
-									<app-icon icon="bootstrapPinFill" />
+									<app-icon icon="heroBriefcase" />
 									<p>{{ experience.local }}</p>
 								</div>
 							</div>
@@ -90,7 +90,7 @@
 	}
 </app-section>
 
-<app-section #sectionProjetos class="relative dark:bg-[radial-gradient(27.27%_35.9%_at_50%_0%,#131315_0%,var(--background)_100%)]" [full]="true">
+<app-section #sectionProjetos class="relative border-t dark:bg-[radial-gradient(27.27%_35.9%_at_50%_0%,#131315_0%,var(--background)_100%)]" [full]="true">
 	@defer (on viewport(sectionProjetos)) {
 		<div class="flex flex-col gap-8 sm:gap-16">
 			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8 px-16 max-sm:px-4 xl:px-8">

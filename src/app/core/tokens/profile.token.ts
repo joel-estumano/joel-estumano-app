@@ -28,13 +28,13 @@ const profile: IProfileData = {
 			company: 'Profissional autônomo · Freelance',
 			office: 'Desenvolvedor Web Full-Stack',
 			period: 'abr de 2021 · atual',
-			local: 'Remota'
+			local: 'Remoto'
 		},
 		{
 			company: 'inLoco Solutions · PJ',
 			office: 'Desenvolvedor Web Front-End',
 			period: 'mai de 2024 - mar de 2025',
-			local: 'Remota'
+			local: 'Remoto'
 		},
 		{
 			company: 'SambliTech · PJ',
