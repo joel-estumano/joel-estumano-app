@@ -28,7 +28,7 @@ export class HomeComponent {
 		{
 			title: 'Análise e Estratégia',
 			description: '“Atuo na identificação e entendimento de demandas técnicas ou de negócio, analisando necessidades e propondo soluções eficientes.”',
-			icon: 'boxLineChart'
+			icon: 'heroPresentationChartLine'
 		},
 		{
 			title: 'Cultura de Aprendizado',

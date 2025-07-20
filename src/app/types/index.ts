@@ -27,7 +27,7 @@ export interface IExperience {
 	company: string;
 	office: string;
 	period: string;
-	local: 'Remota' | 'Presencial';
+	local: 'Remoto' | 'Presencial';
 }
 
 export interface IProfileData {
