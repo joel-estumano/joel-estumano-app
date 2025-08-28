@@ -62,7 +62,7 @@ export class AppComponent {
 			},
 			{
 				name: 'description',
-				content: `${this.profile.profession} com mais de ${new Date().getFullYear() - this.profile.professionalStart} anos de experiência, nível pleno, especializado na criação de interfaces responsivas para websites.`
+				content: `${this.profile.professionEmphasis}.`
 			},
 			{
 				name: 'keywords',
