@@ -17,7 +17,7 @@ const profile: IProfileData = {
 	profession: 'Desenvolvedor Web',
 	professionStack: 'full stack',
 	professionLevel: 'Pleno',
-	professionEmphasis: 'Especializado na criação de soluções completas para websites, sistemas web e aplicativos móveis.',
+	professionEmphasis: 'Especializado na criação de sites, sistemas web e aplicativos móveis.',
 	professionalStart: 2021,
 
 	address: 'Rua Manoel da Silva Raposo, 2405 - São Lourenço',

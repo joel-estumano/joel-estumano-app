@@ -1,0 +1,43 @@
+<app-nav-bar />
+<main class="mx-auto flex min-h-[calc(100vh-48px)] max-w-[1920px] flex-col sm:min-h-[calc(100vh-65px)]">
+	<div class="flex flex-grow flex-col justify-center">
+		<router-outlet />
+	</div>
+	@defer (hydrate never) {
+		<footer
+			class="mx-auto grid w-full max-w-screen-xl grid-cols-1 items-center px-16 py-8 max-sm:mt-4 max-sm:gap-4 max-sm:px-4 sm:grid-cols-3 sm:py-6 xl:px-8"
+		>
+			<p class="text-muted-foreground text-sm max-sm:text-center">{{ profile.name | copyrightText: profile.professionalStart }}</p>
+
+			<p class="text-muted-foreground text-center text-sm">
+				Feito com
+				<a
+					target="_blank"
+					class="text-muted-foreground hover:text-accent-foreground inline-flex w-fit items-center gap-2 font-semibold text-wrap transition-all duration-300 ease-in-out"
+					href="https://angular.dev/"
+					title="Angular Docs"
+					>Angular</a
+				>
+				&
+				<a
+					target="_blank"
+					class="text-muted-foreground hover:text-accent-foreground inline-flex w-fit items-center gap-2 font-semibold text-wrap transition-all duration-300 ease-in-out"
+					href="https://tailwindcss.com/"
+					title="Tailwind CSS Docs"
+					>Tailwind CSS</a
+				>
+			</p>
+
+			<ul class="flex justify-end gap-4 max-sm:mt-4 max-sm:justify-center">
+				@for (link of this.links; track $index) {
+					<li>
+						<app-link variant="link" [title]="link.title" [href]="link.href" target="_blank" size="icon">
+							<app-icon [icon]="link.icon" class="text-2xl" />
+						</app-link>
+					</li>
+				}
+			</ul>
+		</footer>
+	}
+</main>
+<app-root-dialog />
