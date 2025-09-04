@@ -39,7 +39,7 @@ export class AppComponent {
 			},
 			{
 				name: 'description',
-				content: `${this.profile.professionEmphasis}.`
+				content: `${this.profile.professionEmphasis}`
 			},
 			{
 				name: 'keywords',
