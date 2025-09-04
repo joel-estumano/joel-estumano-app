@@ -58,15 +58,6 @@ export interface IProfileData {
 
 export type Theme = 'dark' | 'light';
 
-export interface IBlogPost {
-	_id: string;
-	title: string;
-	description: string;
-	content: string;
-	createdAt: string;
-	updatedAt: string;
-}
-
 export interface IComponentOutletData<T, D, K extends string = 'data'> {
 	component: Type<T>;
 	inputs: Record<K, D>;

@@ -1,6 +1,5 @@
 import ptBr from '@angular/common/locales/pt';
 import {
-	InMemoryScrollingFeature,
 	InMemoryScrollingOptions,
 	PreloadAllModules,
 	provideRouter,
@@ -27,18 +26,16 @@ const scrollConfig: InMemoryScrollingOptions = {
 	anchorScrolling: 'enabled'
 };
 
-const inMemoryScrollingFeature: InMemoryScrollingFeature = withInMemoryScrolling(scrollConfig);
-
 export const appConfig: ApplicationConfig = {
 	providers: [
 		// Ativa detecção de mudanças por zona com coalescência de eventos (otimiza performance)
 		provideZoneChangeDetection({ eventCoalescing: true }),
 
 		// Configura o roteamento da aplicação com:
-		// - Scroll em memória
 		// - Ligação de inputs diretamente nos componentes
 		// - Pré-carregamento de todos os módulos
-		provideRouter(routes, inMemoryScrollingFeature, withComponentInputBinding(), withPreloading(PreloadAllModules)),
+		// - Scroll em memória
+		provideRouter(routes, withComponentInputBinding(), withPreloading(PreloadAllModules), withInMemoryScrolling(scrollConfig)),
 
 		// Habilita hidratação incremental do lado do cliente (útil para SSR)
 		provideClientHydration(withIncrementalHydration()),
