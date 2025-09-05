@@ -5,6 +5,7 @@ import { FloatingButtonComponent } from '@shared/components/floating-button/floa
 import { IComponentOutletData, IProfileData, IProfileStack, IProjectData } from '@types';
 import { IconComponent, IconName } from '@shared/components/icon/icon.component';
 import { LinkComponent } from '@shared/ui/link/link.component';
+import { LowerCasePipe } from '@angular/common';
 import { PROFILE } from 'src/app/core/tokens';
 import { RouterLink } from '@angular/router';
 import { RouterLinkComponent } from '@shared/ui/router-link/router-link.component';
@@ -12,7 +13,7 @@ import { SectionComponent } from '@shared/components/section/section.component';
 
 @Component({
 	selector: 'app-home',
-	imports: [SectionComponent, IconComponent, CarouselComponent, RouterLink, LinkComponent, RouterLinkComponent, FloatingButtonComponent],
+	imports: [CarouselComponent, FloatingButtonComponent, IconComponent, LinkComponent, LowerCasePipe, RouterLink, RouterLinkComponent, SectionComponent],
 	templateUrl: './home.component.html'
 })
 export class HomeComponent {
