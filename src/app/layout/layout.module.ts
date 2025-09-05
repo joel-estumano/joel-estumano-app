@@ -46,28 +46,28 @@ const routes: Routes = [
 		children: [
 			{
 				path: '',
-				loadComponent: () => import('../pages/home/home.component').then((c) => c.HomeComponent),
+				loadComponent: () => import('./pages/home/home.component').then((c) => c.HomeComponent),
 				title: 'Home'
 			},
 			{
 				path: 'contato',
-				loadComponent: () => import('../pages/contact/contact.component').then((c) => c.ContactComponent),
+				loadComponent: () => import('./pages/contact/contact.component').then((c) => c.ContactComponent),
 				title: 'Contato',
 				providers: [provideEditor()]
 			},
 			{
 				path: 'projetos/:id',
-				loadComponent: () => import('../pages/projetos/projetos.component').then((c) => c.ProjetosComponent),
+				loadComponent: () => import('./pages/projetos/projetos.component').then((c) => c.ProjetosComponent),
 				title: 'Projeto'
 			},
 			{
 				path: 'not-found',
-				loadComponent: () => import('../pages/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
+				loadComponent: () => import('./pages/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
 				title: 'Não encontrado'
 			},
 			{
 				path: 'error',
-				loadComponent: () => import('../pages/error-page/error-page.component').then((m) => m.ErrorPageComponent),
+				loadComponent: () => import('./pages/error-page/error-page.component').then((m) => m.ErrorPageComponent),
 				title: 'Erro'
 			},
 			{ path: '**', redirectTo: 'not-found' }
