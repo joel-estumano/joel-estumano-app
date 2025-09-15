@@ -243,10 +243,10 @@ const profile: IProfileData = {
 			demoUrl: 'https://candidate.atsglobe.com/'
 		},
 		{
-			id: 'appLogo-nina-saude',
+			id: 'nina-saude',
 			company: 'Nina Saúde',
 			companyUrl: 'https://ninasaude.com.br/',
-			name: 'AppLogo Nina Saúde',
+			name: 'Nina Saúde',
 			resources: ['TypeScript', 'Angular', 'Bootstrap', 'AdonisJS', 'Swagger', 'MySQL'],
 			bannerUrl: 'nina.png',
 			demoUrl: 'https://play.google.com/store/apps/details?id=com.ninasaudeapp'
