@@ -1,4 +1,5 @@
-import { Inject, Injectable, LOCALE_ID } from '@angular/core';
+import { inject, Injectable, LOCALE_ID } from '@angular/core';
+import { WINDOW } from '@core/tokens';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 enum SpchStrings {
@@ -6,11 +7,11 @@ enum SpchStrings {
 	webSpchRec = 'webkitSpeechRecognition'
 }
 
-interface TResult {
+interface RecognitionResults {
 	results: { transcript: string }[][];
 }
 
-interface TRecognition {
+interface Recognition {
 	message: string;
 	end: boolean;
 	error: boolean;
@@ -20,29 +21,43 @@ interface TRecognition {
 	providedIn: 'root'
 })
 export class SpeechRecognitionService {
-	private behavior!: BehaviorSubject<TRecognition>;
+	private behavior!: BehaviorSubject<Recognition>;
+	private window = inject(WINDOW);
+	private locale = inject(LOCALE_ID);
 
-	getSubject(): Observable<TRecognition> {
+	getSubject(): Observable<Recognition> {
 		return this.behavior.asObservable();
 	}
 
 	private recognition;
 	private supported = false;
 
-	constructor(@Inject(LOCALE_ID) private localeId: string) {
-		this.behavior = new BehaviorSubject<TRecognition>({
+	constructor() {
+		this.behavior = new BehaviorSubject<Recognition>({
 			message: '',
 			end: false,
 			error: false
 		});
 
-		if (typeof window !== 'undefined') {
-			if (SpchStrings.SpchRec in window || SpchStrings.webSpchRec in window) {
+		// if (typeof window !== 'undefined') {
+		// 	if (SpchStrings.SpchRec in window || SpchStrings.webSpchRec in window) {
+		// 		this.supported = true;
+		// 		const w = window;
+		// 		// @ts-expect-error: Propriedade webkitSpeechRecognition não encontrada no tipo Window
+		// 		this.recognition = new (w.SpeechRecognition || w.webkitSpeechRecognition)();
+		// 		this.recognition.lang = this.localeId;
+		// 		this.init();
+		// 	}
+		// } else {
+		// 	this.supported = false;
+		// }
+
+		if (this.window) {
+			if (SpchStrings.SpchRec in this.window || SpchStrings.webSpchRec in this.window) {
 				this.supported = true;
-				const w = window;
 				// @ts-expect-error: Propriedade webkitSpeechRecognition não encontrada no tipo Window
-				this.recognition = new (w.SpeechRecognition || w.webkitSpeechRecognition)();
-				this.recognition.lang = this.localeId;
+				this.recognition = new (this.window.SpeechRecognition || this.window.webkitSpeechRecognition)();
+				this.recognition.lang = this.locale;
 				this.init();
 			}
 		} else {
@@ -74,7 +89,7 @@ export class SpeechRecognitionService {
 				this.send('recognition error', true);
 			};
 
-			this.recognition.onresult = (e: TResult) => {
+			this.recognition.onresult = (e: RecognitionResults) => {
 				const result = e.results[e.results.length - 1][0].transcript;
 				this.send(result);
 			};
