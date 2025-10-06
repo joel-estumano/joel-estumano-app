@@ -23,13 +23,6 @@ export interface IProfileStack {
 	iconName: IconName;
 }
 
-export interface IExperience {
-	company: string;
-	office: string;
-	period: string;
-	local: 'Remoto' | 'Presencial';
-}
-
 export interface IProfileData {
 	name: string;
 	phone: string;
@@ -52,7 +45,6 @@ export interface IProfileData {
 		backEnd: IProfileStack[];
 		others: IProfileStack[];
 	};
-	experiences: IExperience[];
 	projects: IProjectData[];
 }
 

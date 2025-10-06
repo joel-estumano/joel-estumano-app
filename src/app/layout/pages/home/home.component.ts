@@ -5,7 +5,6 @@ import { FloatingButtonComponent } from '@shared/components/floating-button/floa
 import { IComponentOutletData, IProfileData, IProfileStack, IProjectData } from '@types';
 import { IconComponent, IconName } from '@shared/components/icon/icon.component';
 import { LinkComponent } from '@shared/ui/link/link.component';
-import { LowerCasePipe } from '@angular/common';
 import { PROFILE } from 'src/app/core/tokens';
 import { RouterLink } from '@angular/router';
 import { RouterLinkComponent } from '@shared/ui/router-link/router-link.component';
@@ -13,7 +12,7 @@ import { SectionComponent } from '@shared/components/section/section.component';
 
 @Component({
 	selector: 'app-home',
-	imports: [CarouselComponent, FloatingButtonComponent, IconComponent, LinkComponent, LowerCasePipe, RouterLink, RouterLinkComponent, SectionComponent],
+	imports: [CarouselComponent, FloatingButtonComponent, IconComponent, LinkComponent, RouterLink, RouterLinkComponent, SectionComponent],
 	templateUrl: './home.component.html'
 })
 export class HomeComponent {
@@ -21,6 +20,21 @@ export class HomeComponent {
 
 	protected abouts: { title: string; description: string; icon: IconName }[] = [
 		{
+			title: 'Websites',
+			description: 'Criação de sites personalizados para você ou seu negócio.',
+			icon: 'heroComputerDesktop'
+		},
+		{
+			title: 'Sistemas Web',
+			description: 'Desenvolvimento de dashboards, CRMs e plataformas web sob medida para o seu negócio.',
+			icon: 'heroGlobeAmericasSolid'
+		},
+		{
+			title: 'Aplicativos',
+			description: 'Criação de aplicativos móveis para Android e iOS',
+			icon: 'heroDevicePhoneMobile'
+		}
+		/* {
 			title: 'Desenvolvimento web',
 			description:
 				'“Desenvolvo aplicações completas, responsivas, acessíveis e de alto desempenho, construídas com tecnologias modernas e foco na qualidade.”',
@@ -36,7 +50,7 @@ export class HomeComponent {
 			description:
 				'“Contribuo com o desenvolvimento de pessoas por meio de orientação técnica, troca de experiências e apoio no processo de aprendizado.”',
 			icon: 'heroBookOpen'
-		}
+		} */
 	];
 
 	protected projects = signal<IComponentOutletData<CardProjectComponent, IProjectData>[]>([]);
