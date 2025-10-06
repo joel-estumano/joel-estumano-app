@@ -8,8 +8,8 @@
 		</h1>
 		<div class="mx-auto flex max-w-2xl flex-col items-center">
 			<p class="f3 text-muted-foreground text-center">
-				<span class="text-foreground font-semibold">{{ profile.profession }}</span>
-				{{ profile.professionEmphasis | lowercase }}
+				<span class="text-foreground font-semibold">Desenvolvedor Web</span>
+				especializado na criação de sites, sistemas web e aplicativos móveis.
 			</p>
 		</div>
 		<app-link
@@ -35,21 +35,17 @@
 	}
 </div>
 
-<app-section #sectionSobre>
-	@defer (on viewport(sectionSobre)) {
+<app-section #sectionServices>
+	@defer (on viewport(sectionServices)) {
 		<div class="flex flex-col gap-8 sm:gap-16">
-			<!-- <div class="mx-auto flex w-full max-w-2xl flex-col items-center gap-8">
-				<h2 class="f2 text-center">Sobre</h2>
-				<p class="f3 text-muted-foreground text-center">
-					Tenho experiência em análise aplicada à engenharia de software, com domínio de diversas tecnologias, frameworks e metodologias de
-					desenvolvimento. Ao longo da minha trajetória, venho atuando na definição de arquiteturas eficientes, enfrentando desafios técnicos
-					complexos e tomando decisões estratégicas que impactam diretamente na qualidade e escalabilidade dos projetos. Sou movido pela busca
-					constante por soluções inteligentes, inovação e excelência técnica.
-				</p>
-			</div> -->
+			<div class="mx-auto flex w-full max-w-md flex-col items-center gap-8">
+				<h2 class="f2 text-center">Serviços</h2>
+			</div>
 			<div class="mx-auto grid w-full gap-5 max-lg:max-w-2xl lg:grid-cols-3">
 				@for (about of abouts; track $index) {
-					<div class="bg-card/20 hover:bg-card/50 flex w-full flex-col items-center gap-5 rounded-md border p-6 transition-all sm:p-8">
+					<div
+						class="bg-card/20 hover:bg-card/50 flex w-full flex-col items-center gap-5 rounded-md border p-6 transition-shadow hover:shadow-lg sm:p-8"
+					>
 						<div class="flex flex-col items-center">
 							<div class="bg-background flex size-14 items-center justify-center rounded-full border">
 								<app-icon [icon]="about.icon" class="text-3xl" />
@@ -66,7 +62,7 @@
 	}
 </app-section>
 
-<app-section #sectionExperiences>
+<!-- <app-section #sectionExperiences>
 	@defer (on viewport(sectionExperiences)) {
 		<div class="flex flex-col gap-8 sm:gap-16">
 			<div class="mx-auto flex w-full max-w-md flex-col items-center gap-8">
@@ -90,14 +86,14 @@
 		</div>
 	}
 </app-section>
-
+ -->
 <app-section #sectionProjetos class="relative dark:bg-[radial-gradient(27.27%_35.9%_at_50%_0%,#131315_0%,var(--background)_100%)]" [full]="true">
 	@defer (on viewport(sectionProjetos)) {
 		<div class="flex flex-col gap-8 sm:gap-16">
 			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8 px-16 max-sm:px-4 xl:px-8">
-				<h2 class="f2 text-center">Projetos de destaque</h2>
+				<h2 class="f2 text-center">Portfólio</h2>
 				<p class="f3 text-muted-foreground text-center">
-					Conheça alguns projetos em que trabalhei e descubra como foi minha participação e os resultados.
+					Conheça meu trabalho através de casos reais: sites, plataformas e aplicativos que ajudei a construir.
 				</p>
 			</div>
 			<app-carousel [slides]="projects()" />
@@ -110,7 +106,7 @@
 		<div class="flex flex-col gap-8 sm:gap-16">
 			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8">
 				<h2 class="f2 text-center">Tecnologias</h2>
-				<p class="f3 text-muted-foreground text-center">Veja algumas tecnologias e ferramentas que fazem parte do meu stack de trabalho!</p>
+				<p class="f3 text-muted-foreground text-center">Veja algumas das ferramentas e tecnologias que utilizo no processo de desenvolvimento.</p>
 			</div>
 			<div class="grid">
 				<ul class="inline-flex flex-wrap justify-center gap-5">

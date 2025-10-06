@@ -23,27 +23,6 @@ const profile: IProfileData = {
 	address: 'Rua Manoel da Silva Raposo, 2405 - São Lourenço',
 	city: 'Abaetetuba/PA - 68440-000, Brasil',
 
-	experiences: [
-		{
-			company: 'Profissional autônomo · Freelance',
-			office: 'Desenvolvedor Web Full-Stack',
-			period: 'abr de 2021 · atual',
-			local: 'Remoto'
-		},
-		{
-			company: 'inLoco Solutions · PJ',
-			office: 'Desenvolvedor Web Front-End',
-			period: 'mai de 2024 - mar de 2025',
-			local: 'Remoto'
-		},
-		{
-			company: 'SambliTech · PJ',
-			office: 'Desenvolvedor Web Full-Stack',
-			period: 'abr de 2021 - fev de 2024',
-			local: 'Presencial'
-		}
-	],
-
 	stacks: {
 		basic: [
 			{
