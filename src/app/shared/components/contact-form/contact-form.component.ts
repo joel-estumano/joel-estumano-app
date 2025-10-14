@@ -89,7 +89,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
 		this.contactForm = this.fb.group({
 			name: new FormControl({ value: '', disabled: this.disabled() }, [Validators.required, FormUtils.notEmpty]),
 			email: new FormControl({ value: '', disabled: this.disabled() }, [Validators.required, Validators.email]),
-			whatsapp: new FormControl({ value: '', disabled: this.disabled() }, [Validators.required, FormUtils.notEmpty]),
+			whatsapp: new FormControl({ value: '', disabled: this.disabled() }, []),
 			message: new FormControl({ value: '', disabled: this.disabled() }, [Validators.required, FormUtils.notEmpty])
 		});
 
@@ -138,7 +138,7 @@ export class ContactFormComponent implements OnInit, OnDestroy {
 				...this.contactForm.value,
 				recaptcha: recaptcha
 			};
-			this.httpService.post(`contacts/add`, payload).subscribe({
+			this.httpService.post('contacts', payload).subscribe({
 				next: () => {
 					this.contactForm.reset();
 					this.launchDialog();
