@@ -1,7 +1,7 @@
 <form class="relative flex w-full flex-col gap-4" [formGroup]="contactForm" (ngSubmit)="captchaRef.execute()">
 	<re-captcha class="absolute top-0" size="invisible" #captchaRef="reCaptcha" [siteKey]="siteKey" (resolved)="$event && onSubmit($event)"></re-captcha>
 	<div>
-		<label for="name">Seu nome</label>
+		<label for="name">Seu nome <span class="text-destructive ms-1 dark:text-[#ffc406]">*</span></label>
 		<input
 			type="text"
 			[readOnly]="this.disabled()"
@@ -12,7 +12,7 @@
 	</div>
 	<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 		<div>
-			<label for="email">E-mail</label>
+			<label for="email">E-mail <span class="text-destructive ms-1 dark:text-[#ffc406]">*</span></label>
 			<input
 				type="email"
 				[readOnly]="this.disabled()"
@@ -33,7 +33,7 @@
 		</div>
 	</div>
 	<div>
-		<label for="message">Sua mensagem</label>
+		<label for="message">Sua mensagem <span class="text-destructive ms-1 dark:text-[#ffc406]">*</span></label>
 		<div class="editor relative">
 			<ngx-editor-menu [editor]="editor" [toolbar]="toolbar" [colorPresets]="colorPresets" [disabled]="this.disabled()"> </ngx-editor-menu>
 			<ngx-editor
