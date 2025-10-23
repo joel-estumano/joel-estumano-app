@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { SectionComponent } from '@shared/components/section/section.component';
 
 @Component({
 	selector: 'app-blog',
-	imports: [SectionComponent],
+	imports: [],
 	templateUrl: './blog.component.html'
 })
 export class BlogComponent {}
