@@ -42,6 +42,6 @@ export class SectionComponent {
 	 * @see cn
 	 */
 	protected mergeClass = computed((): string => {
-		return cn('w-full h-full py-16 sm:py-24 xxl:py-32', this.class() as string);
+		return cn('flex w-full h-full py-20 sm:py-24 xl:py-32', this.class() as string);
 	});
 }
