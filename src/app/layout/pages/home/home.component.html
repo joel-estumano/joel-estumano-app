@@ -37,27 +37,23 @@
 
 <app-section #sectionServices>
 	@defer (on viewport(sectionServices)) {
-		<div class="flex flex-col gap-8 sm:gap-16">
-			<div class="mx-auto flex w-full max-w-md flex-col items-center gap-8">
-				<h2 class="f2 text-center">Serviços</h2>
-			</div>
-			<div class="mx-auto grid w-full gap-5 max-lg:max-w-2xl lg:grid-cols-3">
-				@for (about of abouts; track $index) {
-					<div
-						class="bg-card/20 hover:bg-card/50 flex w-full flex-col items-center gap-5 rounded-md border p-6 transition-shadow hover:shadow-lg sm:p-8"
-					>
-						<div class="flex flex-col items-center">
-							<div class="bg-background flex size-14 items-center justify-center rounded-full border">
-								<app-icon [icon]="about.icon" class="text-3xl" />
-							</div>
+		<div class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-center">
+			<h2 class="f2 text-center">Serviços</h2>
+		</div>
+		<div class="mx-auto grid w-full gap-5 max-lg:max-w-md lg:grid-cols-3">
+			@for (about of abouts; track $index) {
+				<div class="bg-card/20 hover:bg-card/50 flex w-full flex-col items-center gap-5 rounded-md border p-6 transition-shadow hover:shadow-lg sm:p-8">
+					<div class="flex flex-col items-center">
+						<div class="bg-background flex size-14 items-center justify-center rounded-full border">
+							<app-icon [icon]="about.icon" class="text-3xl" />
 						</div>
-						<p class="f3 text-foreground! text-center">{{ about.title }}</p>
-						<p class="text-muted-foreground text-center">
-							{{ about.description }}
-						</p>
 					</div>
-				}
-			</div>
+					<p class="f3 text-foreground! text-center">{{ about.title }}</p>
+					<p class="text-muted-foreground text-center">
+						{{ about.description }}
+					</p>
+				</div>
+			}
 		</div>
 	}
 </app-section>
@@ -89,51 +85,43 @@
  -->
 <app-section #sectionProjetos class="relative dark:bg-[radial-gradient(27.27%_35.9%_at_50%_0%,#131315_0%,var(--background)_100%)]" [full]="true">
 	@defer (on viewport(sectionProjetos)) {
-		<div class="flex flex-col gap-8 sm:gap-16">
-			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8 px-16 max-sm:px-4 xl:px-8">
-				<h2 class="f2 text-center">Portfólio</h2>
-				<p class="f3 text-muted-foreground text-center">
-					Conheça meu trabalho através de casos reais: sites, plataformas e aplicativos que ajudei a construir.
-				</p>
-			</div>
-			<app-carousel [slides]="projects()" />
+		<div class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-center px-4 sm:px-16 xl:px-8">
+			<h2 class="f2 mb-8 text-center">Portfólio</h2>
+			<p class="f3 text-muted-foreground text-center">
+				Conheça meu trabalho através de casos reais: sites, plataformas e aplicativos que ajudei a construir.
+			</p>
 		</div>
+		<app-carousel [slides]="projects()" />
 	}
 </app-section>
 
 <app-section #sectionTecnologias>
 	@defer (on viewport(sectionTecnologias)) {
-		<div class="flex flex-col gap-8 sm:gap-16">
-			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8">
-				<h2 class="f2 text-center">Tecnologias</h2>
-				<p class="f3 text-muted-foreground text-center">Veja algumas das ferramentas e tecnologias que utilizo no processo de desenvolvimento.</p>
-			</div>
-			<div class="grid">
-				<ul class="inline-flex flex-wrap justify-center gap-5">
-					@for (stack of stacks(); track $index) {
-						<li class="flex w-fit shrink-0 items-center opacity-75 md:min-w-40">
-							<app-icon [icon]="stack.iconName" class="text-[16px] sm:text-[24px]" />
-							<app-link size="sm" variant="link" [title]="stack.docs" [href]="stack.docs" target="_blank" classes="max-sm:ps-1.5">
-								{{ stack.name }}
-							</app-link>
-						</li>
-					}
-				</ul>
-			</div>
+		<div class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-center">
+			<h2 class="f2 mb-8 text-center">Tecnologias</h2>
+			<p class="f3 text-muted-foreground text-center">Veja algumas das ferramentas e tecnologias que utilizo no processo de desenvolvimento.</p>
 		</div>
+		<ul class="inline-flex flex-wrap justify-center gap-5">
+			@for (stack of stacks(); track $index) {
+				<li class="flex w-fit shrink-0 items-center opacity-75 md:min-w-40">
+					<app-icon [icon]="stack.iconName" class="text-[16px] sm:text-[24px]" />
+					<app-link size="sm" variant="link" [title]="stack.docs" [href]="stack.docs" target="_blank" classes="max-sm:ps-1.5">
+						{{ stack.name }}
+					</app-link>
+				</li>
+			}
+		</ul>
 	}
 </app-section>
 
 <app-section #sectionGetInTouch>
 	@defer (on viewport(sectionGetInTouch)) {
-		<div class="flex flex-col gap-8 sm:gap-16">
-			<div class="mx-auto flex max-w-2xl flex-col items-center gap-8">
-				<h2 class="f2 text-center">Contato</h2>
-				<p class="f3 text-muted-foreground text-center">
-					Que bom que você chegou até aqui! Se quiser saber mais sobre mim e meu trabalho, estou sempre disponível para uma boa conversa. Me manda uma
-					mensagem e vamos trocar uma ideia!
-				</p>
-			</div>
+		<div class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-center">
+			<h2 class="f2 mb-8 text-center">Contato</h2>
+			<p class="f3 text-muted-foreground text-center">
+				Que bom que você chegou até aqui! Se quiser saber mais sobre mim e meu trabalho, estou sempre disponível para uma boa conversa. Me manda uma
+				mensagem e vamos trocar uma ideia!
+			</p>
 		</div>
 		<div class="flex justify-center">
 			<app-router-link variant="default" title="Fale comigo!" routerLink="/contato" target="_self" size="lg">

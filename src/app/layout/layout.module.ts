@@ -50,6 +50,11 @@ const routes: Routes = [
 				title: 'Home'
 			},
 			{
+				path: 'blog',
+				loadComponent: () => import('./pages/blog/blog.component').then((c) => c.BlogComponent),
+				title: 'Blog'
+			},
+			{
 				path: 'contato',
 				loadComponent: () => import('./pages/contact/contact.component').then((c) => c.ContactComponent),
 				title: 'Contato',
@@ -62,12 +67,12 @@ const routes: Routes = [
 			},
 			{
 				path: 'not-found',
-				loadComponent: () => import('./pages/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
+				loadComponent: () => import('./pages/not-found-page/not-found-page.component').then((c) => c.NotFoundPageComponent),
 				title: 'Não encontrado'
 			},
 			{
 				path: 'error',
-				loadComponent: () => import('./pages/error-page/error-page.component').then((m) => m.ErrorPageComponent),
+				loadComponent: () => import('./pages/error-page/error-page.component').then((c) => c.ErrorPageComponent),
 				title: 'Erro'
 			},
 			{ path: '**', redirectTo: 'not-found' }

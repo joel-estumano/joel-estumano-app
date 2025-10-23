@@ -19,6 +19,7 @@ export class NavBarComponent implements OnInit {
 
 	protected links = [
 		{ label: 'Home', path: '/', exact: true },
+		{ label: 'Blog', path: '/blog', exact: true },
 		{ label: 'Contato', path: '/contato', exact: true }
 	];
 
