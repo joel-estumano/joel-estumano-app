@@ -15,7 +15,7 @@ export class BlogComponent implements OnInit {
 		const rawPosts = [
 			{
 				src: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7387143803796623360',
-				height: '1378',
+				height: '1412',
 				width: '504',
 				title: 'Publicação incorporada',
 				loading: true
