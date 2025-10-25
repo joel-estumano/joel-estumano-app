@@ -46,12 +46,12 @@
 					class="group/img-item bg-background/75 hover:bg-background/85 relative flex w-full flex-col items-center gap-5 overflow-hidden rounded-md border p-6 transition-all duration-300 hover:shadow-lg sm:p-8"
 				>
 					<div class="flex flex-col items-center">
-						<div class="bg-background flex size-14 items-center justify-center rounded-full border">
+						<div class="bg-background/5 flex size-14 items-center justify-center rounded-full border">
 							<app-icon [icon]="service.icon" class="text-3xl" />
 						</div>
 					</div>
 					<p class="f3 text-foreground! text-center">{{ service.title }}</p>
-					<p class="text-muted-foreground text-center">
+					<p class="text-accent-foreground dark:text-muted-foreground text-center">
 						{{ service.description }}
 					</p>
 					<div class="absolute inset-0 -z-10">
@@ -59,7 +59,7 @@
 							data-test-id="image"
 							[src]="'img/service-sample-' + $index + '.jpg'"
 							class="pointer-events-none h-full w-full object-cover object-center transition-transform duration-300 group-hover/img-item:scale-105"
-							[alt]=""
+							[alt]="'Imagem plano de fundo do card ' + service.title"
 							loading="eager"
 							fill
 						/>
