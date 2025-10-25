@@ -18,7 +18,7 @@ import { SectionComponent } from '@shared/components/section/section.component';
 export class HomeComponent {
 	protected links: { href: string; title: string; icon: IconName }[] = [];
 
-	protected abouts: { title: string; description: string; icon: IconName }[] = [
+	protected services: { title: string; description: string; icon: IconName }[] = [
 		{
 			title: 'Websites',
 			description: 'Criação de sites personalizados para você ou seu negócio.',
@@ -34,23 +34,6 @@ export class HomeComponent {
 			description: 'Criação de aplicativos móveis para Android e iOS',
 			icon: 'heroDevicePhoneMobile'
 		}
-		/* {
-			title: 'Desenvolvimento web',
-			description:
-				'“Desenvolvo aplicações completas, responsivas, acessíveis e de alto desempenho, construídas com tecnologias modernas e foco na qualidade.”',
-			icon: 'heroCodeBracket'
-		},
-		{
-			title: 'Análise e Estratégia',
-			description: '“Atuo na identificação e entendimento de demandas técnicas ou de negócio, analisando necessidades e propondo soluções eficientes.”',
-			icon: 'heroPresentationChartLine'
-		},
-		{
-			title: 'Cultura de Aprendizado',
-			description:
-				'“Contribuo com o desenvolvimento de pessoas por meio de orientação técnica, troca de experiências e apoio no processo de aprendizado.”',
-			icon: 'heroBookOpen'
-		} */
 	];
 
 	protected projects = signal<IComponentOutletData<CardProjectComponent, IProjectData>[]>([]);
