@@ -2,7 +2,7 @@ import { cn } from '@shared/utils';
 import { Component, input } from '@angular/core';
 import { NgClass } from '@angular/common';
 
-type Variant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+type Variant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link' | 'custom';
 
 @Component({
 	selector: 'app-link',
@@ -35,7 +35,8 @@ export class LinkComponent {
 			outline: 'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
 			secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
 			ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-			link: 'text-primary relative cursor-pointer text-sm custom-underline'
+			link: 'text-primary relative cursor-pointer text-sm custom-underline',
+			custom: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90 dark:border dark:text-white dark:bg-input/30 dark:border-input dark:hover:bg-input/50'
 		};
 		return variants[this.variant()] || variants['default'];
 	}
