@@ -13,7 +13,7 @@
 			</p>
 		</div>
 		<app-link
-			variant="default"
+			variant="custom"
 			title="Seguir no LinkedIn"
 			href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=joel-estumano"
 			target="_blank"
@@ -96,6 +96,11 @@
 </app-section>
  -->
 <app-section #sectionProjetos class="relative dark:bg-[radial-gradient(27.27%_35.9%_at_50%_0%,#131315_0%,var(--background)_100%)]" [full]="true">
+	<div
+		aria-hidden="true"
+		class="center pointer-events-none absolute top-0 left-1/2 h-px w-[300px] max-w-full -translate-x-1/2 -translate-y-1/2"
+		style="background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0) 0%, rgba(143, 143, 143, 0.67) 50%, rgba(0, 0, 0, 0) 100%)"
+	></div>
 	@defer (on viewport(sectionProjetos)) {
 		<div class="mx-auto mb-16 flex w-full max-w-2xl flex-col items-center px-4 sm:px-16 xl:px-8">
 			<h2 class="f2 mb-8 text-center">Portfólio</h2>
@@ -136,7 +141,7 @@
 			</p>
 		</div>
 		<div class="flex justify-center">
-			<app-router-link variant="default" title="Fale comigo!" routerLink="/contato" target="_self" size="lg">
+			<app-router-link variant="custom" title="Fale comigo!" routerLink="/contato" target="_self" size="lg">
 				<app-icon icon="heroChatBubbleLeftRight" />
 				Fale comigo!
 			</app-router-link>

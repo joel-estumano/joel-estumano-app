@@ -12,7 +12,7 @@
 				<ng-container *ngComponentOutlet="dialog.component; inputs: dialog.inputs"></ng-container>
 				@if (!dialog.hideCloseButton) {
 					<footer class="mt-4 inline-flex w-full justify-center">
-						<app-button title="Fechar diálogo" (click)="close($index)">Fechar</app-button>
+						<app-button variant="custom" title="Fechar diálogo" (click)="close($index)">Fechar</app-button>
 					</footer>
 				}
 			</div>
