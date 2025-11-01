@@ -1,15 +1,15 @@
 <div
-	class="group/img-card group/highlight-card bg-background/75 hover:bg-background/85 relative flex h-full w-full flex-col items-center gap-5 overflow-hidden rounded-md border p-6 transition-all duration-300 hover:shadow-lg sm:p-8"
+	class="group/img-card group/highlight-card bg-background/75 hover:bg-background/85 relative flex h-full w-full flex-col items-center gap-5 overflow-hidden rounded-md border p-6 transition-all duration-300 sm:p-8"
 >
 	<div
 		aria-hidden="true"
-		class="center pointer-events-none absolute top-[.04rem] left-1/2 h-px w-[60%] max-w-full -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover/highlight-card:opacity-100 group-hover/highlight-card:md:ml-16"
-		[ngStyle]="{ 'background-image': highlightGradient() }"
+		class="center highlight-border pointer-events-none absolute top-[.04rem] left-1/2 hidden h-px w-[60%] max-w-full -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover/highlight-card:opacity-100 group-hover/highlight-card:md:ml-16 dark:block"
+		[ngStyle]="{ '--highlight-border-color': highlight() }"
 	></div>
 	<div
 		aria-hidden="true"
-		class="center pointer-events-none absolute -bottom-[1px] left-1/2 h-px w-[60%] max-w-full translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity group-hover/highlight-card:opacity-100 md:right-4 group-hover/highlight-card:md:left-auto"
-		[ngStyle]="{ 'background-image': highlightGradient() }"
+		class="center highlight-border pointer-events-none absolute -bottom-[1px] left-1/2 hidden h-px w-[60%] max-w-full -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover/highlight-card:opacity-100 md:right-4 group-hover/highlight-card:md:left-auto dark:block"
+		[ngStyle]="{ '--highlight-border-color': highlight() }"
 	></div>
 	<div class="flex size-14 items-center justify-center rounded-full">
 		<app-icon data-test-id="card-icon" [icon]="icon()" class="text-4xl" />
