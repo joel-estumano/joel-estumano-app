@@ -1,6 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { IconName, IconComponent } from '../icon/icon.component';
-import { NgClass, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage, NgStyle } from '@angular/common';
 
 /**
  * Componente de cartão reutilizável.
@@ -19,7 +19,7 @@ import { NgClass, NgOptimizedImage } from '@angular/common';
  *
  * @selector app-card
  * @remarks
- * Este componente importa NgClass e um IconComponent para renderização de estilos e ícones.
+ * Este componente importa NgStyle e um IconComponent para renderização de estilos e ícones.
  */
 
 /**
@@ -73,7 +73,7 @@ import { NgClass, NgOptimizedImage } from '@angular/common';
  */
 @Component({
 	selector: 'app-card',
-	imports: [NgClass, NgOptimizedImage, IconComponent],
+	imports: [NgOptimizedImage, IconComponent, NgStyle],
 	templateUrl: './card.component.html'
 })
 export class CardComponent {
@@ -82,4 +82,8 @@ export class CardComponent {
 	description = input<string>();
 	img = input<string>('img/service-sample-0.jpg');
 	highlight = input<string>();
+
+	highlightGradient = computed(() => {
+		return `linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0) 0%, ${this.highlight()}, rgba(0,0,0,0) 100%)`;
+	});
 }
