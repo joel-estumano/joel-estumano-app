@@ -42,47 +42,13 @@
 		</div>
 		<div class="mx-auto grid w-full gap-5 max-lg:max-w-md lg:grid-cols-3">
 			@for (service of services; track $index) {
-				<div
-					class="group/img-item group/border-item bg-background/75 hover:bg-background/85 relative flex w-full flex-col items-center gap-5 overflow-hidden rounded-md border p-6 transition-all duration-300 hover:shadow-lg sm:p-8"
-				>
-					<div
-						aria-hidden="true"
-						class="center pointer-events-none absolute top-[.04rem] left-1/2 h-px w-[60%] max-w-full -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 group-hover/border-item:opacity-100 group-hover/border-item:md:ml-16"
-						[ngClass]="{
-							'dark:bg-[linear-gradient(90deg,_rgba(0,0,0,0)_0%,_rgba(255,255,255,0)_0%,_var(--chart-1),_rgba(0,0,0,0)_100%)]': $index === 0,
-							'dark:bg-[linear-gradient(90deg,_rgba(0,0,0,0)_0%,_rgba(255,255,255,0)_0%,_var(--chart-2),_rgba(0,0,0,0)_100%)]': $index === 1,
-							'dark:bg-[linear-gradient(90deg,_rgba(0,0,0,0)_0%,_rgba(255,255,255,0)_0%,_var(--chart-5),_rgba(0,0,0,0)_100%)]': $index === 2
-						}"
-					></div>
-					<div
-						aria-hidden="true"
-						class="center pointer-events-none absolute -bottom-[1px] left-1/2 h-px w-[60%] max-w-full translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-300 group-hover/border-item:opacity-100 md:right-4 group-hover/border-item:md:left-auto"
-						[ngClass]="{
-							'dark:bg-[linear-gradient(90deg,_rgba(0,0,0,0)_0%,_rgba(255,255,255,0)_0%,_var(--chart-1),_rgba(0,0,0,0)_100%)]': $index === 0,
-							'dark:bg-[linear-gradient(90deg,_rgba(0,0,0,0)_0%,_rgba(255,255,255,0)_0%,_var(--chart-2),_rgba(0,0,0,0)_100%)]': $index === 1,
-							'dark:bg-[linear-gradient(90deg,_rgba(0,0,0,0)_0%,_rgba(255,255,255,0)_0%,_var(--chart-5),_rgba(0,0,0,0)_100%)]': $index === 2
-						}"
-					></div>
-					<div class="flex flex-col items-center">
-						<div class="bg-background/5 flex size-14 items-center justify-center rounded-full border">
-							<app-icon [icon]="service.icon" class="text-3xl" />
-						</div>
-					</div>
-					<p class="f3 text-foreground! text-center">{{ service.title }}</p>
-					<p class="text-accent-foreground dark:text-muted-foreground text-center">
-						{{ service.description }}
-					</p>
-					<div class="absolute inset-0 -z-10">
-						<img
-							data-test-id="image"
-							[src]="'img/service-sample-' + $index + '.jpg'"
-							class="pointer-events-none h-full w-full object-cover object-center transition-transform duration-300 group-hover/img-item:scale-105"
-							[alt]="'Imagem plano de fundo do card ' + service.title"
-							loading="eager"
-							fill
-						/>
-					</div>
-				</div>
+				<app-card
+					[icon]="service.icon"
+					[title]="service.title"
+					[description]="service.description"
+					[img]="service.img"
+					[highlight]="service.highlight"
+				/>
 			}
 		</div>
 	}
