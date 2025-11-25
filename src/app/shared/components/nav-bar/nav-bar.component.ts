@@ -1,11 +1,12 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit, signal, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { DrawerComponent } from '../drawer/drawer.component';
 import { IconComponent } from '@shared/components/icon/icon.component';
 import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { RouterLinkComponent } from '@shared/ui/router-link/router-link.component';
 import { SwitchComponent } from '../switch/switch.component';
+import { ThemeService } from '@core/services/theme/theme.service';
 
 @Component({
 	selector: 'app-nav-bar',
@@ -17,12 +18,19 @@ export class NavBarComponent implements OnInit {
 	protected screenIsSmall = signal<boolean>(false);
 	protected drawerIsOpen = signal<boolean>(false);
 
+	private readonly themeService = inject(ThemeService);
+	isDarkTheme = signal<boolean>(true);
+
 	protected links = [
 		{ label: 'Home', path: '/', exact: true },
 		{ label: 'Contato', path: '/contato', exact: true }
 	];
 
-	constructor(private breakpointObserver: BreakpointObserver) {}
+	constructor(private breakpointObserver: BreakpointObserver) {
+		this.themeService.change().subscribe(() => {
+			this.isDarkTheme.set(this.themeService.isTheme('dark'));
+		});
+	}
 
 	ngOnInit() {
 		this.breakpointObserver.observe(['(max-width: 640px)']).subscribe((result) => {

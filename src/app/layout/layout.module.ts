@@ -61,16 +61,11 @@ const routes: Routes = [
 				title: 'Projeto'
 			},
 			{
-				path: 'not-found',
-				loadComponent: () => import('./pages/not-found-page/not-found-page.component').then((c) => c.NotFoundPageComponent),
-				title: 'Não encontrado'
-			},
-			{
 				path: 'error',
 				loadComponent: () => import('./pages/error-page/error-page.component').then((c) => c.ErrorPageComponent),
 				title: 'Erro'
 			},
-			{ path: '**', redirectTo: 'not-found' }
+			{ path: '**', redirectTo: '/' }
 		]
 	}
 ];

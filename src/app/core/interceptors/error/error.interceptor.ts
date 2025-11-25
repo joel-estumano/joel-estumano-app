@@ -10,9 +10,6 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 	return next(req).pipe(
 		catchError((error: HttpErrorResponse) => {
 			switch (error.status) {
-				case 404:
-					router.navigate(['/not-found'], { state: { status: error.status } });
-					break;
 				default:
 					router.navigate(['/error'], { state: { status: error.status } });
 					break;

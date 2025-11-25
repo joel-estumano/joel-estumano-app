@@ -33,10 +33,6 @@ export const serverRoutes: ServerRoute[] = [
 		} // doc reference: https://angular.dev/guide/hybrid-rendering
 	},
 	{
-		path: 'not-found',
-		renderMode: RenderMode.Server
-	},
-	{
 		path: 'error',
 		renderMode: RenderMode.Server
 	},
