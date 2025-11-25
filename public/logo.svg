@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+ width="512pt" height="512pt" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+
+  <defs>
+    <mask id="invert">
+      <!-- fundo visível -->
+      <rect width="100%" height="100%" fill="white"/>
+      <!-- paths recortam -->
+      <g transform="translate(0,512) scale(0.1,-0.1)" fill="black">
+        <path d="M0 2560 l0 -2560 2560 0 2560 0 0 2560 0 2560 -2560 0 -2560 0 0
+        -2560z m4289 1683 c232 -113 421 -209 420 -212 0 -3 -373 -760 -828 -1681
+        l-827 -1675 -533 -3 c-316 -1 -531 2 -529 7 17 48 1863 3771 1869 3771 4 0
+        197 -93 428 -207z m-1789 -1535 c0 -4 -226 -464 -502 -1022 l-501 -1016 -529
+        0 c-290 0 -528 4 -528 8 0 5 241 497 536 1093 295 596 567 1148 605 1227 l68
+        142 426 -212 c234 -117 425 -216 425 -220z"/>
+      </g>
+    </mask>
+  </defs>
+
+  <!-- retângulo preto, recortado pelos paths -->
+  <rect width="100%" height="100%" fill="black" mask="url(#invert)"/>
+</svg>

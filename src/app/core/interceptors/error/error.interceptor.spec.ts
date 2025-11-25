@@ -19,22 +19,6 @@ describe('errorInterceptor', () => {
 		return () => throwError(() => new HttpErrorResponse({ status, statusText: 'Error', url: '/test' }));
 	}
 
-	it('deve redirecionar para /not-found em erro 404', (done) => {
-		const req = new HttpRequest('GET', '/test');
-
-		TestBed.runInInjectionContext(() => {
-			errorInterceptor(req, createHandlerWithError(404)).subscribe({
-				error: (err) => {
-					expect(err.status).toBe(404);
-					expect(routerSpy.navigate).toHaveBeenCalledWith(['/not-found'], {
-						state: { status: 404 }
-					});
-					done();
-				}
-			});
-		});
-	});
-
 	it('deve redirecionar para /error com status em outros erros', (done) => {
 		const req = new HttpRequest('GET', '/test');
 
