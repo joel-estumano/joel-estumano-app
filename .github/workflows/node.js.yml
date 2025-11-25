@@ -16,7 +16,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [18.x, 20.x, 22.x] # Executa o job em múltiplas versões do Node.js
+                node-version: [22.x] # Executa o job em múltiplas versões do Node.js
                 # Veja a programação de lançamentos suportados do Node.js em https://nodejs.org/en/about/releases/
 
         steps:
