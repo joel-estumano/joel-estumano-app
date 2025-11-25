@@ -21,10 +21,6 @@ export const serverRoutes: ServerRoute[] = [
 		renderMode: RenderMode.Server
 	},
 	{
-		path: 'blog',
-		renderMode: RenderMode.Server
-	},
-	{
 		path: 'contato',
 		renderMode: RenderMode.Client
 	},

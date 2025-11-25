@@ -13,7 +13,7 @@ export class NotFoundPageComponent {
 	status = signal<string>('');
 
 	constructor(private router: Router) {
-		const nav = this.router.getCurrentNavigation();
+		const nav = this.router.currentNavigation();
 		this.status.set(nav?.extras?.state?.['status']);
 	}
 }

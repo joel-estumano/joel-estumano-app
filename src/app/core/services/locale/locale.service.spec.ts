@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { LOCALE_ID, Renderer2, RendererFactory2 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { LOCALE_ID, Renderer2, RendererFactory2, DOCUMENT } from '@angular/core';
+
 import { LocaleService } from './locale.service';
 
 describe('LocaleService', () => {
