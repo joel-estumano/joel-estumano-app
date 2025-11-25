@@ -1,7 +1,6 @@
-import { Component, effect, inject, InjectionToken, Renderer2, RendererStyleFlags2, signal, WritableSignal } from '@angular/core';
+import { Component, effect, inject, InjectionToken, Renderer2, RendererStyleFlags2, signal, WritableSignal, DOCUMENT } from '@angular/core';
 import { IDialogComponentOutletData as IDialogComponentOutletDataBase } from '../interfaces/dialog-component-outlet-data';
 import { RootDialogService } from '../service/root-dialog.service';
-import { DOCUMENT } from '@angular/common';
 
 // Criação de um token de injeção para a janela global (window)
 export const WINDOW = new InjectionToken<Window>('window.token', {

@@ -19,7 +19,7 @@ export class ErrorPageComponent {
 		private router: Router,
 		private location: Location
 	) {
-		const nav = this.router.getCurrentNavigation();
+		const nav = this.router.currentNavigation();
 		this.status.set(nav?.extras?.state?.['status']);
 	}
 

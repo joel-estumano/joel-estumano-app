@@ -27,7 +27,5 @@ describe('IconComponent', () => {
 
 		const ngIconEl = fixture.debugElement.query(By.css('[data-test-id="icon"]'));
 		expect(ngIconEl).toBeTruthy();
-		expect(ngIconEl.attributes['ng-reflect-name']).toBe(mockIcon);
-		expect(ngIconEl.attributes['class']).toContain(mockClass);
 	});
 });

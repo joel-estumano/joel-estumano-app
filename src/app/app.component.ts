@@ -1,5 +1,5 @@
-import { Component, inject, Renderer2 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, inject, Renderer2, DOCUMENT } from '@angular/core';
+
 import { LocaleService } from '@core/services/locale/locale.service';
 import { Meta } from '@angular/platform-browser';
 import { PROFILE } from './core/tokens';
