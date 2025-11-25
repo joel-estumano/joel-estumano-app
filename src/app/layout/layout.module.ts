@@ -50,11 +50,6 @@ const routes: Routes = [
 				title: 'Home'
 			},
 			{
-				path: 'blog',
-				loadComponent: () => import('./pages/blog/blog.component').then((c) => c.BlogComponent),
-				title: 'Blog'
-			},
-			{
 				path: 'contato',
 				loadComponent: () => import('./pages/contact/contact.component').then((c) => c.ContactComponent),
 				title: 'Contato',
