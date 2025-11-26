@@ -59,7 +59,7 @@ export class AppComponent {
 			},
 			{
 				property: 'og:image',
-				content: 'https://www.joelestumano.com/banner-joelestumano.png'
+				content: 'https://www.joelestumano.com/brand.png'
 			},
 			{
 				property: 'og:type',
