@@ -1,3 +1,52 @@
-.highlight-border {
-	@apply bg-[linear-gradient(90deg,_rgba(0,0,0,0)_0%,_rgba(255,255,255,0)_0%,_var(--highlight-border-color),_rgba(0,0,0,0)_100%)];
+/* garante que o container possa receber o pseudo-elemento */
+.card-element {
+	position: relative;
+	overflow: hidden;
+}
+
+/* Pseudo-elemento que desenha um anel arredondado na borda */
+.card-element::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+
+	/* cria um anel usando máscara: só mostra a faixa da borda */
+	/* ajuste a espessura trocando 2px/4px abaixo */
+	-webkit-mask:
+		radial-gradient(farthest-side, #0000 calc(100% - 2px), #000 0) content-box,
+		linear-gradient(#000 0 0) padding-box;
+	mask:
+		radial-gradient(farthest-side, transparent calc(100% - 2px), black 0) content-box,
+		linear-gradient(black 0 0) padding-box;
+
+	/* aqui usamos a variável passada pelo ngStyle */
+	background: conic-gradient(from var(--angle, 0deg), transparent 0%, var(--highlight-border-color) 10%, transparent 20%);
+
+	opacity: 0;
+	transition: opacity 0s ease-out; /* saída imediata */
+	pointer-events: none;
+	z-index: -30;
+}
+
+/* animação suave do ângulo em anti-horário */
+@property --angle {
+	syntax: "<angle>";
+	inherits: false;
+	initial-value: 0deg;
+}
+
+@keyframes spin-anticlockwise {
+	from {
+		--angle: 0deg;
+	}
+	to {
+		--angle: 360deg;
+	}
+}
+
+/* ativa animação e mostra o anel no hover */
+.card-element:hover::after {
+	opacity: 1;
+	animation: spin-anticlockwise 6s linear infinite;
+	transition: opacity 1s ease-in; /* entrada suave */
 }
