@@ -1,31 +1,23 @@
-<div
-	class="group/img-card group/highlight-card bg-background/75 hover:bg-background/85 relative flex h-full w-full flex-col items-center gap-5 overflow-hidden rounded-md border p-6 transition-all duration-300 sm:p-8"
->
+<div class="card-element h-full w-full rounded-md p-[1px]" [ngStyle]="{ '--highlight-border-color': highlight() }">
 	<div
-		aria-hidden="true"
-		class="center highlight-border pointer-events-none absolute top-[.04rem] left-1/2 hidden h-px w-[60%] max-w-full -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover/highlight-card:opacity-100 group-hover/highlight-card:md:ml-16 dark:block"
-		[ngStyle]="{ '--highlight-border-color': highlight() }"
-	></div>
-	<div
-		aria-hidden="true"
-		class="center highlight-border pointer-events-none absolute -bottom-[1px] left-1/2 hidden h-px w-[60%] max-w-full -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity group-hover/highlight-card:opacity-100 md:right-4 group-hover/highlight-card:md:left-auto dark:block"
-		[ngStyle]="{ '--highlight-border-color': highlight() }"
-	></div>
-	<div class="flex size-14 items-center justify-center rounded-full">
-		<app-icon data-test-id="card-icon" [icon]="icon()" class="text-4xl" />
-	</div>
-	<p data-test-id="card-title" class="f3 text-foreground! text-center">{{ title() }}</p>
-	<p data-test-id="card-description" class="text-accent-foreground dark:text-muted-foreground line-clamp-3 text-center">
-		{{ description() }}
-	</p>
-	<div class="absolute inset-0 -z-10">
-		<img
-			data-test-id="card-img"
-			[ngSrc]="img()"
-			class="pointer-events-none h-full w-full object-cover object-center transition-transform duration-300 group-hover/img-card:scale-105"
-			[alt]="'Card image ' + title()"
-			loading="eager"
-			fill
-		/>
+		class="group/img-card group/highlight-card bg-background/75 hover:bg-background/85 relative flex h-full w-full flex-col items-center gap-5 overflow-hidden rounded-md border p-6 transition-all duration-300 sm:p-8"
+	>
+		<div class="flex size-14 items-center justify-center rounded-full">
+			<app-icon data-test-id="card-icon" [icon]="icon()" class="text-4xl" />
+		</div>
+		<p data-test-id="card-title" class="f3 text-foreground! text-center">{{ title() }}</p>
+		<p data-test-id="card-description" class="text-accent-foreground dark:text-muted-foreground line-clamp-3 text-center">
+			{{ description() }}
+		</p>
+		<div class="absolute inset-0 -z-10">
+			<img
+				data-test-id="card-img"
+				[ngSrc]="img()"
+				class="pointer-events-none h-full w-full object-cover object-center transition-transform duration-300 group-hover/img-card:scale-105"
+				[alt]="'Card image ' + title()"
+				loading="eager"
+				fill
+			/>
+		</div>
 	</div>
 </div>
